@@ -1,0 +1,17 @@
+.button {
+  display: flex;
+  width: 6.625rem;
+  padding: 0.5rem 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  border: 1px solid var(--Stroke-stroke-black, #121212);
+
+  /* Text styling */
+  color: var(--Typocolor, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--16, 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--22, 1.375rem); /* 137.5% */
+}
