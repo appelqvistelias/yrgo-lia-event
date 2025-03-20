@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./ToggleButton.module.css";
 
-const ToggleButton = ({ label, name, value, onChange }) => {
+const ChoiceButton = ({ label, name, value, onChange }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleChange = () => {
@@ -24,4 +24,4 @@ const ToggleButton = ({ label, name, value, onChange }) => {
   );
 };
 
-export default ToggleButton;
+export default ChoiceButton;
