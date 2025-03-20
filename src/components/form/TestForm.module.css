@@ -1,0 +1,19 @@
+.formContainer {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Ändra p till en klass */
+.resultText {
+  font-weight: bold;
+  margin-top: 20px;
+}
