@@ -16,6 +16,22 @@
   line-height: var(--22, 1.375rem); /* 137.5% */
 }
 
+.button:hover {
+  /* Add hover styles here */
+}
+
+.button:active {
+  /* Add active styles? */
+}
+
+.button:focus {
+  /* Add focus styles? */
+}
+
+.selected {
+  /* Add style for when the button is selected here */
+}
+
 /* Responsive styles */
 @media (min-width: 768px) {
   .button {
