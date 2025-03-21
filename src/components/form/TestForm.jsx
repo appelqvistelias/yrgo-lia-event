@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ChoiceButton from "../buttons/ChoiceButton";
 import styles from "./TestForm.module.css";
+import InputField from "../input-fields/InputField";
 
 const TestForm = () => {
   const [selectedChoices, setSelectedChoices] = useState([]);
@@ -38,6 +39,7 @@ const TestForm = () => {
           value="Webbutveckling"
           onChange={handleChoiceChange}
         />
+        <InputField placeholder="Namn" />
       </div>
 
       {/* Visa valen för att se att det fungerar */}
