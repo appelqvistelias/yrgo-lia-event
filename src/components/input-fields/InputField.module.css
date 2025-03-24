@@ -1,0 +1,33 @@
+.input {
+  display: flex;
+  padding: 8px 16px;
+  align-items: center;
+  gap: 4px;
+  align-self: stretch;
+  border: 1px solid var(--Stroke-stroke-black, #121212);
+
+  color: var(--Greyscale-grey3, #828282);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--16, 16px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--22, 22px); /* 137.5% */
+}
+
+@media (min-width: 768px) {
+  .input {
+    display: flex;
+    padding: 24px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border: 2px solid var(--Stroke-stroke-black, #121212);
+
+    color: var(--Greyscale-grey3, #828282);
+    font-family: var(--font-family-Inter, Inter);
+    font-size: var(--32, 32px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--32, 32px); /* 100% */
+  }
+}
