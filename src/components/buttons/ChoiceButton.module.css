@@ -1,0 +1,52 @@
+.button {
+  display: flex;
+  width: 6.625rem;
+  padding: 0.5rem 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  border: 1px solid var(--Stroke-stroke-black, #121212);
+
+  /* Text styling */
+  color: var(--Typocolor, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--16, 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--22, 1.375rem); /* 137.5% */
+}
+
+.button:hover {
+  /* Add hover styles here */
+}
+
+.button:active {
+  /* Add active styles? */
+}
+
+.button:focus {
+  /* Add focus styles? */
+}
+
+.selected {
+  /* Add style for when the button is selected here */
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .button {
+    width: 33.9375rem;
+    padding: 1.5rem;
+    gap: 0.625rem;
+    flex-shrink: 0;
+
+    color: var(--Typocolor, #121212);
+
+    /* Title_3 */
+    font-family: var(--font-family-Inter, Inter);
+    font-size: var(--48, 3rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--52, 3.25rem); /* 108.333% */
+  }
+}
