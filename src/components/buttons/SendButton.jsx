@@ -5,9 +5,14 @@ import styles from ".Sendbutton.module.css";
 // The SendButton component is a button that is used to submit a form.
 // It has a default text of "Skicka" but can be overridden with a custom text.
 // It is styled with the styles.button class.
-const SendButton = ({ children }) => {
+const SendButton = ({ children, onClick, disabled }) => {
   return (
-    <button type="submit" className={styles.Sendbutton}>
+    <button
+      type="submit"
+      className={styles.Sendbutton}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children || "Skicka"}
     </button>
   );
