@@ -1,6 +1,27 @@
-display: flex;
-padding: 1.5rem 0.625rem;
-justify-content: center;
-align-items: center;
-gap: 0.625rem;
-align-self: stretch;
+.sendButton {
+    display: flex;
+    padding: 1.5rem 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    align-self: stretch;
+    color: var(--Yrgo-yrgo-white, #FFFFFF);
+    background: var(--Yrgo-yrgo-red, #E51236);
+}
+
+.sendButton:hover {
+    color: var(--Yrgo-yrgo-red, #E51236);
+    background-color: var(--Yrgo-yrgo-white, #FFFFFF);
+}
+
+.sendButton:active {
+    color: var(--Yrgo-yrgo-red, #E51236);
+    background-color: var(--Yrgo-yrgo-white, #FFFFFF);
+    border: 1px solid var(--Yrgo-yrgo-red, #E51236);
+}
+
+.sendButton:disabled {
+    color: var(--Yrgo-yrgo-red, #E51236);
+    background-color: var(--Yrgo-yrgo-red, #E51236);
+    background: var(--Yrgo-yrgo-grey, #E4E9EB);
+}
