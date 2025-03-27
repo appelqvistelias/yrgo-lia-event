@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./ChoiceButton.module.css";
+import styles from "./choiceButton.module.css";
 
 const ChoiceButton = ({ label, name, value, onChange }) => {
   const [isChecked, setIsChecked] = useState(false);

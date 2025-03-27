@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import ChoiceButton from "../buttons/ChoiceButton";
-import styles from "./TestForm.module.css";
-import InputField from "../input-fields/InputField";
+import ChoiceButton from "../buttons/choiceButton";
+import styles from "./testForm.module.css";
+import InputField from "../input-fields/inputField";
 
 const TestForm = () => {
   const [selectedChoices, setSelectedChoices] = useState([]);

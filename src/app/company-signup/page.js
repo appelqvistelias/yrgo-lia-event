@@ -1,5 +1,5 @@
 import Wrapper from "../../components/layouts/wrapper";
-import InputField from "../../components/input-fields/InputField";
+import InputField from "../../components/input-fields/inputField";
 
 export default function CompanySignup() {
     return (

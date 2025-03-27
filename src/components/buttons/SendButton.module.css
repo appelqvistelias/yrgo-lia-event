@@ -1,0 +1,6 @@
+display: flex;
+padding: 1.5rem 0.625rem;
+justify-content: center;
+align-items: center;
+gap: 0.625rem;
+align-self: stretch;
