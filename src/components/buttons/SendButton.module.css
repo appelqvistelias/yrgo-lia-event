@@ -6,6 +6,7 @@
     align-items: center;
     gap: 0.25rem;
     background: var(--Yrgo-yrgo-red, #E51236);
+    border: 1px solid var(--Yrgo-yrgo-red, #E51236);
 
     /* Text */
     color: var(--Yrgo-yrgo-white, #FFF);
@@ -19,6 +20,7 @@
 .sendButton:hover {
     color: var(--Yrgo-yrgo-red, #E51236);
     background-color: var(--Yrgo-yrgo-white, #FFFFFF);
+    border: 1px solid var(--Yrgo-yrgo-white, #FFFFFF);
 }
 
 .sendButton:active {
