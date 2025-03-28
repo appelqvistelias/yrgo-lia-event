@@ -1,4 +1,4 @@
-import TestForm from "../components/form/testForm";
+import TestForm from "@/components/form/TestForm";
 
 export default function Page() {
   return (

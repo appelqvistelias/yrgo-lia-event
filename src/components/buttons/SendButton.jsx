@@ -1,12 +1,12 @@
 import { useState } from "react";
-import styles from "./sendButton.module.css";
+import styles from "./SendButton.module.css";
 
 // Used to submit forms
 // Must be placed inside a form
 // Has loading state to prevent user from clicking multiple times
 // Customizable label with "Skicka" as fallback
 
-const sendButton = ({ children }) => {
+const SendButton = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
@@ -21,4 +21,4 @@ const sendButton = ({ children }) => {
   );
 };
 
-export default sendButton;
+export default SendButton;
