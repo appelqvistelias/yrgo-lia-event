@@ -29,13 +29,8 @@
     gap: 0.625rem;
     flex-shrink: 0;
 
-    color: var(--Typocolor, #121212);
-
     /* Title_3 */
-    font-family: var(--font-family-Inter, Inter);
     font-size: var(--48, 3rem);
-    font-style: normal;
-    font-weight: 400;
-    line-height: var(--52, 3.25rem); /* 108.333% */
+    line-height: var(--52, 3.25rem);
   }
 }
