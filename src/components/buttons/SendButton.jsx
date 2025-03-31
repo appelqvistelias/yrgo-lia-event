@@ -16,18 +16,19 @@ const SendButton = ({ children, onClick, disabled }) => {
     >
       {children || "Skicka"}
 
-// SendButton pre company form creation. isLoading, setIsLoading needed?
 
-// const SendButton = ({ children }) => {
-//  const [isLoading, setIsLoading] = useState(false);
-//  return (
-//    <button
-//      type="submit"
-//      className={styles.sendButton}
-//      disabled={isLoading}
-//      onClick={() => setIsLoading(true)}
-//    >
-//      {isLoading ? "Skickar..." : children || "Skicka"}
+{/* SendButton pre company form creation. isLoading, setIsLoading needed? */}
+
+{/* const SendButton = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  return (
+    <button
+    type="submit"
+    className={styles.sendButton}
+    disabled={isLoading}
+    onClick={() => setIsLoading(true)}
+    >
+    {isLoading ? "Skickar..." : children || "Skicka"} */}
 
     </button>
   );
