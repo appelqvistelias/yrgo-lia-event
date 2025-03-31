@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import ChoiceButton from "../buttons/ChoiceButton";
-import styles from "./TestForm.module.css";
+import SendButton from "../buttons/SendButton";
 import InputField from "../input-fields/InputField";
+import styles from "./testForm.module.css";
 
 const TestForm = () => {
   const [selectedChoices, setSelectedChoices] = useState([]);
@@ -21,25 +22,29 @@ const TestForm = () => {
     <div className={styles.formContainer}>
       <h2>Testa Choice Buttons</h2>
       <div className={styles.buttonGroup}>
-        <ChoiceButton label="UI" value="UI" onChange={handleChoiceChange} />
-        <ChoiceButton label="UX" value="UX" onChange={handleChoiceChange} />
-        <ChoiceButton label="3D" value="3D" onChange={handleChoiceChange} />
+        <ChoiceButton label="UI" name="UI" value="UI" onChange={handleChoiceChange} />
+        <ChoiceButton label="UX" name="UX" value="UX" onChange={handleChoiceChange} />
+        <ChoiceButton label="3D" name="3D" value="3D" onChange={handleChoiceChange} />
         <ChoiceButton
           label="Branding"
+          name="Branding"
           value="Branding"
           onChange={handleChoiceChange}
         />
         <ChoiceButton
           label="Motion"
+          name="Motion"
           value="Motion"
           onChange={handleChoiceChange}
         />
         <ChoiceButton
           label="Webbutveckling"
+          name="Webbutveckling"
           value="Webbutveckling"
           onChange={handleChoiceChange}
         />
         <InputField placeholder="Namn" />
+        <SendButton />
       </div>
 
       {/* Visa valen för att se att det fungerar */}
