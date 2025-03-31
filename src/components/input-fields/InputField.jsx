@@ -8,15 +8,19 @@ export default function InputField({
   onChange,
 }) {
   return (
-    <label className={styles.label}>
-      {label}
-      <input
-        className={styles.input}
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-    </label>
+    <div className={styles.div}>
+      <label className={styles.label}>
+        { label }
+        <input
+          className={styles.input}
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
+      </label>
+    </div>
   );
 }
+
+// Add exclamation mark when invalid
