@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { supabase } from "../../../lib/supabase";
 import styles from "./CompanySignUpForm.module.css";
@@ -25,6 +27,7 @@ export default function CompanySignUpForm() {
   });
 
   const handleSubmit = async () => {
+    // 1) Basic validation
     if (!name || !companyName || !email || !acceptedTerms) {
       setErrorMessage(
         "Vänligen fyll i alla fält och acceptera villkoren för att kunna skicka in anmälan."
@@ -36,19 +39,62 @@ export default function CompanySignUpForm() {
     setErrorMessage("");
 
     try {
-      const { data, error } = await supabase.from("companies").insert([
-        {
-          full_name: name,
-          company_name: companyName,
-          want_lia: lookingForIntership,
-          // add email and field of interest as needed
-        },
-      ]);
-      if (error) {
-        setErrorMessage("Failed to submit data:" + error.message);
+      // 2) Insert the company and get its ID
+      const { data: companyData, error: companyError } = await supabase
+        .from("companies")
+        .insert([
+          {
+            full_name: name,
+            company_name: companyName,
+            want_lia: lookingForIntership,
+            // add email
+          },
+        ])
+        .select()
+        .single();
+
+      if (companyError) throw companyError;
+
+      const newCompanyId = companyData.id;
+
+      // 3) Gather the specializations the user selected
+      const selectedSpecializations = Object.keys(fieldOfInterest).filter(
+        (spec) => fieldOfInterest[spec] === true
+      );
+
+      // If the user didn't select any specializations
+      if (selectedSpecializations.length === 0) {
+        setLoading(false);
+        return;
       }
+
+      // 4) Look up those specializations in the table to get their IDs
+      const { data: specializationData, error: specializationError } =
+        await supabase
+          .from("specializations")
+          .select("id", "specialization_name")
+          .in("specialization_name", selectedSpecializations);
+
+      if (specializationError) throw specializationError;
+
+      // 5) Insert into the join table: company_specializations
+      const recordsToInsert = specializationData.map((spec) => ({
+        company_id: newCompanyId,
+        specializations_id: spec.id,
+      }));
+
+      const { error: joinError } = await supabase
+        .from("company_specializations")
+        .insert(recordsToInsert);
+
+      if (joinError) throw joinError;
+
+      // If everything succeeded, do success handling here
+      // Add redirect
+      console.log("Company and specializations inserted successfully!");
     } catch (error) {
-      setErrorMessage("An unexpected error occurred. Please try again later.");
+      console.error(error);
+      setErrorMessage("Ett oväntat fel uppstod: " + error.message);
     } finally {
       setLoading(false);
     }

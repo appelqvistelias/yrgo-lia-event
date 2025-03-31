@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from ".Sendbutton.module.css";
+import styles from "./Sendbutton.module.css";
 //Need styling for the button
 
 // The SendButton component is a button that is used to submit a form.
@@ -17,3 +17,5 @@ const SendButton = ({ children, onClick, disabled }) => {
     </button>
   );
 };
+
+export default SendButton;
