@@ -37,42 +37,58 @@ export default function StudentSignUpForm() {
         );
         return;
       }
+
+      if (password.length < 6) {
+        setErrorMessage("Lösenordet måste vara minst 6 tecken långt.");
+        return;
+      }
   
       setLoading(true);
       setErrorMessage("");
   
       try {
-        // 2) Inser students in the users table
+        // 2) Register user in Supabase Auth
         const { data: authData, error: authError } = await supabase.auth.signUp({
             email,
             password,
-          });
+        });
       
-        if (authError) throw authError;
+        if (authError) {
+            console.error("Auth error:", authError);
+            throw authError;
+        }
+
+        if (!authData?.user) {
+            throw new Error("Registreringen misslyckades, försök igen.");
+        }
       
         const userId = authData.user.id;
 
-        // 3) Insert student name and get ID
+        // 3) Insert user into the users table
+        const { error: userError } = await supabase
+            .from("users")
+            .insert([{ id: userId, email, role: 1 }]); // 1 = student
+
+        if (userError) {
+            console.error("User error:", userError);
+            throw userError;
+        }
+
+        // 4) Insert student i students table and get ID
         const { data: studentData, error: studentError } = await supabase
-          .from("students")
-          .insert([
-            {
-              full_name: name,
-              bio: studentBio,
-              linkedin: linkedIn,
-              portfolio: portfolio,
-              // add email
-              // add password
-            },
-          ])
-          .select()
-          .single();
-  
-        if (studentError) throw studentError;
+            .from("students")
+            .insert([{ user_id: userId, full_name: name, bio: studentBio, linkedin: linkedIn, portfolio: portfolio }])
+            .select()
+            .single();
+
+        if (studentError) {
+            console.error("Student error:", studentError);
+            throw studentError;
+        }
   
         const newStudentId = studentData.id;
   
-        // 4) Gather the specializations the user selected
+        // 5) Gather the specializations the user selected
         const selectedSpecializations = Object.keys(fieldOfInterest).filter(
           (spec) => fieldOfInterest[spec] === true
         );
@@ -83,32 +99,38 @@ export default function StudentSignUpForm() {
           return;
         }
   
-        // 5) Look up those specializations in the table to get their IDs
+        // 6) Look up those specializations in the table to get their IDs
         const { data: specializationData, error: specializationError } =
           await supabase
             .from("specializations")
             .select("id", "specialization_name")
             .in("specialization_name", selectedSpecializations);
   
-        if (specializationError) throw specializationError;
+        if (specializationError) {
+            console.error("Specialization error:", specializationError);
+            throw specializationError;
+        }
   
-        // 6) Insert into the join table: student_specializations
+        // 7) Insert into the join table: student_specializations
         const recordsToInsert = specializationData.map((spec) => ({
           student_id: newStudentId,
-          specializations_id: spec.id,
+          specialization_id: spec.id,
         }));
   
         const { error: joinError } = await supabase
           .from("student_specializations")
           .insert(recordsToInsert);
   
-        if (joinError) throw joinError;
+        if (joinError) {
+            console.error("Join error:", joinError);
+            throw joinError;
+        }
   
         // If everything succeeded, do success handling here
         // Add redirect
         console.log("Student and specializations inserted successfully!");
       } catch (error) {
-        console.log(error);
+        console.error("Registreringsfel: ", error);
         setErrorMessage("Ett oväntat fel uppstod: " + error.message);
       } finally {
         setLoading(false);
