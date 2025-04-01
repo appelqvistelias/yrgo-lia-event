@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./Sendbutton.module.css";
+import styles from "./SendButton.module.css";
 
 // Used to submit forms
 // Must be placed inside a form
