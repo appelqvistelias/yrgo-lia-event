@@ -42,7 +42,17 @@ export default function StudentSignUpForm() {
       setErrorMessage("");
   
       try {
-        // 2) Insert student name and get ID
+        // 2) Inser students in the users table
+        const { data: authData, error: authError } = await supabase.auth.signUp({
+            email,
+            password,
+          });
+      
+        if (authError) throw authError;
+      
+        const userId = authData.user.id;
+
+        // 3) Insert student name and get ID
         const { data: studentData, error: studentError } = await supabase
           .from("students")
           .insert([
@@ -50,7 +60,7 @@ export default function StudentSignUpForm() {
               full_name: name,
               bio: studentBio,
               linkedin: linkedIn,
-              github: portfolio,
+              portfolio: portfolio,
               // add email
               // add password
             },
@@ -62,7 +72,7 @@ export default function StudentSignUpForm() {
   
         const newStudentId = studentData.id;
   
-        // 3) Gather the specializations the user selected
+        // 4) Gather the specializations the user selected
         const selectedSpecializations = Object.keys(fieldOfInterest).filter(
           (spec) => fieldOfInterest[spec] === true
         );
@@ -73,7 +83,7 @@ export default function StudentSignUpForm() {
           return;
         }
   
-        // 4) Look up those specializations in the table to get their IDs
+        // 5) Look up those specializations in the table to get their IDs
         const { data: specializationData, error: specializationError } =
           await supabase
             .from("specializations")
@@ -82,7 +92,7 @@ export default function StudentSignUpForm() {
   
         if (specializationError) throw specializationError;
   
-        // 5) Insert into the join table: student_specializations
+        // 6) Insert into the join table: student_specializations
         const recordsToInsert = specializationData.map((spec) => ({
           student_id: newStudentId,
           specializations_id: spec.id,
