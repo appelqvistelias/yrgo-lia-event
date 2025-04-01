@@ -186,13 +186,13 @@ export default function StudentSignUpForm() {
         <fieldset>
             <ChoiceButton
                 label="DD"
-                value="DD"
+                value="digital_design"
                 onChange={() => setStudentSpecialization("digital_design")}
             />
 
             <ChoiceButton
                 label="WU"
-                value="WU"
+                value="webbutveckling"
                 onChange={() => setStudentSpecialization("webbutveckling")}
             />
         </fieldset>
