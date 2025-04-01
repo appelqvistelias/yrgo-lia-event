@@ -79,21 +79,21 @@ export default function StudentSignUpForm() {
   
         if (specializationError) throw specializationError;
   
-        // 5) Insert into the join table: company_specializations
+        // 5) Insert into the join table: student_specializations
         const recordsToInsert = specializationData.map((spec) => ({
-          company_id: newCompanyId,
+          student_id: newStudentId,
           specializations_id: spec.id,
         }));
   
         const { error: joinError } = await supabase
-          .from("company_specializations")
+          .from("student_specializations")
           .insert(recordsToInsert);
   
         if (joinError) throw joinError;
   
         // If everything succeeded, do success handling here
         // Add redirect
-        console.log("Company and specializations inserted successfully!");
+        console.log("Student and specializations inserted successfully!");
       } catch (error) {
         console.error(error);
         setErrorMessage("Ett oväntat fel uppstod: " + error.message);
