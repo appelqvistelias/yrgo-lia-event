@@ -1,17 +1,25 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabase";
 import styles from "./CompanySignUpForm.module.css";
 import ChoiceButton from "../buttons/ChoiceButton";
 import SendButton from "../buttons/SendButton";
 import InputField from "../input-fields/InputField";
 
+// Function to validate email format
+const validateEmail = (email) => {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+};
+
 export default function CompanySignUpForm() {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
-  const [lookingForIntership, setlookingForIntership] = useState(false);
+  const [lookingForInternship, setlookingForInternship] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,7 +29,7 @@ export default function CompanySignUpForm() {
     fullstack: false,
     ui: false,
     ux: false,
-    "3D": false,
+    "3d": false,
     motion: false,
     branding: false,
   });
@@ -32,6 +40,11 @@ export default function CompanySignUpForm() {
       setErrorMessage(
         "Vänligen fyll i alla fält och acceptera villkoren för att kunna skicka in anmälan."
       );
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setErrorMessage("Vänligen ange en giltig e-postadress.");
       return;
     }
 
@@ -46,14 +59,17 @@ export default function CompanySignUpForm() {
           {
             full_name: name,
             company_name: companyName,
-            want_lia: lookingForIntership,
-            // add email
+            want_lia: lookingForInternship,
+            email: email,
           },
         ])
         .select()
         .single();
 
-      if (companyError) throw companyError;
+      if (companyError) {
+        setErrorMessage("Det gick inte att registrera företaget. Försök igen.");
+        return;
+      }
 
       const newCompanyId = companyData.id;
 
@@ -62,39 +78,58 @@ export default function CompanySignUpForm() {
         (spec) => fieldOfInterest[spec] === true
       );
 
-      // If the user didn't select any specializations
-      if (selectedSpecializations.length === 0) {
-        setLoading(false);
-        return;
+      // Only proceed with specialization insert if any were selected
+      if (selectedSpecializations.length > 0) {
+        // 4) Look up those specializations in the table to get their IDs
+        const { data: specializationData, error: specializationError } =
+          await supabase
+            .from("specializations")
+            .select("id, specialization_name")
+            .in("specialization_name", selectedSpecializations);
+
+        if (specializationError) {
+          setErrorMessage(
+            "Det gick inte att spara intresseområden. Försök igen."
+          );
+          return;
+        }
+
+        // 5) Insert into the join table: company_specializations
+        const recordsToInsert = specializationData.map((spec) => ({
+          company_id: newCompanyId,
+          specializations_id: spec.id,
+        }));
+
+        const { error: joinError } = await supabase
+          .from("company_specializations")
+          .insert(recordsToInsert);
+
+        if (joinError) throw joinError;
       }
 
-      // 4) Look up those specializations in the table to get their IDs
-      const { data: specializationData, error: specializationError } =
-        await supabase
-          .from("specializations")
-          .select("id", "specialization_name")
-          .in("specialization_name", selectedSpecializations);
+      // Success handling
+      setName("");
+      setCompanyName("");
+      setEmail("");
+      setlookingForInternship(false);
+      setAcceptedTerms(false);
+      setFieldOfInterest({
+        frontend: false,
+        backend: false,
+        fullstack: false,
+        ui: false,
+        ux: false,
+        "3d": false,
+        motion: false,
+        branding: false,
+      });
 
-      if (specializationError) throw specializationError;
-
-      // 5) Insert into the join table: company_specializations
-      const recordsToInsert = specializationData.map((spec) => ({
-        company_id: newCompanyId,
-        specializations_id: spec.id,
-      }));
-
-      const { error: joinError } = await supabase
-        .from("company_specializations")
-        .insert(recordsToInsert);
-
-      if (joinError) throw joinError;
-
-      // If everything succeeded, do success handling here
-      // Add redirect
-      console.log("Company and specializations inserted successfully!");
+      // Show success message
+      alert("Tack för din anmälan!"); // Consider using a proper notification system
+      router.push("/thank-you"); // Redirect to a thank you page or show a success message
     } catch (error) {
       console.error(error);
-      setErrorMessage("Ett oväntat fel uppstod: " + error.message);
+      setErrorMessage("Ett oväntat fel uppstod. Vänligen försök igen senare.");
     } finally {
       setLoading(false);
     }
@@ -135,12 +170,12 @@ export default function CompanySignUpForm() {
         <ChoiceButton
           label="Ja"
           value={true}
-          onChange={(value) => setlookingForIntership(value)}
+          onChange={(value) => setlookingForInternship(value)}
         />
         <ChoiceButton
           label="Nej"
           value={false}
-          onChange={(value) => setlookingForIntership(value)}
+          onChange={(value) => setlookingForInternship(value)}
         />
       </fieldset>
 
@@ -148,58 +183,58 @@ export default function CompanySignUpForm() {
         <legend>Intresseområden:</legend>
         <ChoiceButton
           label="Frontend"
-          value="frontend"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, frontend: value })
+          value={fieldOfInterest.frontend}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, frontend: newValue })
           }
         />
         <ChoiceButton
           label="Backend"
-          value="backend"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, backend: value })
+          value={fieldOfInterest.backend}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, backend: newValue })
           }
         />
         <ChoiceButton
           label="Fullstack"
-          value="fullstack"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, fullstack: value })
+          value={fieldOfInterest.fullstack}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, fullstack: newValue })
           }
         />
         <ChoiceButton
           label="UI"
-          value="ui"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, ui: value })
+          value={fieldOfInterest.ui}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, ui: newValue })
           }
         />
         <ChoiceButton
           label="UX"
-          value="ux"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, ux: value })
+          value={fieldOfInterest.ux}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, ux: newValue })
           }
         />
         <ChoiceButton
           label="3D"
-          value="3D"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, "3D": value })
+          value={fieldOfInterest["3d"]}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, "3d": newValue })
           }
         />
         <ChoiceButton
           label="Motion"
-          value="motion"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, motion: value })
+          value={fieldOfInterest.motion}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, motion: newValue })
           }
         />
         <ChoiceButton
           label="Branding"
-          value="branding"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, branding: value })
+          value={fieldOfInterest.branding}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, branding: newValue })
           }
         />
       </fieldset>
