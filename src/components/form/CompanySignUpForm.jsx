@@ -1,17 +1,25 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabase";
 import styles from "./CompanySignUpForm.module.css";
 import ChoiceButton from "../buttons/ChoiceButton";
 import SendButton from "../buttons/SendButton";
 import InputField from "../input-fields/InputField";
 
+// Function to validate email format
+const validateEmail = (email) => {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+};
+
 export default function CompanySignUpForm() {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
-  const [lookingForIntership, setlookingForIntership] = useState(false);
+  const [lookingForInternship, setlookingForInternship] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -35,6 +43,11 @@ export default function CompanySignUpForm() {
       return;
     }
 
+    if (!validateEmail(email)) {
+      setErrorMessage("Vänligen ange en giltig e-postadress.");
+      return;
+    }
+
     setLoading(true);
     setErrorMessage("");
 
@@ -46,73 +59,77 @@ export default function CompanySignUpForm() {
           {
             full_name: name,
             company_name: companyName,
-            want_lia: lookingForIntership,
-            // add email
+            want_lia: lookingForInternship,
+            email: email,
           },
         ])
         .select()
         .single();
 
-      if (companyError) throw companyError;
+      if (companyError) {
+        setErrorMessage("Det gick inte att registrera företaget. Försök igen.");
+        return;
+      }
 
       const newCompanyId = companyData.id;
-      console.log("New company ID:", newCompanyId);
 
       // 3) Gather the specializations the user selected
       const selectedSpecializations = Object.keys(fieldOfInterest).filter(
         (spec) => fieldOfInterest[spec] === true
       );
-      console.log("Selected specializations:", selectedSpecializations);
 
-      // If the user didn't select any specializations
-      if (selectedSpecializations.length === 0) {
-        setLoading(false);
-        return;
+      // Only proceed with specialization insert if any were selected
+      if (selectedSpecializations.length > 0) {
+        // 4) Look up those specializations in the table to get their IDs
+        const { data: specializationData, error: specializationError } =
+          await supabase
+            .from("specializations")
+            .select("id, specialization_name")
+            .in("specialization_name", selectedSpecializations);
+
+        if (specializationError) {
+          setErrorMessage(
+            "Det gick inte att spara intresseområden. Försök igen."
+          );
+          return;
+        }
+
+        // 5) Insert into the join table: company_specializations
+        const recordsToInsert = specializationData.map((spec) => ({
+          company_id: newCompanyId,
+          specializations_id: spec.id,
+        }));
+
+        const { error: joinError } = await supabase
+          .from("company_specializations")
+          .insert(recordsToInsert);
+
+        if (joinError) throw joinError;
       }
 
-      // After getting selectedSpecializations, add this debug query:
-      const { data: allSpecializations } = await supabase
-        .from("specializations")
-        .select("specialization_name");
-      console.log("All available specializations:", allSpecializations);
+      // Success handling
+      setName("");
+      setCompanyName("");
+      setEmail("");
+      setlookingForInternship(false);
+      setAcceptedTerms(false);
+      setFieldOfInterest({
+        frontend: false,
+        backend: false,
+        fullstack: false,
+        ui: false,
+        ux: false,
+        "3d": false,
+        motion: false,
+        branding: false,
+      });
 
-      const { data: specializationData, error: specializationError } =
-        await supabase
-          .from("specializations")
-          .select("id, specialization_name")
-          .in("specialization_name", selectedSpecializations);
-
-      console.log("Trying to match:", selectedSpecializations);
-      console.log("Found matches:", specializationData);
-
-      // // 4) Look up those specializations in the table to get their IDs
-      // const { data: specializationData, error: specializationError } =
-      //   await supabase
-      //     .from("specializations")
-      //     .select("id, specialization_name")
-      //     .in("specialization_name", selectedSpecializations);
-
-      // if (specializationError) throw specializationError;
-      // console.log("Specialization data:", specializationData);
-
-      // 5) Insert into the join table: company_specializations
-      const recordsToInsert = specializationData.map((spec) => ({
-        company_id: newCompanyId,
-        specializations_id: spec.id,
-      }));
-
-      const { error: joinError } = await supabase
-        .from("company_specializations")
-        .insert(recordsToInsert);
-
-      if (joinError) throw joinError;
-
-      // If everything succeeded, do success handling here
-      // Add redirect
-      console.log("Company and specializations inserted successfully!");
+      // Show success message
+      alert("Tack för din anmälan!"); // Consider using a proper notification system
+      router.push("/thank-you"); // Redirect to a thank you page or show a success message
     } catch (error) {
       console.error(error);
-      setErrorMessage("Ett oväntat fel uppstod: " + error.message);
+      setErrorMessage("Ett oväntat fel uppstod. Vänligen försök igen senare.");
     } finally {
       setLoading(false);
     }
@@ -153,12 +170,12 @@ export default function CompanySignUpForm() {
         <ChoiceButton
           label="Ja"
           value={true}
-          onChange={(value) => setlookingForIntership(value)}
+          onChange={(value) => setlookingForInternship(value)}
         />
         <ChoiceButton
           label="Nej"
           value={false}
-          onChange={(value) => setlookingForIntership(value)}
+          onChange={(value) => setlookingForInternship(value)}
         />
       </fieldset>
 
