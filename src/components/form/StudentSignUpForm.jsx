@@ -21,7 +21,7 @@ export default function StudentSignUpForm() {
     const [fieldOfInterest, setFieldOfInterest] = useState({
         ui: false,
         ux: false,
-        "3D": false,
+        three_d: false,
         branding: false,
         motion: false,
         frontend: false,
@@ -187,13 +187,13 @@ export default function StudentSignUpForm() {
             <ChoiceButton
                 label="DD"
                 value="DD"
-                onChange={() => setStudentSpecialization("DD")}
+                onChange={() => setStudentSpecialization("digital_design")}
             />
 
             <ChoiceButton
                 label="WU"
                 value="WU"
-                onChange={() => setStudentSpecialization("WU")}
+                onChange={() => setStudentSpecialization("webbutveckling")}
             />
         </fieldset>
 
