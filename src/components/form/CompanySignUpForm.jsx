@@ -21,7 +21,7 @@ export default function CompanySignUpForm() {
     fullstack: false,
     ui: false,
     ux: false,
-    "3D": false,
+    "3d": false,
     motion: false,
     branding: false,
   });
@@ -56,11 +56,13 @@ export default function CompanySignUpForm() {
       if (companyError) throw companyError;
 
       const newCompanyId = companyData.id;
+      console.log("New company ID:", newCompanyId);
 
       // 3) Gather the specializations the user selected
       const selectedSpecializations = Object.keys(fieldOfInterest).filter(
         (spec) => fieldOfInterest[spec] === true
       );
+      console.log("Selected specializations:", selectedSpecializations);
 
       // If the user didn't select any specializations
       if (selectedSpecializations.length === 0) {
@@ -68,14 +70,30 @@ export default function CompanySignUpForm() {
         return;
       }
 
-      // 4) Look up those specializations in the table to get their IDs
+      // After getting selectedSpecializations, add this debug query:
+      const { data: allSpecializations } = await supabase
+        .from("specializations")
+        .select("specialization_name");
+      console.log("All available specializations:", allSpecializations);
+
       const { data: specializationData, error: specializationError } =
         await supabase
           .from("specializations")
-          .select("id", "specialization_name")
+          .select("id, specialization_name")
           .in("specialization_name", selectedSpecializations);
 
-      if (specializationError) throw specializationError;
+      console.log("Trying to match:", selectedSpecializations);
+      console.log("Found matches:", specializationData);
+
+      // // 4) Look up those specializations in the table to get their IDs
+      // const { data: specializationData, error: specializationError } =
+      //   await supabase
+      //     .from("specializations")
+      //     .select("id, specialization_name")
+      //     .in("specialization_name", selectedSpecializations);
+
+      // if (specializationError) throw specializationError;
+      // console.log("Specialization data:", specializationData);
 
       // 5) Insert into the join table: company_specializations
       const recordsToInsert = specializationData.map((spec) => ({
@@ -148,58 +166,58 @@ export default function CompanySignUpForm() {
         <legend>Intresseområden:</legend>
         <ChoiceButton
           label="Frontend"
-          value="frontend"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, frontend: value })
+          value={fieldOfInterest.frontend}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, frontend: newValue })
           }
         />
         <ChoiceButton
           label="Backend"
-          value="backend"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, backend: value })
+          value={fieldOfInterest.backend}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, backend: newValue })
           }
         />
         <ChoiceButton
           label="Fullstack"
-          value="fullstack"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, fullstack: value })
+          value={fieldOfInterest.fullstack}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, fullstack: newValue })
           }
         />
         <ChoiceButton
           label="UI"
-          value="ui"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, ui: value })
+          value={fieldOfInterest.ui}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, ui: newValue })
           }
         />
         <ChoiceButton
           label="UX"
-          value="ux"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, ux: value })
+          value={fieldOfInterest.ux}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, ux: newValue })
           }
         />
         <ChoiceButton
           label="3D"
-          value="3D"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, "3D": value })
+          value={fieldOfInterest["3d"]}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, "3d": newValue })
           }
         />
         <ChoiceButton
           label="Motion"
-          value="motion"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, motion: value })
+          value={fieldOfInterest.motion}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, motion: newValue })
           }
         />
         <ChoiceButton
           label="Branding"
-          value="branding"
-          onChange={(value) =>
-            setFieldOfInterest({ ...fieldOfInterest, branding: value })
+          value={fieldOfInterest.branding}
+          onChange={(newValue) =>
+            setFieldOfInterest({ ...fieldOfInterest, branding: newValue })
           }
         />
       </fieldset>
