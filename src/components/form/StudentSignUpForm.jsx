@@ -87,8 +87,29 @@ export default function StudentSignUpForm() {
         }
   
         const newStudentId = studentData.id;
+
+        // 5) Add student programs
+        const { data: programData, error: programError } = await supabase
+            .from("programs")
+            .select("id")
+            .eq("program_name", studentSpecialization)
+            .single();
+
+        if (programError) {
+            console.error("Program error:", programError);
+            throw programError;
+        }
+
+        const { error: studentProgramError } = await supabase
+            .from("student_programs")
+            .insert([{ student_id: newStudentId, program_id: programData.id }]);
+
+        if (studentProgramError) {
+            console.error("Student program error:", studentProgramError);
+            throw studentProgramError;
+        }
   
-        // 5) Gather the specializations the user selected
+        // 6) Gather the specializations the user selected
         const selectedSpecializations = Object.keys(fieldOfInterest).filter(
           (spec) => fieldOfInterest[spec] === true
         );
@@ -99,7 +120,7 @@ export default function StudentSignUpForm() {
           return;
         }
   
-        // 6) Look up those specializations in the table to get their IDs
+        // 7) Look up those specializations in the table to get their IDs
         const { data: specializationData, error: specializationError } =
           await supabase
             .from("specializations")
@@ -111,7 +132,7 @@ export default function StudentSignUpForm() {
             throw specializationError;
         }
   
-        // 7) Insert into the join table: student_specializations
+        // 8) Insert into the join table: student_specializations
         const recordsToInsert = specializationData.map((spec) => ({
           student_id: newStudentId,
           specialization_id: spec.id,
