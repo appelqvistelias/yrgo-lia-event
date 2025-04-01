@@ -42,6 +42,11 @@ export default function StudentSignUpForm() {
         setErrorMessage("Lösenordet måste vara minst 6 tecken långt.");
         return;
       }
+
+      if (!studentSpecialization) {
+        setErrorMessage("Vänligen välj en specialisering.");
+        return;
+      }
   
       setLoading(true);
       setErrorMessage("");
@@ -54,8 +59,8 @@ export default function StudentSignUpForm() {
         });
       
         if (authError) {
-            console.error("Auth error:", authError);
-            throw authError;
+            console.error("Registrering i Supabase Auth misslyckades:", authError.message);
+            throw new Error("Kunde inte registrera konto. Kontrollera din e-post och försök igen.");
         }
 
         if (!authData?.user) {
@@ -110,8 +115,9 @@ export default function StudentSignUpForm() {
         }
   
         // 6) Gather the specializations the user selected
-        const selectedSpecializations = Object.keys(fieldOfInterest).filter(
-          (spec) => fieldOfInterest[spec] === true
+        const selectedSpecializations = Object.entries(fieldOfInterest)
+            .filter(([_, value]) => value)
+            .map(([key]) => key
         );
   
         // If the user didn't select any specializations
@@ -180,14 +186,14 @@ export default function StudentSignUpForm() {
         <fieldset>
             <ChoiceButton
                 label="DD"
-                value={true}
-                onChange={(value) => setStudentSpecialization(value)}
+                value="DD"
+                onChange={() => setStudentSpecialization("DD")}
             />
 
             <ChoiceButton
                 label="WU"
-                value={true}
-                onChange={(value) => setStudentSpecialization(value)}
+                value="WU"
+                onChange={() => setStudentSpecialization("WU")}
             />
         </fieldset>
 
@@ -210,62 +216,63 @@ export default function StudentSignUpForm() {
         <fieldset>
           <legend>Inom vilket område?</legend>
           <p>(Du kan välja flera)</p>
-          <ChoiceButton
-            label="UI"
-            value="ui"
-            onChange={(value) =>
-              setFieldOfInterest({ ...fieldOfInterest, ui: value })
-            }
-          />
-          <ChoiceButton
-            label="UX"
-            value="ux"
-            onChange={(value) =>
-              setFieldOfInterest({ ...fieldOfInterest, ux: value })
-            }
-          />
-          <ChoiceButton
-            label="3D"
-            value="3D"
-            onChange={(value) =>
-              setFieldOfInterest({ ...fieldOfInterest, "3D": value })
-            }
-          />
             <ChoiceButton
-              label="Branding"
-              value="branding"
-              onChange={(value) =>
-                setFieldOfInterest({ ...fieldOfInterest, branding: value })
-              }
+                label="UI"
+                value={fieldOfInterest.ui}
+                onChange={(value) =>
+                    setFieldOfInterest((prev) => ({ ...prev, ui: !prev.ui }))
+                }
             />
-          <ChoiceButton
-            label="Motion"
-            value="motion"
-            onChange={(value) =>
-              setFieldOfInterest({ ...fieldOfInterest, motion: value })
-            }
-          />
-          <ChoiceButton
-            label="Frontend"
-            value="frontend"
-            onChange={(value) =>
-              setFieldOfInterest({ ...fieldOfInterest, frontend: value })
-            }
-          />
-          <ChoiceButton
-            label="Backend"
-            value="backend"
-            onChange={(value) =>
-              setFieldOfInterest({ ...fieldOfInterest, backend: value })
-            }
-          />
-          <ChoiceButton
-            label="Fullstack"
-            value="fullstack"
-            onChange={(value) =>
-              setFieldOfInterest({ ...fieldOfInterest, fullstack: value })
-            }
-          />
+            <ChoiceButton
+                label="UX"
+                value={fieldOfInterest.ux}
+                onChange={(value) =>
+                    setFieldOfInterest((prev) => ({ ...prev, ux: !prev.ux }))
+                }
+            />
+            <ChoiceButton
+                label="3D"
+                value={fieldOfInterest.three_d}
+                onChange={(value) =>
+                    setFieldOfInterest((prev) => ({ ...prev, three_d: !prev.three_d }))
+                }
+            />
+            <ChoiceButton
+                label="Branding"
+                value={fieldOfInterest.branding}
+                onChange={(value) =>
+                    setFieldOfInterest((prev) => ({ ...prev, branding: !prev.branding }))
+                }
+            />
+            <ChoiceButton
+                label="Motion"
+                value={fieldOfInterest.motion}
+                onChange={(value) =>
+                    setFieldOfInterest((prev) => ({ ...prev, motion: !prev.motion }))
+                }
+            />
+            <ChoiceButton
+                label="Frontend"
+                value={fieldOfInterest.frontend}
+                onChange={(value) =>
+                    setFieldOfInterest((prev) => ({ ...prev, frontend: !prev.frontend }))
+                }
+            />
+            <ChoiceButton
+                label="Backend"
+                value={fieldOfInterest.backend}
+                onChange={(value) =>
+                    setFieldOfInterest((prev) => ({ ...prev, backend: !prev.backend }))
+                }
+            />
+            <ChoiceButton
+                label="Fullstack"
+                value={fieldOfInterest.fullstack}
+                onChange={(value) =>
+                    setFieldOfInterest((prev) => ({ ...prev, fullstack: !prev.fullstack }))
+                }
+            />
+            
         </fieldset>
 
         <InputField
