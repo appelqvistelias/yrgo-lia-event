@@ -48,10 +48,11 @@ export default function StudentSignUpForm() {
           .insert([
             {
               full_name: name,
-              studentBio: studentBio,
-              linkedIn: linkedIn,
-              github: github,
+              bio: studentBio,
+              linkedin: linkedIn,
+              github: portfolio,
               // add email
+              // add password
             },
           ])
           .select()
@@ -97,7 +98,7 @@ export default function StudentSignUpForm() {
         // Add redirect
         console.log("Student and specializations inserted successfully!");
       } catch (error) {
-        console.error(error);
+        console.log(error);
         setErrorMessage("Ett oväntat fel uppstod: " + error.message);
       } finally {
         setLoading(false);
