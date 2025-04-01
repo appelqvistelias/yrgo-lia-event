@@ -9,10 +9,12 @@ import InputField from "../input-fields/InputField";
 
 export default function StudentSignUpForm() {
     const [name, setName] = useState("");
+    const [studentSpecialization, setStudentSpecialization] = useState("");
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [studentBio, setStudentBio] = useState("");
     const [linkedIn, setLinkedIn] = useState("");
-    const [github, setGithub] = useState("");
+    const [portfolio, setPortfolio] = useState("");
     const [acceptedTerms, setAcceptedTerms] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(false);
@@ -114,61 +116,46 @@ export default function StudentSignUpForm() {
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
   
         <InputField
-          label="Namn:"
+          label="Fullständigt namn:"
           type="text"
+          placeholder="Namn"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <InputField
-          label="Företag:"
-          type="text"
-          value={companyName}
-          onChange={(e) => setCompanyName(e.target.value)}
-        />
+        
+        <fieldset>
+            <ChoiceButton
+                label="DD"
+                value={true}
+                onChange={(value) => setStudentSpecialization(value)}
+            />
+
+            <ChoiceButton
+                label="WU"
+                value={true}
+                onChange={(value) => setStudentSpecialization(value)}
+            />
+        </fieldset>
+
         <InputField
           label="Mail:"
           type="email"
+          placeholder="dittnamn@mail.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+
+        <InputField
+          label="Password:"
+          type="password"
+          placeholder="Välj ett starkt lösenord"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
   
         <fieldset>
-          <legend>Söker ni LIA?</legend>
-          <ChoiceButton
-            label="Ja"
-            value={true}
-            onChange={(value) => setlookingForIntership(value)}
-          />
-          <ChoiceButton
-            label="Nej"
-            value={false}
-            onChange={(value) => setlookingForIntership(value)}
-          />
-        </fieldset>
-  
-        <fieldset>
-          <legend>Intresseområden:</legend>
-          <ChoiceButton
-            label="Frontend"
-            value="frontend"
-            onChange={(value) =>
-              setFieldOfInterest({ ...fieldOfInterest, frontend: value })
-            }
-          />
-          <ChoiceButton
-            label="Backend"
-            value="backend"
-            onChange={(value) =>
-              setFieldOfInterest({ ...fieldOfInterest, backend: value })
-            }
-          />
-          <ChoiceButton
-            label="Fullstack"
-            value="fullstack"
-            onChange={(value) =>
-              setFieldOfInterest({ ...fieldOfInterest, fullstack: value })
-            }
-          />
+          <legend>Inom vilket område?</legend>
+          <p>(Du kan välja flera)</p>
           <ChoiceButton
             label="UI"
             value="ui"
@@ -190,6 +177,13 @@ export default function StudentSignUpForm() {
               setFieldOfInterest({ ...fieldOfInterest, "3D": value })
             }
           />
+            <ChoiceButton
+              label="Branding"
+              value="branding"
+              onChange={(value) =>
+                setFieldOfInterest({ ...fieldOfInterest, branding: value })
+              }
+            />
           <ChoiceButton
             label="Motion"
             value="motion"
@@ -198,13 +192,49 @@ export default function StudentSignUpForm() {
             }
           />
           <ChoiceButton
-            label="Branding"
-            value="branding"
+            label="Frontend"
+            value="frontend"
             onChange={(value) =>
-              setFieldOfInterest({ ...fieldOfInterest, branding: value })
+              setFieldOfInterest({ ...fieldOfInterest, frontend: value })
+            }
+          />
+          <ChoiceButton
+            label="Backend"
+            value="backend"
+            onChange={(value) =>
+              setFieldOfInterest({ ...fieldOfInterest, backend: value })
+            }
+          />
+          <ChoiceButton
+            label="Fullstack"
+            value="fullstack"
+            onChange={(value) =>
+              setFieldOfInterest({ ...fieldOfInterest, fullstack: value })
             }
           />
         </fieldset>
+
+        <InputField
+            label="Hisspitch om dig:"
+            type="text"
+            placeholder="En kort presentation"
+            value={studentBio}
+            onChange={(e) => setStudentBio(e.target.value)}
+        />
+        <InputField
+            label="LinkedIn:"
+            type="text"
+            placeholder="Din LinkedIn-profil"
+            value={linkedIn}
+            onChange={(e) => setLinkedIn(e.target.value)}
+        />
+        <InputField
+            label="Portfolio:"
+            type="text"
+            placeholder="Din portfolio"
+            value={portfolio}
+            onChange={(e) => setPortfolio(e.target.value)}
+        />
   
         <div>
           <input
