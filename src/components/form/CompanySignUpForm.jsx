@@ -25,14 +25,14 @@ export default function CompanySignUpForm() {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [fieldOfInterest, setFieldOfInterest] = useState({
-    frontend: false,
-    backend: false,
-    fullstack: false,
     ui: false,
     ux: false,
     three_d: false,
-    motion: false,
     branding: false,
+    motion: false,
+    frontend: false,
+    backend: false,
+    fullstack: false,
   });
 
   const handleSubmit = async () => {
@@ -152,14 +152,14 @@ export default function CompanySignUpForm() {
       setlookingForInternship(false);
       setAcceptedTerms(false);
       setFieldOfInterest({
-        frontend: false,
-        backend: false,
-        fullstack: false,
         ui: false,
         ux: false,
         three_d: false,
-        motion: false,
         branding: false,
+        motion: false,
+        frontend: false,
+        backend: false,
+        fullstack: false,
       });
 
       // Show success message
