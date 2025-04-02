@@ -105,16 +105,22 @@ export default function CompanySignUpForm() {
         .single();
 
       if (companyError) {
-        setErrorMessage("Det gick inte att registrera företaget. Försök igen.");
-        return;
+        console.error("Student error:", companyError);
+        throw companyError;
       }
 
       const newCompanyId = companyData.id;
 
       // 5) Gather the specializations the user selected
-      const selectedSpecializations = Object.keys(fieldOfInterest).filter(
-        (spec) => fieldOfInterest[spec] === true
-      );
+      const selectedSpecializations = Object.entries(fieldOfInterest)
+        .filter(([_, value]) => value)
+        .map(([key]) => key);
+
+      // If the user didn't select any specializations
+      if (selectedSpecializations.length === 0) {
+        setLoading(false);
+        return;
+      }
 
       // Only proceed with specialization insert if any were selected
       if (selectedSpecializations.length > 0) {
@@ -126,10 +132,8 @@ export default function CompanySignUpForm() {
             .in("specialization_name", selectedSpecializations);
 
         if (specializationError) {
-          setErrorMessage(
-            "Det gick inte att spara intresseområden. Försök igen."
-          );
-          return;
+          console.error("Specialization error:", specializationError);
+          throw specializationError;
         }
 
         // 7) Insert into the join table: company_specializations
@@ -142,13 +146,17 @@ export default function CompanySignUpForm() {
           .from("company_specializations")
           .insert(recordsToInsert);
 
-        if (joinError) throw joinError;
+        if (joinError) {
+          console.error("Join error:", joinError);
+          throw joinError;
+        }
       }
 
       // Success handling
       setName("");
       setCompanyName("");
       setEmail("");
+      setPassword("");
       setlookingForInternship(false);
       setAcceptedTerms(false);
       setFieldOfInterest({
@@ -163,10 +171,9 @@ export default function CompanySignUpForm() {
       });
 
       // Show success message
-      alert("Tack för din anmälan!"); // Consider using a proper notification system
       router.push("/thank-you"); // Redirect to a thank you page or show a success message
     } catch (error) {
-      console.error(error);
+      console.error("Registreringsfel: ", error);
       setErrorMessage("Ett oväntat fel uppstod. Vänligen försök igen senare.");
     } finally {
       setLoading(false);
