@@ -232,60 +232,70 @@ export default function CompanySignUpForm() {
 
       <fieldset>
         <legend>Intresseområden:</legend>
-        <ChoiceButton
-          label="Frontend"
-          value={fieldOfInterest.frontend}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, frontend: newValue })
-          }
-        />
-        <ChoiceButton
-          label="Backend"
-          value={fieldOfInterest.backend}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, backend: newValue })
-          }
-        />
-        <ChoiceButton
-          label="Fullstack"
-          value={fieldOfInterest.fullstack}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, fullstack: newValue })
-          }
-        />
+        <p>(Du kan välja flera)</p>
         <ChoiceButton
           label="UI"
           value={fieldOfInterest.ui}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, ui: newValue })
+          onChange={() =>
+            setFieldOfInterest((prev) => ({ ...prev, ui: !prev.ui }))
           }
         />
         <ChoiceButton
           label="UX"
           value={fieldOfInterest.ux}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, ux: newValue })
+          onChange={() =>
+            setFieldOfInterest((prev) => ({ ...prev, ux: !prev.ux }))
           }
         />
         <ChoiceButton
           label="3D"
           value={fieldOfInterest.three_d}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, three_d: newValue })
-          }
-        />
-        <ChoiceButton
-          label="Motion"
-          value={fieldOfInterest.motion}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, motion: newValue })
+          onChange={() =>
+            setFieldOfInterest((prev) => ({ ...prev, three_d: !prev.three_d }))
           }
         />
         <ChoiceButton
           label="Branding"
           value={fieldOfInterest.branding}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, branding: newValue })
+          onChange={() =>
+            setFieldOfInterest((prev) => ({
+              ...prev,
+              branding: !prev.branding,
+            }))
+          }
+        />
+        <ChoiceButton
+          label="Motion"
+          value={fieldOfInterest.motion}
+          onChange={() =>
+            setFieldOfInterest((prev) => ({ ...prev, motion: !prev.motion }))
+          }
+        />
+        <ChoiceButton
+          label="Frontend"
+          value={fieldOfInterest.frontend}
+          onChange={() =>
+            setFieldOfInterest((prev) => ({
+              ...prev,
+              frontend: !prev.frontend,
+            }))
+          }
+        />
+        <ChoiceButton
+          label="Backend"
+          value={fieldOfInterest.backend}
+          onChange={() =>
+            setFieldOfInterest((prev) => ({ ...prev, backend: !prev.backend }))
+          }
+        />
+        <ChoiceButton
+          label="Fullstack"
+          value={fieldOfInterest.fullstack}
+          onChange={() =>
+            setFieldOfInterest((prev) => ({
+              ...prev,
+              fullstack: !prev.fullstack,
+            }))
           }
         />
       </fieldset>
