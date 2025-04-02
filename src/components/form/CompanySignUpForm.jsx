@@ -30,7 +30,7 @@ export default function CompanySignUpForm() {
     fullstack: false,
     ui: false,
     ux: false,
-    "3d": false,
+    three_d: false,
     motion: false,
     branding: false,
   });
@@ -157,7 +157,7 @@ export default function CompanySignUpForm() {
         fullstack: false,
         ui: false,
         ux: false,
-        "3d": false,
+        three_d: false,
         motion: false,
         branding: false,
       });
@@ -269,9 +269,9 @@ export default function CompanySignUpForm() {
         />
         <ChoiceButton
           label="3D"
-          value={fieldOfInterest["3d"]}
+          value={fieldOfInterest.three_d}
           onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, "3d": newValue })
+            setFieldOfInterest({ ...fieldOfInterest, three_d: newValue })
           }
         />
         <ChoiceButton
