@@ -44,6 +44,11 @@ export default function CompanySignUpForm() {
       return;
     }
 
+    if (password.length < 6) {
+      setErrorMessage("Lösenordet måste vara minst 6 tecken långt.");
+      return;
+    }
+
     if (!validateEmail(email)) {
       setErrorMessage("Vänligen ange en giltig e-postadress.");
       return;
