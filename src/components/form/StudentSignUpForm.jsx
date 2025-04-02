@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabase";
 import styles from "./StudentSignUpForm.module.css";
 import ChoiceButton from "../buttons/ChoiceButton";
@@ -14,6 +15,7 @@ const validateEmail = (email) => {
 };
 
 export default function StudentSignUpForm() {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [studentSpecialization, setStudentSpecialization] = useState("");
   const [email, setEmail] = useState("");
@@ -176,9 +178,28 @@ export default function StudentSignUpForm() {
         throw joinError;
       }
 
-      // If everything succeeded, do success handling here
-      // Add redirect
-      console.log("Student and specializations inserted successfully!");
+      // Success handling
+      setName("");
+      setStudentSpecialization("");
+      setEmail("");
+      setPassword("");
+      setStudentBio("");
+      setLinkedIn("");
+      setPortfolio("");
+      setAcceptedTerms(false);
+      setFieldOfInterest({
+        ui: false,
+        ux: false,
+        three_d: false,
+        branding: false,
+        motion: false,
+        frontend: false,
+        backend: false,
+        fullstack: false,
+      });
+
+      // Show success message
+      router.push("/thank-you"); // Redirect to a thank you page or show a success message
     } catch (error) {
       console.error("Registreringsfel: ", error);
       setErrorMessage("Ett oväntat fel uppstod: " + error.message);
