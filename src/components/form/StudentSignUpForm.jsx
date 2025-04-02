@@ -206,7 +206,7 @@ export default function StudentSignUpForm() {
         />
 
         <InputField
-          label="Password:"
+          label="Lösenord:"
           type="password"
           placeholder="Välj ett starkt lösenord"
           value={password}
