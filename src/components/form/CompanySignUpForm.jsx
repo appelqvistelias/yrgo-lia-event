@@ -65,8 +65,13 @@ export default function CompanySignUpForm() {
       });
 
       if (authError) {
-        console.error("Registrering i Supabase Auth misslyckades:", authError.message);
-        throw new Error("Kunde inte registrera konto. Kontrollera din e-post och försök igen.");
+        console.error(
+          "Registrering i Supabase Auth misslyckades:",
+          authError.message
+        );
+        throw new Error(
+          "Kunde inte registrera konto. Kontrollera din e-post och försök igen."
+        );
       }
 
       if (!authData?.user) {
