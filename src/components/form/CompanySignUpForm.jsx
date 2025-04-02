@@ -19,6 +19,7 @@ export default function CompanySignUpForm() {
   const [name, setName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [lookingForInternship, setlookingForInternship] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -149,20 +150,33 @@ export default function CompanySignUpForm() {
       <InputField
         label="Namn:"
         type="text"
+        placeholder="Namn"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
+
       <InputField
         label="Företag:"
         type="text"
+        placeholder="Vilket företag..."
         value={companyName}
         onChange={(e) => setCompanyName(e.target.value)}
       />
+
       <InputField
         label="Mail:"
         type="email"
+        placeholder="dittföretag@mail.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <InputField
+        label="Lösenord:"
+        type="password"
+        placeholder="Välj ett starkt lösenord"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
 
       <fieldset>
