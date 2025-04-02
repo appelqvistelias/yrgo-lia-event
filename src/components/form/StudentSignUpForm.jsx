@@ -7,6 +7,12 @@ import ChoiceButton from "../buttons/ChoiceButton";
 import SendButton from "../buttons/SendButton";
 import InputField from "../input-fields/InputField";
 
+// Function to validate email format
+const validateEmail = (email) => {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+};
+
 export default function StudentSignUpForm() {
     const [name, setName] = useState("");
     const [studentSpecialization, setStudentSpecialization] = useState("");
@@ -40,6 +46,11 @@ export default function StudentSignUpForm() {
 
       if (password.length < 6) {
         setErrorMessage("Lösenordet måste vara minst 6 tecken långt.");
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        setErrorMessage("Vänligen ange en giltig e-postadress.");
         return;
       }
 
