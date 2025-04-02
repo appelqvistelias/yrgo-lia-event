@@ -242,28 +242,28 @@ export default function StudentSignUpForm() {
         <ChoiceButton
           label="UI"
           value={fieldOfInterest.ui}
-          onChange={(value) =>
+          onChange={() =>
             setFieldOfInterest((prev) => ({ ...prev, ui: !prev.ui }))
           }
         />
         <ChoiceButton
           label="UX"
           value={fieldOfInterest.ux}
-          onChange={(value) =>
+          onChange={() =>
             setFieldOfInterest((prev) => ({ ...prev, ux: !prev.ux }))
           }
         />
         <ChoiceButton
           label="3D"
           value={fieldOfInterest.three_d}
-          onChange={(value) =>
+          onChange={() =>
             setFieldOfInterest((prev) => ({ ...prev, three_d: !prev.three_d }))
           }
         />
         <ChoiceButton
           label="Branding"
           value={fieldOfInterest.branding}
-          onChange={(value) =>
+          onChange={() =>
             setFieldOfInterest((prev) => ({
               ...prev,
               branding: !prev.branding,
@@ -273,14 +273,14 @@ export default function StudentSignUpForm() {
         <ChoiceButton
           label="Motion"
           value={fieldOfInterest.motion}
-          onChange={(value) =>
+          onChange={() =>
             setFieldOfInterest((prev) => ({ ...prev, motion: !prev.motion }))
           }
         />
         <ChoiceButton
           label="Frontend"
           value={fieldOfInterest.frontend}
-          onChange={(value) =>
+          onChange={() =>
             setFieldOfInterest((prev) => ({
               ...prev,
               frontend: !prev.frontend,
@@ -290,14 +290,14 @@ export default function StudentSignUpForm() {
         <ChoiceButton
           label="Backend"
           value={fieldOfInterest.backend}
-          onChange={(value) =>
+          onChange={() =>
             setFieldOfInterest((prev) => ({ ...prev, backend: !prev.backend }))
           }
         />
         <ChoiceButton
           label="Fullstack"
           value={fieldOfInterest.fullstack}
-          onChange={(value) =>
+          onChange={() =>
             setFieldOfInterest((prev) => ({
               ...prev,
               fullstack: !prev.fullstack,
