@@ -58,15 +58,42 @@ export default function CompanySignUpForm() {
     setErrorMessage("");
 
     try {
-      // 2) Insert the company and get its ID
+      // 2) Register user in Supabase Auth
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+
+      if (authError) {
+        console.error("Registrering i Supabase Auth misslyckades:", authError.message);
+        throw new Error("Kunde inte registrera konto. Kontrollera din e-post och försök igen.");
+      }
+
+      if (!authData?.user) {
+        throw new Error("Registreringen misslyckades, försök igen.");
+      }
+
+      const userId = authData.user.id;
+
+      // 3) Insert user into the users table
+      const { error: userError } = await supabase
+        .from("users")
+        .insert([{ id: userId, email, role: 2 }]); // 2 = company
+
+      if (userError) {
+        console.error("User error:", userError);
+        throw userError;
+      }
+
+      // 4) Insert the company and get its ID
       const { data: companyData, error: companyError } = await supabase
         .from("companies")
         .insert([
           {
+            user_id: userId,
             full_name: name,
             company_name: companyName,
             want_lia: lookingForInternship,
-            email: email,
           },
         ])
         .select()
@@ -79,14 +106,14 @@ export default function CompanySignUpForm() {
 
       const newCompanyId = companyData.id;
 
-      // 3) Gather the specializations the user selected
+      // 5) Gather the specializations the user selected
       const selectedSpecializations = Object.keys(fieldOfInterest).filter(
         (spec) => fieldOfInterest[spec] === true
       );
 
       // Only proceed with specialization insert if any were selected
       if (selectedSpecializations.length > 0) {
-        // 4) Look up those specializations in the table to get their IDs
+        // 6) Look up those specializations in the table to get their IDs
         const { data: specializationData, error: specializationError } =
           await supabase
             .from("specializations")
@@ -100,7 +127,7 @@ export default function CompanySignUpForm() {
           return;
         }
 
-        // 5) Insert into the join table: company_specializations
+        // 7) Insert into the join table: company_specializations
         const recordsToInsert = specializationData.map((spec) => ({
           company_id: newCompanyId,
           specializations_id: spec.id,
