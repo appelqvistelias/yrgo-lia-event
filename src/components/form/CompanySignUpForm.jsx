@@ -19,19 +19,20 @@ export default function CompanySignUpForm() {
   const [name, setName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [lookingForInternship, setlookingForInternship] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [fieldOfInterest, setFieldOfInterest] = useState({
+    ui: false,
+    ux: false,
+    three_d: false,
+    branding: false,
+    motion: false,
     frontend: false,
     backend: false,
     fullstack: false,
-    ui: false,
-    ux: false,
-    "3d": false,
-    motion: false,
-    branding: false,
   });
 
   const handleSubmit = async () => {
@@ -40,6 +41,11 @@ export default function CompanySignUpForm() {
       setErrorMessage(
         "Vänligen fyll i alla fält och acceptera villkoren för att kunna skicka in anmälan."
       );
+      return;
+    }
+
+    if (password.length < 6) {
+      setErrorMessage("Lösenordet måste vara minst 6 tecken långt.");
       return;
     }
 
@@ -52,35 +58,73 @@ export default function CompanySignUpForm() {
     setErrorMessage("");
 
     try {
-      // 2) Insert the company and get its ID
+      // 2) Register user in Supabase Auth
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+
+      if (authError) {
+        console.error(
+          "Registrering i Supabase Auth misslyckades:",
+          authError.message
+        );
+        throw new Error(
+          "Kunde inte registrera konto. Kontrollera din e-post och försök igen."
+        );
+      }
+
+      if (!authData?.user) {
+        throw new Error("Registreringen misslyckades, försök igen.");
+      }
+
+      const userId = authData.user.id;
+
+      // 3) Insert user into the users table
+      const { error: userError } = await supabase
+        .from("users")
+        .insert([{ id: userId, email, role: 2 }]); // 2 = company
+
+      if (userError) {
+        console.error("User error:", userError);
+        throw userError;
+      }
+
+      // 4) Insert the company and get its ID
       const { data: companyData, error: companyError } = await supabase
         .from("companies")
         .insert([
           {
+            user_id: userId,
             full_name: name,
             company_name: companyName,
             want_lia: lookingForInternship,
-            email: email,
           },
         ])
         .select()
         .single();
 
       if (companyError) {
-        setErrorMessage("Det gick inte att registrera företaget. Försök igen.");
-        return;
+        console.error("Student error:", companyError);
+        throw companyError;
       }
 
       const newCompanyId = companyData.id;
 
-      // 3) Gather the specializations the user selected
-      const selectedSpecializations = Object.keys(fieldOfInterest).filter(
-        (spec) => fieldOfInterest[spec] === true
-      );
+      // 5) Gather the specializations the user selected
+      const selectedSpecializations = Object.entries(fieldOfInterest)
+        .filter(([_, value]) => value)
+        .map(([key]) => key);
+
+      // If the user didn't select any specializations
+      if (selectedSpecializations.length === 0) {
+        setLoading(false);
+        return;
+      }
 
       // Only proceed with specialization insert if any were selected
       if (selectedSpecializations.length > 0) {
-        // 4) Look up those specializations in the table to get their IDs
+        // 6) Look up those specializations in the table to get their IDs
         const { data: specializationData, error: specializationError } =
           await supabase
             .from("specializations")
@@ -88,13 +132,11 @@ export default function CompanySignUpForm() {
             .in("specialization_name", selectedSpecializations);
 
         if (specializationError) {
-          setErrorMessage(
-            "Det gick inte att spara intresseområden. Försök igen."
-          );
-          return;
+          console.error("Specialization error:", specializationError);
+          throw specializationError;
         }
 
-        // 5) Insert into the join table: company_specializations
+        // 7) Insert into the join table: company_specializations
         const recordsToInsert = specializationData.map((spec) => ({
           company_id: newCompanyId,
           specializations_id: spec.id,
@@ -104,31 +146,34 @@ export default function CompanySignUpForm() {
           .from("company_specializations")
           .insert(recordsToInsert);
 
-        if (joinError) throw joinError;
+        if (joinError) {
+          console.error("Join error:", joinError);
+          throw joinError;
+        }
       }
 
       // Success handling
       setName("");
       setCompanyName("");
       setEmail("");
+      setPassword("");
       setlookingForInternship(false);
       setAcceptedTerms(false);
       setFieldOfInterest({
+        ui: false,
+        ux: false,
+        three_d: false,
+        branding: false,
+        motion: false,
         frontend: false,
         backend: false,
         fullstack: false,
-        ui: false,
-        ux: false,
-        "3d": false,
-        motion: false,
-        branding: false,
       });
 
       // Show success message
-      alert("Tack för din anmälan!"); // Consider using a proper notification system
       router.push("/thank-you"); // Redirect to a thank you page or show a success message
     } catch (error) {
-      console.error(error);
+      console.error("Registreringsfel: ", error);
       setErrorMessage("Ett oväntat fel uppstod. Vänligen försök igen senare.");
     } finally {
       setLoading(false);
@@ -149,20 +194,33 @@ export default function CompanySignUpForm() {
       <InputField
         label="Namn:"
         type="text"
+        placeholder="Namn"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
+
       <InputField
         label="Företag:"
         type="text"
+        placeholder="Vilket företag..."
         value={companyName}
         onChange={(e) => setCompanyName(e.target.value)}
       />
+
       <InputField
         label="Mail:"
         type="email"
+        placeholder="dittföretag@mail.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <InputField
+        label="Lösenord:"
+        type="password"
+        placeholder="Välj ett starkt lösenord"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
 
       <fieldset>
@@ -181,60 +239,70 @@ export default function CompanySignUpForm() {
 
       <fieldset>
         <legend>Intresseområden:</legend>
-        <ChoiceButton
-          label="Frontend"
-          value={fieldOfInterest.frontend}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, frontend: newValue })
-          }
-        />
-        <ChoiceButton
-          label="Backend"
-          value={fieldOfInterest.backend}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, backend: newValue })
-          }
-        />
-        <ChoiceButton
-          label="Fullstack"
-          value={fieldOfInterest.fullstack}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, fullstack: newValue })
-          }
-        />
+        <p>(Du kan välja flera)</p>
         <ChoiceButton
           label="UI"
           value={fieldOfInterest.ui}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, ui: newValue })
+          onChange={() =>
+            setFieldOfInterest((prev) => ({ ...prev, ui: !prev.ui }))
           }
         />
         <ChoiceButton
           label="UX"
           value={fieldOfInterest.ux}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, ux: newValue })
+          onChange={() =>
+            setFieldOfInterest((prev) => ({ ...prev, ux: !prev.ux }))
           }
         />
         <ChoiceButton
           label="3D"
-          value={fieldOfInterest["3d"]}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, "3d": newValue })
-          }
-        />
-        <ChoiceButton
-          label="Motion"
-          value={fieldOfInterest.motion}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, motion: newValue })
+          value={fieldOfInterest.three_d}
+          onChange={() =>
+            setFieldOfInterest((prev) => ({ ...prev, three_d: !prev.three_d }))
           }
         />
         <ChoiceButton
           label="Branding"
           value={fieldOfInterest.branding}
-          onChange={(newValue) =>
-            setFieldOfInterest({ ...fieldOfInterest, branding: newValue })
+          onChange={() =>
+            setFieldOfInterest((prev) => ({
+              ...prev,
+              branding: !prev.branding,
+            }))
+          }
+        />
+        <ChoiceButton
+          label="Motion"
+          value={fieldOfInterest.motion}
+          onChange={() =>
+            setFieldOfInterest((prev) => ({ ...prev, motion: !prev.motion }))
+          }
+        />
+        <ChoiceButton
+          label="Frontend"
+          value={fieldOfInterest.frontend}
+          onChange={() =>
+            setFieldOfInterest((prev) => ({
+              ...prev,
+              frontend: !prev.frontend,
+            }))
+          }
+        />
+        <ChoiceButton
+          label="Backend"
+          value={fieldOfInterest.backend}
+          onChange={() =>
+            setFieldOfInterest((prev) => ({ ...prev, backend: !prev.backend }))
+          }
+        />
+        <ChoiceButton
+          label="Fullstack"
+          value={fieldOfInterest.fullstack}
+          onChange={() =>
+            setFieldOfInterest((prev) => ({
+              ...prev,
+              fullstack: !prev.fullstack,
+            }))
           }
         />
       </fieldset>
