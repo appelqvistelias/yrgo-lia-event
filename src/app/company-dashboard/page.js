@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabase";
 
-export default function StudentDashboard() {
+export default function CompanyDashboard() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -26,7 +26,7 @@ export default function StudentDashboard() {
         .eq("id", userId)
         .single();
 
-      if (userError || userData.role !== 1) {
+      if (userError || userData.role !== 2) {
         router.push("/login");
         return;
       }

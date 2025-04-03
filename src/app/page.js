@@ -21,6 +21,9 @@ export default function Page() {
         <li>
           <Link href="/student-dashboard">Student Dashboard</Link>
         </li>
+        <li>
+          <Link href="/company-dashboard">Company Dashboard</Link>
+        </li>
       </ul>
     </Wrapper>
   );
