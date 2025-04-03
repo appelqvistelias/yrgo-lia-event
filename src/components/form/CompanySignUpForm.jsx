@@ -16,11 +16,12 @@ const validateEmail = (email) => {
 
 export default function CompanySignUpForm() {
   const router = useRouter();
-  const [name, setName] = useState("");
+  const [contactPerson, setContactPerson] = useState(""); //Uppdaterad
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [lookingForInternship, setlookingForInternship] = useState(false);
+  const [lookingForInternship, setlookingForInternship] = useState(""); //Uppdaterad
+  const [companyInfo, setCompanyInfo] = useState(""); //Tillagd
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -37,7 +38,7 @@ export default function CompanySignUpForm() {
 
   const handleSubmit = async () => {
     // 1) Basic validation
-    if (!name || !companyName || !email || !acceptedTerms) {
+    if (!contactPerson || !companyName || !email || !acceptedTerms) {
       setErrorMessage(
         "Vänligen fyll i alla fält och acceptera villkoren för att kunna skicka in anmälan."
       );
@@ -58,6 +59,20 @@ export default function CompanySignUpForm() {
     setErrorMessage("");
 
     try {
+      // Check if user exists
+      const { data: existingUser } = await supabase
+        .from("users")
+        .select("email")
+        .eq("email", email)
+        .single();
+
+      if (existingUser) {
+        setErrorMessage(
+          "En användare med denna e-postadress finns redan registrerad."
+        );
+        return;
+      }
+
       // 2) Register user in Supabase Auth
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
@@ -65,13 +80,17 @@ export default function CompanySignUpForm() {
       });
 
       if (authError) {
-        console.error(
-          "Registrering i Supabase Auth misslyckades:",
-          authError.message
-        );
-        throw new Error(
-          "Kunde inte registrera konto. Kontrollera din e-post och försök igen."
-        );
+        if (authError.message.includes("already registered")) {
+          setErrorMessage(
+            "En användare med denna e-postadress finns redan registrerad. Vänligen använd en annan e-postadress eller logga in."
+          );
+        } else {
+          setErrorMessage(
+            "Ett fel uppstod vid registreringen. Vänligen försök igen."
+          );
+        }
+        console.error("Auth error:", authError.message);
+        return;
       }
 
       if (!authData?.user) {
@@ -96,9 +115,10 @@ export default function CompanySignUpForm() {
         .insert([
           {
             user_id: userId,
-            full_name: name,
+            contact_person: contactPerson,
             company_name: companyName,
             want_lia: lookingForInternship,
+            company_info: companyInfo, //Tillagd
           },
         ])
         .select()
@@ -153,11 +173,12 @@ export default function CompanySignUpForm() {
       }
 
       // Success handling
-      setName("");
+      setContactPerson("");
       setCompanyName("");
       setEmail("");
       setPassword("");
-      setlookingForInternship(false);
+      setCompanyInfo("");
+      setlookingForInternship("");
       setAcceptedTerms(false);
       setFieldOfInterest({
         ui: false,
@@ -192,19 +213,19 @@ export default function CompanySignUpForm() {
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 
       <InputField
-        label="Namn:"
-        type="text"
-        placeholder="Namn"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-
-      <InputField
         label="Företag:"
         type="text"
         placeholder="Vilket företag..."
         value={companyName}
         onChange={(e) => setCompanyName(e.target.value)}
+      />
+
+      <InputField
+        label="Kontaktperson:"
+        type="text"
+        placeholder="Namn"
+        value={contactPerson}
+        onChange={(e) => setContactPerson(e.target.value)}
       />
 
       <InputField
@@ -223,19 +244,13 @@ export default function CompanySignUpForm() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <fieldset>
-        <legend>Söker ni LIA?</legend>
-        <ChoiceButton
-          label="Ja"
-          value={true}
-          onChange={(value) => setlookingForInternship(value)}
-        />
-        <ChoiceButton
-          label="Nej"
-          value={false}
-          onChange={(value) => setlookingForInternship(value)}
-        />
-      </fieldset>
+      <InputField
+        label="Söker ni LIA?:"
+        type="text"
+        placeholder="Ja, vi söker 2 st..."
+        value={lookingForInternship}
+        onChange={(e) => setlookingForInternship(e.target.value)}
+      />
 
       <fieldset>
         <legend>Intresseområden:</legend>
@@ -306,6 +321,16 @@ export default function CompanySignUpForm() {
           }
         />
       </fieldset>
+
+      <InputField
+        label="Berätta kort om företaget?"
+        type="text"
+        placeholder="Vi är en..."
+        value={companyInfo}
+        onChange={(e) => setCompanyInfo(e.target.value)}
+      />
+
+      {/* Add image upload here */}
 
       <div>
         <input
