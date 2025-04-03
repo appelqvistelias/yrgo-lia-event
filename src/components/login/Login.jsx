@@ -14,16 +14,40 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError("");
 
-    const { user, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    const { data: authData, error: authError } =
+      await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (error) {
-      setError(error.message);
-    } else {
+    if (authError) {
+      setError(authError.message);
+      return;
+    }
+
+    const userId = authData.user.id;
+
+    // Fetch role from users table
+    const { data: userData, error: userError } = await supabase
+      .from("users")
+      .select("role")
+      .eq("id", userId)
+      .single();
+
+    if (userError) {
+      setError("Kunde inte hämta användarroll.");
+      return;
+    }
+
+    // Send to correct dashboard
+    if (userData.role === 1) {
       router.push("/student-dashboard");
+    } else if (userData.role === 2) {
+      router.push("/company-dashboard");
+    } else {
+      setError("Okänd roll.");
     }
   };
 
