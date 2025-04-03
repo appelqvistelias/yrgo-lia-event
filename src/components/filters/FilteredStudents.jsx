@@ -69,13 +69,6 @@ const FilteredStudents = () => {
           label: program.program_name,
         }));
 
-        const formattedSpecializations = specializationsData.map(
-          (specialization) => ({
-            id: specialization.id.toString(),
-            label: specialization.specialization_name,
-          })
-        );
-
         // Process student data to make it easier to work with
         const processedStudents = studentsData.map((student) => {
           // Extract program IDs and names
