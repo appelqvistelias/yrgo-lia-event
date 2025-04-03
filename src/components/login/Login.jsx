@@ -2,10 +2,12 @@
 
 import React, { useState } from "react";
 import { supabase } from "../../../lib/supabase";
+import { useRouter } from "next/navigation";
 import InputField from "../input-fields/InputField";
 import SendButton from "../buttons/SendButton";
 
 export default function Login() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -21,8 +23,7 @@ export default function Login() {
     if (error) {
       setError(error.message);
     } else {
-      console.log("Inloggad som:", user);
-      // Add redirect logic here
+      router.push("/student-dashboard");
     }
   };
 
