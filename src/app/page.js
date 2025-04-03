@@ -16,7 +16,7 @@ export default function Page() {
           <Link href="/company-signup">Company Signup</Link>
         </li>
         <li>
-          <Link href="/student-login">Student Login</Link>
+          <Link href="/login">Login</Link>
         </li>
         <li>
           <Link href="/student-dashboard">Student Dashboard</Link>

@@ -13,7 +13,7 @@ export default function StudentDashboard() {
       const { data, error } = await supabase.auth.getUser();
 
       if (error || !data.user) {
-        router.push("/student-login");
+        router.push("/login");
       } else {
         setUser(data.user);
       }
@@ -32,7 +32,7 @@ export default function StudentDashboard() {
       <button
         onClick={async () => {
           await supabase.auth.signOut();
-          router.push("/student-login");
+          router.push("/login");
         }}
       >
         Logga ut
