@@ -6,7 +6,11 @@ export default function StudentCard({
   education,
   infoText,
   image,
-  fieldOfInterest,
+  fieldOfInterest = [],
 }) {
-  return <div className=""></div>;
+  return (
+    <div className="styles.card">
+      <div className="styles.background"></div>
+    </div>
+  );
 }

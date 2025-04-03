@@ -1,0 +1,18 @@
+.card {
+  display: flex;
+  height: 39.4375rem;
+  padding: 1.5rem 0.75rem;
+  align-items: center;
+  gap: 0.625rem;
+  align-self: stretch;
+}
+
+.background {
+  display: flex;
+  width: 17rem;
+  height: 38.4375rem;
+  padding: 1.5rem 0.75rem;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 0.75rem;
+}
