@@ -14,9 +14,9 @@ export default function StudentName({ name, program }) {
   }
 
   return (
-    <div className={styles.studentName}>
-      <h2>{name}</h2>
-      <p>{programShorthand(program)}</p>
+    <div className={styles.studentNameContainer}>
+      <h2 className={styles.studentName}>{name}</h2>
+      <p className={styles.programName}>{programShorthand(program)}</p>
     </div>
   );
 }
