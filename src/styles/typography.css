@@ -1,0 +1,71 @@
+/* ============================
+   Typography – Global
+   ============================ */
+
+body {
+  font-family: var(--font-inter);
+  font-size: 1rem;
+}
+
+/* Headline 1:1 - Title_1_regular */
+.title_1_regular {
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* Headline 1 - Title1_light */
+.title_1_light {
+  font-size: 6rem;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 6.3125rem; /* 105.208% */
+  letter-spacing: -0.09375rem;
+}
+
+/* Headline 2 - Title_2 */
+.title_2 {
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 3.75rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 4rem; /* 106.667% */
+}
+
+/* Headline 3 - Title_3 */
+.title_3 {
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 3.25rem; /* 108.333% */
+}
+
+/* Headline 4 - Title_4 */
+.title_4 {
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 3.25rem; /* 108.333% */
+}
+
+/* Headline 5 - Title_5 */
+.title_5 {
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5rem; /* 100% */
+}
+
+/* Headline 6 - Title_6 */
+.title_6 {
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.375rem; /* 110% */
+  letter-spacing: 0.00938rem;
+}
