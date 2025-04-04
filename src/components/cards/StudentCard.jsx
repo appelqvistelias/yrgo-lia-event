@@ -1,5 +1,5 @@
 import styles from "./StudentCard.module.css";
-import React from "react";
+import StudentName from "./StudentName";
 
 export default function StudentCard(
   {
@@ -12,11 +12,20 @@ export default function StudentCard(
 ) {
   // Parts of the card:
   // Icon
-  // Student name
+  // Student name - KLART!
   // Student & company information - maybe in heading a paragraph?
   // Student & company interests - in a list
   // Student image
   // Card background
 
-  return <div className="style.card"></div>;
+  return (
+    <div className="style.card">
+      {
+        <StudentName /*Change to correct input! */
+          name="John Doe"
+          program="Digital Design"
+        />
+      }
+    </div>
+  );
 }
