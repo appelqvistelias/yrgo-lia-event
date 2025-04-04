@@ -13,8 +13,8 @@ export default function StudentCard(
   // Parts of the card:
   // Icon
   // Student name
-  // Student information - maybe in heading a paragraph?
-  // Student interests - in a list
+  // Student & company information - maybe in heading a paragraph?
+  // Student & company interests - in a list
   // Student image
   // Card background
 
