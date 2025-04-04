@@ -113,9 +113,11 @@ export default function StudentSignUpForm() {
           .from("user-images")
           .upload(fileName, profileImage);
 
-        if (error) throw new Error("Misslyckades att ladda upp bild.");
-
-        profileImageUrl = `https://xwuwwlhpvlnclwsnxwle.supabase.co/storage/v1/object/public/user-uploads/${fileName}`;
+        if (error) {
+          console.error("Supabase upload error:", error);
+          throw new Error("Misslyckades att ladda upp bild.");
+        }
+        profileImageUrl = `https://xwuwwlhpvlnclwsnxwle.supabase.co/storage/v1/object/public/user-images/${fileName}`;
 
         await supabase
           .from("images")
