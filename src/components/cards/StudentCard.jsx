@@ -1,16 +1,15 @@
 import styles from "./StudentCard.module.css";
 import StudentName from "./StudentName";
 import CardInfo from "./CardInfo";
+import CardBackground from "./CardBackground";
 
-export default function StudentCard(
-  {
-    // studentName,
-    // education,
-    // infoText,
-    // image,
-    // fieldOfInterest = [],
-  }
-) {
+export default function StudentCard({
+  studentName,
+  education,
+  infoText,
+  image,
+  fieldOfInterest = [],
+}) {
   // Parts of the card:
   // Icon
   // Student name - KLART!
@@ -20,19 +19,17 @@ export default function StudentCard(
   // Card background
 
   return (
-    <div className="style.card">
-      {
-        <div>
-          <StudentName /*Change to correct input! */
-            name="Clara S"
-            program="Digital Designer"
-          />
-          <CardInfo
-            heading="Digital Design"
-            infoText="Kort text om mig bla bla. Jag gillar söker lia till november etc etc Kort text om mig bla bla. Jag gillar söker lia till november etc etc Kort text om mig bla bla. Jag gillar söker lia till november etc etc Kort text om mig bla bla. Jag gillar söker lia till november etc etc"
-          />
-        </div>
-      }
+    <div className={styles.card}>
+      <CardBackground>
+        <StudentName
+          name={studentName || "Clara S"}
+          program={education || "Digital Designer"}
+        />
+        <CardInfo
+          heading={education || "Digital Design"}
+          infoText={infoText || "Kort text om mig bla bla..."}
+        />
+      </CardBackground>
     </div>
   );
 }
