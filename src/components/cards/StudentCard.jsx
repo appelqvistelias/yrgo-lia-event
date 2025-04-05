@@ -24,12 +24,12 @@ export default function StudentCard(
       {
         <div>
           <StudentName /*Change to correct input! */
-            name="John Doe"
-            program="Webbutveckling"
+            name="Clara S"
+            program="Digital Designer"
           />
           <CardInfo
-            heading="Webbutvecklare"
-            infoText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            heading="Digital Design"
+            infoText="Kort text om mig bla bla. Jag gillar söker lia till november etc etc Kort text om mig bla bla. Jag gillar söker lia till november etc etc Kort text om mig bla bla. Jag gillar söker lia till november etc etc Kort text om mig bla bla. Jag gillar söker lia till november etc etc"
           />
         </div>
       }
