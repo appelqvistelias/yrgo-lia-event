@@ -3,6 +3,7 @@ import StudentName from "./StudentName";
 import CardInfo from "./CardInfo";
 import CardBackground from "./CardBackground";
 import CardImage from "./CardImage";
+import CardInterests from "./CardInterests";
 
 export default function StudentCard(
   {
@@ -33,6 +34,7 @@ export default function StudentCard(
           heading="Digital Designer"
           infoText="Driven designer med passion för typografi och varumärkesbyggande."
         />
+        <CardInterests interests={["UX/UI", "Grafisk design", "Typografi"]} />
         {/* Lägg till fler komponenter här */}
       </div>
     </CardBackground>
