@@ -4,10 +4,9 @@ import StudentCard from "@/components/cards/StudentCard";
 
 export default function StudentCards() {
   return (
-    <div>
-      <div>
-        <StudentCard />
-      </div>
+    <div style={{ backgroundColor: "#001a52;" }}>
+      <StudentCard />
+
       {/* <FilteredStudents /> */}
     </div>
   );

@@ -3,13 +3,15 @@ import StudentName from "./StudentName";
 import CardInfo from "./CardInfo";
 import CardBackground from "./CardBackground";
 
-export default function StudentCard({
-  studentName,
-  education,
-  infoText,
-  image,
-  fieldOfInterest = [],
-}) {
+export default function StudentCard(
+  {
+    // studentName,
+    // education,
+    // infoText,
+    // image,
+    // fieldOfInterest = [],
+  }
+) {
   // Parts of the card:
   // Icon
   // Student name - KLART!
@@ -19,17 +21,15 @@ export default function StudentCard({
   // Card background
 
   return (
-    <div className={styles.card}>
-      <CardBackground>
-        <StudentName
-          name={studentName || "Clara S"}
-          program={education || "Digital Designer"}
-        />
+    <CardBackground>
+      <div className={styles.card}>
+        <StudentName name="Clara S" program="DD" />
         <CardInfo
-          heading={education || "Digital Design"}
-          infoText={infoText || "Kort text om mig bla bla..."}
+          heading="Digital Designer"
+          infoText="Driven designer med passion för typografi och varumärkesbyggande."
         />
-      </CardBackground>
-    </div>
+        {/* Lägg till fler komponenter här */}
+      </div>
+    </CardBackground>
   );
 }

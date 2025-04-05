@@ -11,17 +11,31 @@
 
 .cardBackground {
   background-color: var(--yrgo-white);
-  width: 64.5rem;
-  height: 415.0625rem;
-  border-radius: 1.875rem;
+  display: flex;
+  width: 20.25rem;
+  height: 41.8125rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
 }
 
-.cardBackground::before,
+.cardFiller {
+  display: flex;
+  width: 18.75rem;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+/* Card circles */
+/* .cardBackground::before,
 .cardBackground::after {
   content: "";
   position: absolute;
-  width: 2rem;
-  height: 2rem;
+  width: 1.875rem;
+  height: 1.875rem;
   background-color: var(--yrgo-blue);
   border-radius: 50%;
   top: 50%;
@@ -35,4 +49,4 @@
 
 .cardBackground::after {
   right: -1rem;
-}
+} */
