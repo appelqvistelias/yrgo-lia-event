@@ -1,0 +1,38 @@
+.cardBackgroundContainer {
+  display: flex;
+  width: 20.25rem;
+  height: 41.8125rem;
+  padding: 1rem 0.75rem;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+  background-color: var(--yrgo-blue);
+}
+
+.cardBackground {
+  background-color: var(--yrgo-white);
+  width: 64.5rem;
+  height: 415.0625rem;
+  border-radius: 1.875rem;
+}
+
+.cardBackground::before,
+.cardBackground::after {
+  content: "";
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--yrgo-blue);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.cardBackground::before {
+  left: -1rem;
+}
+
+.cardBackground::after {
+  right: -1rem;
+}
