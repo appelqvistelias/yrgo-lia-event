@@ -11,6 +11,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 1.75rem; /* 116.667% */
+  text-transform: uppercase;
 }
 
 .programName {

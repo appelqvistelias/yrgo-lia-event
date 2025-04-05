@@ -5,6 +5,7 @@
   align-items: center;
   gap: 0.625rem;
   align-self: stretch;
+  color: var(--yrgo-white);
 }
 
 .background {

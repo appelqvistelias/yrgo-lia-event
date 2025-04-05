@@ -9,9 +9,10 @@
 }
 
 .heading {
-  background-color: var(--bg-black);
+  color: var(--bg-black);
+  text-transform: uppercase;
 }
 
 .infoText {
-  background-color: var(--bg-black);
+  color: var(--bg-black);
 }

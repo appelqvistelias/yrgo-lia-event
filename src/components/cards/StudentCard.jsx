@@ -1,5 +1,6 @@
 import styles from "./StudentCard.module.css";
 import StudentName from "./StudentName";
+import CardInfo from "./CardInfo";
 
 export default function StudentCard(
   {
@@ -21,10 +22,16 @@ export default function StudentCard(
   return (
     <div className="style.card">
       {
-        <StudentName /*Change to correct input! */
-          name="John Doe"
-          program="Digital Design"
-        />
+        <div>
+          <StudentName /*Change to correct input! */
+            name="John Doe"
+            program="Webbutveckling"
+          />
+          <CardInfo
+            heading="Webbutvecklare"
+            infoText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          />
+        </div>
       }
     </div>
   );
