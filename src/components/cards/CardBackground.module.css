@@ -1,32 +1,52 @@
 .cardBackgroundContainer {
   display: flex;
-  width: 20.25rem;
-  height: 41.8125rem;
-  padding: 1rem 0.75rem;
+  height: 39.4375rem;
+  padding: 1.5rem 0.75rem;
   align-items: center;
   gap: 0.625rem;
-  flex-shrink: 0;
+  align-self: stretch;
   background-color: var(--yrgo-blue);
 }
 
 .cardBackground {
-  background-color: var(--yrgo-white);
   display: flex;
-  width: 20.25rem;
-  height: 41.8125rem;
-  flex-direction: column;
-  justify-content: center;
+  width: 17rem;
+  height: 38.4375rem;
+  padding: 1.5rem 0.75rem;
   align-items: center;
-  position: absolute;
+  gap: 0.625rem;
+  background-color: var(--yrgo-white);
 }
 
 .cardFiller {
   display: flex;
-  width: 18.75rem;
+  width: 15.5rem;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 1rem;
-  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .cardBackgroundContainer {
+    width: 20.25rem;
+    height: 41.8125rem;
+    padding: 1rem 0.75rem;
+    flex-shrink: 0;
+  }
+  .cardBackground {
+    width: 20.25rem;
+    height: 41.8125rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+  }
+
+  .cardFiller {
+    width: 18.75rem;
+    align-items: flex-end;
+    flex-shrink: 0;
+  }
 }
 
 /* Card circles */

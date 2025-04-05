@@ -23,7 +23,7 @@ export default function StudentCard(
   return (
     <CardBackground>
       <div className={styles.card}>
-        <StudentName name="Clara S" program="DD" />
+        <StudentName name="Clara S" program="digital design" />
         <CardInfo
           heading="Digital Designer"
           infoText="Driven designer med passion för typografi och varumärkesbyggande."
