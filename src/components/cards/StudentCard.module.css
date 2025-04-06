@@ -1,13 +1,11 @@
 .card {
   width: 100%;
 }
-/*
-.background {
+
+.lowerHalfContent {
   display: flex;
-  width: 17rem;
-  height: 38.4375rem;
-  padding: 1.5rem 0.75rem;
-  align-items: center;
-  gap: 0.625rem;
-  border-radius: 0.75rem;
-} */
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  align-self: stretch;
+}

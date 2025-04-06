@@ -6,21 +6,21 @@
   align-self: stretch;
 }
 
-.cardInterestTextContainer {
+.cardInterests {
   display: flex;
   width: 7.9375rem;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 0.625rem;
-}
-
-.cardInterests {
 }
 
 .cardInterestText {
   text-transform: uppercase;
   color: var(--bg-black);
   list-style: none;
+}
+
+.iconContainer {
 }
 
 @media (max-width: 768px) {

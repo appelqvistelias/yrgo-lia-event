@@ -6,16 +6,14 @@ import styles from "./CardInterests.module.css";
 export default function CardInterests({ interests, link, icon }) {
   return (
     <div className={styles.cardInterestsContainer}>
-      <div className={styles.cardInterestsTextContainer}>
-        <ul className={styles.cardInterests}>
-          {interests.map((interest, index) => (
-            <li key={index} className={`${styles.cardInterestText} title_6`}>
-              {interest}
-            </li>
-          ))}
-        </ul>
-      </div>
-      {/* Add icon here */}
+      <ul className={styles.cardInterests}>
+        {interests.map((interest, index) => (
+          <li key={index} className={`${styles.cardInterestText} title_6`}>
+            {interest}
+          </li>
+        ))}
+      </ul>
+      <div className={styles.iconContainer}>X</div> {/* Add icon here */}
     </div>
   );
 }

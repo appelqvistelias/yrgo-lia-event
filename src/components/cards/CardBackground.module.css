@@ -1,6 +1,6 @@
 .cardBackgroundContainer {
   display: flex;
-  height: 39.4375rem;
+  /* height: 39.4375rem; */
   padding: 1.5rem 0.75rem;
   align-items: center;
   gap: 0.625rem;
@@ -11,11 +11,12 @@
 .cardBackground {
   display: flex;
   width: 17rem;
-  height: 38.4375rem;
+  /* height: 38.4375rem; */
   padding: 1.5rem 0.75rem;
   align-items: center;
   gap: 0.625rem;
   background-color: var(--yrgo-white);
+  border-radius: 0.75rem;
 }
 
 .cardFiller {
