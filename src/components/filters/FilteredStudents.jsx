@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../../lib/supabase";
 import FilterDropdown from "./FilterDropdown";
+import StudentCard from "../cards/StudentCard";
 
 const FilteredStudents = () => {
   // State for students data
@@ -42,6 +43,7 @@ const FilteredStudents = () => {
         if (specializationsError) throw specializationsError;
 
         // Fetch students with their related data
+        // Note: Remember to add images as well!
         const { data: studentsData, error: studentsError } =
           await supabase.from("students").select(`
             id, 
@@ -49,8 +51,6 @@ const FilteredStudents = () => {
             bio,
             linkedin,
             portfolio,
-            created_at,
-            user_id,
             student_programs!inner (
               program_id,
               programs (id, program_name)
@@ -191,41 +191,17 @@ const FilteredStudents = () => {
       </div>
 
       {/* Display the filtered students */}
-      <div>
+      <div className="">
         {!isLoading && filteredStudents.length > 0 ? (
           filteredStudents.map((student) => (
-            <div key={student.id}>
-              <h3>{student.full_name}</h3>
-              {student.bio && <p>{student.bio}</p>}
-
-              {/* Programs */}
-              <div>
-                <h4>Programs:</h4>
-                <p>{student.program_names.join(", ")}</p>
-              </div>
-
-              {/* Specializations */}
-              <div>
-                <h4>Specializations:</h4>
-                <p className="text-gray-600">
-                  {student.specialization_names.join(", ")}
-                </p>
-              </div>
-
-              {/* Links */}
-              <div>
-                {student.linkedin && (
-                  <a href={student.linkedin} target="_blank" rel="">
-                    LinkedIn
-                  </a>
-                )}
-                {student.portfolio && (
-                  <a href={student.portfolio} target="_blank" rel="">
-                    Portfolio
-                  </a>
-                )}
-              </div>
-            </div>
+            <StudentCard
+              key={student.id}
+              studentName={student.full_name}
+              education={student.program_names[0]} // Assuming first program
+              infoText={student.bio}
+              // image prop would go here if you add images to your database
+              fieldOfInterest={student.specialization_names}
+            />
           ))
         ) : !isLoading && filteredStudents.length === 0 ? (
           <p>No students match your selected filters.</p>
