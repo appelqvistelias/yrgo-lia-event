@@ -6,7 +6,7 @@ export default function CardInfo({ heading, infoText }) {
   return (
     <div className={styles.cardInfoContainer}>
       <h2 className={`${styles.heading} title_5`}>{heading}</h2>
-      <p className={`${styles.infoText} sub_2`}>{infoText}</p>
+      <p className={styles.infoText}>{infoText}</p>
     </div>
   );
 }

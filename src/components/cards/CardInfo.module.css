@@ -16,9 +16,13 @@
 
 .infoText {
   color: var(--bg-black);
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .cardInfoContainer {
     gap: 1.5rem;
   }
