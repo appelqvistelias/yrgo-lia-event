@@ -3,6 +3,7 @@
 //Student filtering for companies
 import { useState, useEffect } from "react";
 import { supabase } from "../../../lib/supabase";
+import styles from "./FilteredStudents.module.css";
 import FilterDropdown from "./FilterDropdown";
 import StudentCard from "../cards/StudentCard";
 
@@ -200,7 +201,7 @@ const FilteredStudents = () => {
       </div>
 
       {/* Display the filtered students */}
-      <div className="">
+      <div className={styles.cardRendering}>
         {!isLoading && filteredStudents.length > 0 ? (
           filteredStudents.map((student) => (
             <StudentCard
