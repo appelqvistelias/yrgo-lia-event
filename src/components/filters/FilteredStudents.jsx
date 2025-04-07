@@ -69,6 +69,14 @@ const FilteredStudents = () => {
           label: program.program_name,
         }));
 
+        // Format specializations
+        const formattedSpecializations = specializationsData.map(
+          (specialization) => ({
+            id: specialization.id.toString(),
+            label: specialization.specialization_name,
+          })
+        );
+
         // Process student data to make it easier to work with
         const processedStudents = studentsData.map((student) => {
           // Extract program IDs and names
@@ -104,7 +112,7 @@ const FilteredStudents = () => {
 
         // Set state with fetched data
         setProgramOptions(formattedPrograms);
-        setSpecializationOptions(formattedSpecializations);
+        setSpecializationOptions(formattedSpecializations); // Now this will work
         setStudents(processedStudents);
         setFilteredStudents(processedStudents);
       } catch (error) {
