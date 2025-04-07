@@ -174,6 +174,18 @@ const FilteredStudents = () => {
     setFilteredStudents(filtered);
   }, [activePrograms, activeSpecializations, students]);
 
+  // Combine program and specialization options with categories
+  const allFilterOptions = [
+    {
+      category: "Programs",
+      options: programOptions,
+    },
+    {
+      category: "Specializations",
+      options: specializationOptions,
+    },
+  ];
+
   return (
     <div>
       <div>
@@ -186,15 +198,20 @@ const FilteredStudents = () => {
         ) : (
           <div>
             <FilterDropdown
-              title="Filter by Program"
-              options={programOptions}
-              onFilterChange={handleProgramFilterChange}
-            />
+              title="Filtrera"
+              options={allFilterOptions}
+              onFilterChange={(selected) => {
+                // Split selected options into programs and specializations
+                const selectedPrograms = selected.filter((id) =>
+                  programOptions.some((prog) => prog.id === id)
+                );
+                const selectedSpecializations = selected.filter((id) =>
+                  specializationOptions.some((spec) => spec.id === id)
+                );
 
-            <FilterDropdown
-              title="Filter by Specialization"
-              options={specializationOptions}
-              onFilterChange={handleSpecializationFilterChange}
+                handleProgramFilterChange(selectedPrograms);
+                handleSpecializationFilterChange(selectedSpecializations);
+              }}
             />
           </div>
         )}
@@ -209,7 +226,7 @@ const FilteredStudents = () => {
               studentName={student.first_name}
               education={student.program_names[0]} // Assuming first program
               infoText={student.bio}
-              // image prop would go here if you add images to your database
+              // image prop will go here
               fieldOfInterest={student.specialization_names}
             />
           ))

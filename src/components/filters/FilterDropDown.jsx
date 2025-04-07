@@ -2,6 +2,10 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./FilterDropDown.module.css";
+import XIcon from "@/icons/x.svg";
+import ArrowDownIcon from "@/icons/arrowdown.svg";
+
+console.log("Styles:", styles);
 
 // Component that creates a dropdown menu with checkboxes for filtering
 // Props:
@@ -63,23 +67,30 @@ export default function FilterDropDown({ title, options, onFilterChange }) {
         className={styles.dropdownButton}
         onClick={toggleDropdown}
       >
-        {title} {selectedOptions.length > 0 && `(${selectedOptions.length})`}
+        <span className={styles.buttonText}>
+          {title} {selectedOptions.length > 0 && `(${selectedOptions.length})`}
+        </span>
+        <ArrowDownIcon className={styles.icon} />
       </button>
 
       {/* Dropdown menu - only shown when isOpen is true */}
       {isOpen && (
         <div className={styles.dropdownMenu}>
-          {/* Map through options to create checkbox items */}
-          {options.map((option) => (
-            <div key={option.id} className={styles.optionItem}>
-              <input
-                id={`filter-${option.id}`}
-                type="checkbox"
-                className={styles.checkbox}
-                checked={selectedOptions.includes(option.id)}
-                onChange={() => handleCheckboxChange(option.id)}
-              />
-              <label htmlFor={`filter-${option.id}`}>{option.label}</label>
+          {options.map((category) => (
+            <div key={category.category} className={styles.category}>
+              <h3 className={styles.categoryTitle}>{category.category}</h3>
+              {category.options.map((option) => (
+                <div key={option.id} className={styles.optionItem}>
+                  <input
+                    id={`filter-${option.id}`}
+                    type="checkbox"
+                    className={styles.checkbox}
+                    checked={selectedOptions.includes(option.id)}
+                    onChange={() => handleCheckboxChange(option.id)}
+                  />
+                  <label htmlFor={`filter-${option.id}`}>{option.label}</label>
+                </div>
+              ))}
             </div>
           ))}
         </div>

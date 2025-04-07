@@ -1,29 +1,25 @@
-/* Test styling */
 .dropdown {
-  position: relative;
-  display: inline-block;
 }
 
 .dropdownButton {
-  padding: 8px 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: white;
-  cursor: pointer;
+  border: 1px solid var(--yrgo-white);
+  background: var(--yrgo-blue);
+  display: flex;
+  width: 6.75rem;
+  padding: 0.5rem 1rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.buttonText {
+  color: var(--yrgo-white);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 1.5rem; /* 150% */
 }
 
 .dropdownMenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  min-width: 160px;
-  padding: 8px 0;
-  margin-top: 4px;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .optionItem {
