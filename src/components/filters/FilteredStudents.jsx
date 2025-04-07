@@ -94,24 +94,25 @@ const FilteredStudents = () => {
             (sp) => sp.programs.program_name
           );
 
-          // Extract specialization IDs and names
+          // Extract and format specialization IDs and names
           const specializationIds = student.student_specializations.map((ss) =>
             ss.specialization_id.toString()
           );
           const specializationNames = student.student_specializations.map(
-            (ss) => ss.specializations.specialization_name
+            (ss) =>
+              formatSpecializationName(ss.specializations.specialization_name)
           );
 
           // Return a flattened student object
           return {
             id: student.id,
-            full_name: student.full_name,
+            first_name: student.full_name.split(" ")[0],
             bio: student.bio,
             linkedin: student.linkedin,
             portfolio: student.portfolio,
             created_at: student.created_at,
             program_ids: programIds,
-            program_names: programNames,
+            program_names: programNames.map((name) => name.replace(/_/g, " ")),
             specialization_ids: specializationIds,
             specialization_names: specializationNames,
           };
@@ -204,7 +205,7 @@ const FilteredStudents = () => {
           filteredStudents.map((student) => (
             <StudentCard
               key={student.id}
-              studentName={student.full_name}
+              studentName={student.first_name}
               education={student.program_names[0]} // Assuming first program
               infoText={student.bio}
               // image prop would go here if you add images to your database
