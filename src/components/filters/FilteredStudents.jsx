@@ -177,11 +177,11 @@ const FilteredStudents = () => {
   // Combine program and specialization options with categories
   const allFilterOptions = [
     {
-      category: "Programs",
+      category: "Program",
       options: programOptions,
     },
     {
-      category: "Specializations",
+      category: "Inriktning",
       options: specializationOptions,
     },
   ];

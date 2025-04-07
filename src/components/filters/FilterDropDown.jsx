@@ -70,29 +70,40 @@ export default function FilterDropDown({ title, options, onFilterChange }) {
         <span className={styles.buttonText}>
           {title} {selectedOptions.length > 0 && `(${selectedOptions.length})`}
         </span>
-        <ArrowDownIcon className={styles.icon} />
+        {isOpen ? (
+          <XIcon className={styles.icon} />
+        ) : (
+          <ArrowDownIcon className={styles.icon} />
+        )}
       </button>
 
       {/* Dropdown menu - only shown when isOpen is true */}
       {isOpen && (
         <div className={styles.dropdownMenu}>
-          {options.map((category) => (
-            <div key={category.category} className={styles.category}>
-              <h3 className={styles.categoryTitle}>{category.category}</h3>
-              {category.options.map((option) => (
-                <div key={option.id} className={styles.optionItem}>
-                  <input
-                    id={`filter-${option.id}`}
-                    type="checkbox"
-                    className={styles.checkbox}
-                    checked={selectedOptions.includes(option.id)}
-                    onChange={() => handleCheckboxChange(option.id)}
-                  />
-                  <label htmlFor={`filter-${option.id}`}>{option.label}</label>
-                </div>
-              ))}
-            </div>
-          ))}
+          <div className={styles.dropdownContent}>
+            {options.map((category) => (
+              <div key={category.category} className={styles.category}>
+                <h3 className={styles.categoryTitle}>{category.category}</h3>
+                {category.options.map((option) => (
+                  <div key={option.id} className={styles.optionItem}>
+                    <input
+                      id={`filter-${option.id}`}
+                      type="checkbox"
+                      className={styles.checkbox}
+                      checked={selectedOptions.includes(option.id)}
+                      onChange={() => handleCheckboxChange(option.id)}
+                    />
+                    <label
+                      htmlFor={`filter-${option.id}`}
+                      className={styles.optionLabel}
+                    >
+                      {option.label}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
