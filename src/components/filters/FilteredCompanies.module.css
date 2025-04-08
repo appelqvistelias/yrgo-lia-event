@@ -1,0 +1,33 @@
+.container {
+  background-color: var(--yrgo-blue);
+  display: flex;
+  min-width: 20rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  /* position: relative; */
+  gap: 1.5rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 17rem;
+  gap: -12rem;
+}
+
+.title {
+  color: var(--yrgo-white);
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5rem; /* 100% */
+  text-transform: uppercase;
+}
+
+.cardRendering {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

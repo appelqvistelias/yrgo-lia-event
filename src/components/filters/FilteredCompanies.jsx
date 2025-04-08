@@ -3,7 +3,10 @@
 //Company filtering for students
 import { useState, useEffect } from "react";
 import { supabase } from "../../../lib/supabase";
+import styles from "./FilteredCompanies.module.css";
 import FilterDropDown from "./FilterDropDown";
+import { formatLabel } from "../../utils/formatLabel";
+import CompanyCard from "../cards/CompanyCard";
 
 const FilteredCompanies = () => {
   // State for company data
@@ -61,13 +64,13 @@ const FilteredCompanies = () => {
         //Format options for dropdown
         const formattedPrograms = programsData.map((program) => ({
           id: program.id.toString(),
-          label: program.program_name,
+          label: formatLabel(program.program_name),
         }));
 
         const formattedSpecializations = specializationsData.map(
           (specialization) => ({
             id: specialization.id.toString(),
-            label: specialization.specialization_name,
+            label: formatLabel(specialization.specialization_name),
           })
         );
 
@@ -143,9 +146,10 @@ const FilteredCompanies = () => {
   }, [activePrograms, activeSpecializations, companies]);
 
   return (
-    <div>
-      <div>
-        <h2>Company Directory</h2>
+    <div className={styles.container}>
+      {/* Filter dropdowns */}
+      <div className={styles.header}>
+        <h1 className={styles.title}>Företag</h1>
         {isLoading ? (
           <div>Loading data...</div>
         ) : error ? (
@@ -153,8 +157,10 @@ const FilteredCompanies = () => {
         ) : (
           <div>
             <FilterDropDown
-              title="Filter by Specialization"
-              options={specializationOptions}
+              title="Filtrera"
+              options={[
+                { category: "Inriktning", options: specializationOptions },
+              ]}
               onFilterChange={handleSpecializationFilterChange}
             />
           </div>
@@ -162,19 +168,16 @@ const FilteredCompanies = () => {
       </div>
 
       {/* Display the filtered companies */}
-      <div>
+      <div styles={styles.cardRendering}>
         {!isLoading && filteredCompanies.length > 0 ? (
           filteredCompanies.map((company) => (
-            <div key={company.id}>
-              <h3>{company.company_name}</h3>
-              <h4>{company.full_name}</h4>
-              {/* Specializations */}
-              <div>
-                <h4>Specializations:</h4>
-                <p>{company.specialization_names.join(", ")}</p>
-              </div>
-              <p>Looking for LIA: {company.want_lia ? "Yes" : "No"}</p>
-            </div>
+            <CompanyCard
+              key={company.id}
+              companyName={company.company_name}
+              contactPerson={company.contact_person}
+              companyInfo={company.company_info}
+              specializationNames={company.specialization_names}
+            />
           ))
         ) : !isLoading && filteredCompanies.length === 0 ? (
           <p>No companies match your selected filters.</p>
