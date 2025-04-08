@@ -6,6 +6,7 @@ import { supabase } from "../../../lib/supabase";
 import styles from "./FilteredStudents.module.css";
 import FilterDropdown from "./FilterDropdown";
 import StudentCard from "../cards/StudentCard";
+import { formatLabel } from "../../utils/formatLabel";
 
 const FilteredStudents = () => {
   // State for students data
@@ -74,14 +75,13 @@ const FilteredStudents = () => {
         // Format the options for dropdowns
         const formattedPrograms = programsData.map((program) => ({
           id: program.id.toString(),
-          label: program.program_name,
+          label: formatLabel(program.program_name),
         }));
 
-        // Format specializations
         const formattedSpecializations = specializationsData.map(
           (specialization) => ({
             id: specialization.id.toString(),
-            label: specialization.specialization_name,
+            label: formatLabel(specialization.specialization_name),
           })
         );
 
@@ -113,7 +113,7 @@ const FilteredStudents = () => {
             portfolio: student.portfolio,
             created_at: student.created_at,
             program_ids: programIds,
-            program_names: programNames.map((name) => name.replace(/_/g, " ")),
+            program_names: programNames,
             specialization_ids: specializationIds,
             specialization_names: specializationNames,
           };
@@ -121,7 +121,7 @@ const FilteredStudents = () => {
 
         // Set state with fetched data
         setProgramOptions(formattedPrograms);
-        setSpecializationOptions(formattedSpecializations); // Now this will work
+        setSpecializationOptions(formattedSpecializations);
         setStudents(processedStudents);
         setFilteredStudents(processedStudents);
       } catch (error) {

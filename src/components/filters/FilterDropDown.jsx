@@ -4,8 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./FilterDropDown.module.css";
 import XIcon from "@/icons/x.svg";
 import ArrowDownIcon from "@/icons/arrowdown.svg";
-
-console.log("Styles:", styles);
+import { formatLabel } from "../../utils/formatLabel";
 
 // Component that creates a dropdown menu with checkboxes for filtering
 // Props:
