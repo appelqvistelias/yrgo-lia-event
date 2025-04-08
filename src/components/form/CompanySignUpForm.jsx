@@ -212,7 +212,7 @@ export default function CompanySignUpForm() {
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 
       <InputField
-        label="Företag:"
+        label="FÖRETAG"
         type="text"
         placeholder="Vilket företag..."
         value={companyName}
@@ -220,7 +220,7 @@ export default function CompanySignUpForm() {
       />
 
       <InputField
-        label="Kontaktperson:"
+        label="KONTAKTPERSON"
         type="text"
         placeholder="Namn"
         value={contactPerson}
@@ -228,7 +228,7 @@ export default function CompanySignUpForm() {
       />
 
       <InputField
-        label="Mail:"
+        label="MAIL"
         type="email"
         placeholder="dittföretag@mail.com"
         value={email}
@@ -236,7 +236,7 @@ export default function CompanySignUpForm() {
       />
 
       <InputField
-        label="Lösenord:"
+        label="LÖSENORD"
         type="password"
         placeholder="Välj ett starkt lösenord"
         value={password}
@@ -244,7 +244,7 @@ export default function CompanySignUpForm() {
       />
 
       <InputField
-        label="Söker ni LIA?:"
+        label="SÖKER NI LIA?"
         type="text"
         placeholder="Ja, vi söker 2 st..."
         value={lookingForInternship}
@@ -252,7 +252,7 @@ export default function CompanySignUpForm() {
       />
 
       <fieldset>
-        <legend>Intresseområden:</legend>
+        <legend>INOM VILKET OMRÅDE</legend>
         <p>(Du kan välja flera)</p>
         <ChoiceButton
           label="UI"
@@ -276,7 +276,7 @@ export default function CompanySignUpForm() {
           }
         />
         <ChoiceButton
-          label="Branding"
+          label="BRANDING"
           value={fieldOfInterest.branding}
           onChange={() =>
             setFieldOfInterest((prev) => ({
@@ -286,14 +286,14 @@ export default function CompanySignUpForm() {
           }
         />
         <ChoiceButton
-          label="Motion"
+          label="MOTION"
           value={fieldOfInterest.motion}
           onChange={() =>
             setFieldOfInterest((prev) => ({ ...prev, motion: !prev.motion }))
           }
         />
         <ChoiceButton
-          label="Frontend"
+          label="FRONTEND"
           value={fieldOfInterest.frontend}
           onChange={() =>
             setFieldOfInterest((prev) => ({
@@ -303,14 +303,14 @@ export default function CompanySignUpForm() {
           }
         />
         <ChoiceButton
-          label="Backend"
+          label="BACKEND"
           value={fieldOfInterest.backend}
           onChange={() =>
             setFieldOfInterest((prev) => ({ ...prev, backend: !prev.backend }))
           }
         />
         <ChoiceButton
-          label="Fullstack"
+          label="FULLSTACK"
           value={fieldOfInterest.fullstack}
           onChange={() =>
             setFieldOfInterest((prev) => ({
@@ -322,9 +322,9 @@ export default function CompanySignUpForm() {
       </fieldset>
 
       <InputField
-        label="Berätta kort om företaget?"
+        label="HISSPITCH OM FÖRETAGET"
         type="text"
-        placeholder="Vi är en..."
+        placeholder="Vi är ett..."
         value={companyInfo}
         onChange={(e) => setCompanyInfo(e.target.value)}
       />
