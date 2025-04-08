@@ -46,9 +46,10 @@ const FilteredCompanies = () => {
           "companies"
         ).select(`
             id,
-            full_name,
+            contact_person,
             company_name,
             want_lia,
+            company_info,
             company_specializations!inner (
               specializations_id,
               specializations (id, specialization_name)
@@ -83,9 +84,11 @@ const FilteredCompanies = () => {
           // Return a flattened company object
           return {
             id: company.id,
-            full_name: company.full_name,
+            contact_person: company.contact_person,
             company_name: company.company_name,
             want_lia: company.want_lia,
+            company_info: company.company_info,
+
             specialization_ids: specializationIds,
             specialization_names: specializationNames,
           };
