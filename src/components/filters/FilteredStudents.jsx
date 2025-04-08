@@ -3,8 +3,10 @@
 //Student filtering for companies
 import { useState, useEffect } from "react";
 import { supabase } from "../../../lib/supabase";
+import styles from "./FilteredStudents.module.css";
 import FilterDropdown from "./FilterDropdown";
 import StudentCard from "../cards/StudentCard";
+import { formatLabel } from "../../utils/formatLabel";
 
 const FilteredStudents = () => {
   // State for students data
@@ -63,17 +65,23 @@ const FilteredStudents = () => {
 
         if (studentsError) throw studentsError;
 
+        // Format the Specializations data from three_d to 3D och replace _ with space
+        // This is a helper function to format specialization names
+        const formatSpecializationName = (name) => {
+          if (name === "three_d") return "3D";
+          return name.replace(/_/g, " ");
+        };
+
         // Format the options for dropdowns
         const formattedPrograms = programsData.map((program) => ({
           id: program.id.toString(),
-          label: program.program_name,
+          label: formatLabel(program.program_name),
         }));
 
-        // Format specializations
         const formattedSpecializations = specializationsData.map(
           (specialization) => ({
             id: specialization.id.toString(),
-            label: specialization.specialization_name,
+            label: formatLabel(specialization.specialization_name),
           })
         );
 
@@ -87,18 +95,19 @@ const FilteredStudents = () => {
             (sp) => sp.programs.program_name
           );
 
-          // Extract specialization IDs and names
+          // Extract and format specialization IDs and names
           const specializationIds = student.student_specializations.map((ss) =>
             ss.specialization_id.toString()
           );
           const specializationNames = student.student_specializations.map(
-            (ss) => ss.specializations.specialization_name
+            (ss) =>
+              formatSpecializationName(ss.specializations.specialization_name)
           );
 
           // Return a flattened student object
           return {
             id: student.id,
-            full_name: student.full_name,
+            first_name: student.full_name.split(" ")[0],
             bio: student.bio,
             linkedin: student.linkedin,
             portfolio: student.portfolio,
@@ -112,7 +121,7 @@ const FilteredStudents = () => {
 
         // Set state with fetched data
         setProgramOptions(formattedPrograms);
-        setSpecializationOptions(formattedSpecializations); // Now this will work
+        setSpecializationOptions(formattedSpecializations);
         setStudents(processedStudents);
         setFilteredStudents(processedStudents);
       } catch (error) {
@@ -165,6 +174,18 @@ const FilteredStudents = () => {
     setFilteredStudents(filtered);
   }, [activePrograms, activeSpecializations, students]);
 
+  // Combine program and specialization options with categories
+  const allFilterOptions = [
+    {
+      category: "Program",
+      options: programOptions,
+    },
+    {
+      category: "Inriktning",
+      options: specializationOptions,
+    },
+  ];
+
   return (
     <div>
       <div>
@@ -177,30 +198,35 @@ const FilteredStudents = () => {
         ) : (
           <div>
             <FilterDropdown
-              title="Filter by Program"
-              options={programOptions}
-              onFilterChange={handleProgramFilterChange}
-            />
+              title="Filtrera"
+              options={allFilterOptions}
+              onFilterChange={(selected) => {
+                // Split selected options into programs and specializations
+                const selectedPrograms = selected.filter((id) =>
+                  programOptions.some((prog) => prog.id === id)
+                );
+                const selectedSpecializations = selected.filter((id) =>
+                  specializationOptions.some((spec) => spec.id === id)
+                );
 
-            <FilterDropdown
-              title="Filter by Specialization"
-              options={specializationOptions}
-              onFilterChange={handleSpecializationFilterChange}
+                handleProgramFilterChange(selectedPrograms);
+                handleSpecializationFilterChange(selectedSpecializations);
+              }}
             />
           </div>
         )}
       </div>
 
       {/* Display the filtered students */}
-      <div className="">
+      <div className={styles.cardRendering}>
         {!isLoading && filteredStudents.length > 0 ? (
           filteredStudents.map((student) => (
             <StudentCard
               key={student.id}
-              studentName={student.full_name}
+              studentName={student.first_name}
               education={student.program_names[0]} // Assuming first program
               infoText={student.bio}
-              // image prop would go here if you add images to your database
+              // image prop will go here
               fieldOfInterest={student.specialization_names}
             />
           ))
