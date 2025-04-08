@@ -68,6 +68,10 @@
 /* Labeltext */
 .optionLabel {
   color: var(--yrgo-white);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.375rem; /* 137.5% */
 }
 
 .optionItem {
@@ -127,5 +131,8 @@
   .categoryTitle {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+  .optionLabel {
+    line-height: 1.25rem;
   }
 }
