@@ -65,13 +65,6 @@ const FilteredStudents = () => {
 
         if (studentsError) throw studentsError;
 
-        // Format the Specializations data from three_d to 3D och replace _ with space
-        // This is a helper function to format specialization names
-        const formatSpecializationName = (name) => {
-          if (name === "three_d") return "3D";
-          return name.replace(/_/g, " ");
-        };
-
         // Format the options for dropdowns
         const formattedPrograms = programsData.map((program) => ({
           id: program.id.toString(),
@@ -100,8 +93,7 @@ const FilteredStudents = () => {
             ss.specialization_id.toString()
           );
           const specializationNames = student.student_specializations.map(
-            (ss) =>
-              formatSpecializationName(ss.specializations.specialization_name)
+            (ss) => ss.specializations.specialization_name
           );
 
           // Return a flattened student object
