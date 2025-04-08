@@ -168,7 +168,7 @@ const FilteredCompanies = () => {
       </div>
 
       {/* Display the filtered companies */}
-      <div styles={styles.cardRendering}>
+      <div className={styles.cardsContainer}>
         {!isLoading && filteredCompanies.length > 0 ? (
           filteredCompanies.map((company) => (
             <CompanyCard
