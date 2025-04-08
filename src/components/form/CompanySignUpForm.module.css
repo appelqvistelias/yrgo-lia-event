@@ -1,0 +1,16 @@
+.inner-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 0.4375rem;
+  border: 1px solid #000;
+  background: #fff;
+}
+
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
