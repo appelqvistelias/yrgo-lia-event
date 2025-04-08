@@ -15,7 +15,6 @@ export default function HeaderWithLogo({
       }}
     >
       <h1>{children}</h1>
-      <img src="src/icons/yrgo-logo-mobile.svg" alt="logo" />
     </div>
   );
 }
