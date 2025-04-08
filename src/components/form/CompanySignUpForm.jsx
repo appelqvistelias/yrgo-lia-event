@@ -209,7 +209,6 @@ export default function CompanySignUpForm() {
       }}
       action=""
     >
-      <h1>Anmälan</h1>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 
       <InputField
