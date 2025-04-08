@@ -20,6 +20,7 @@ export default function StudentSignUpForm() {
   const [studentSpecialization, setStudentSpecialization] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
   const [studentBio, setStudentBio] = useState("");
   const [linkedIn, setLinkedIn] = useState("");
   const [portfolio, setPortfolio] = useState("");
@@ -38,7 +39,7 @@ export default function StudentSignUpForm() {
   });
 
   const handleSubmit = async () => {
-    // 1) Basic validation
+    // Basic validation
     if (!name || !email || !acceptedTerms) {
       setErrorMessage(
         "Vänligen fyll i alla fält och acceptera villkoren för att kunna skicka in anmälan."
@@ -65,7 +66,7 @@ export default function StudentSignUpForm() {
     setErrorMessage("");
 
     try {
-      // 2) Register user in Supabase Auth
+      // Register user in Supabase Auth
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
         password,
@@ -87,7 +88,31 @@ export default function StudentSignUpForm() {
 
       const userId = authData.user.id;
 
-      // 3) Insert user into the users table
+      // Upload profile picture to Supabase Storage
+      let imageUrl;
+
+      if (selectedFile) {
+        const fileExt = selectedFile.name.split(".").pop();
+        const fileName = `${userId}-${Date.now()}.${fileExt}`;
+        const filePath = `${fileName}`;
+
+        const { error: uploadError } = await supabase.storage
+          .from("user-images")
+          .upload(filePath, selectedFile);
+
+        if (uploadError) {
+          throw new Error("Kunde inte ladda upp bild: " + uploadError.message);
+        }
+
+        // Create public URL to the uploaded image
+        const { data: publicUrlData } = supabase.storage
+          .from("user-images")
+          .getPublicUrl(filePath);
+
+        imageUrl = publicUrlData?.publicUrl;
+      }
+
+      // Insert user into the users table
       const { error: userError } = await supabase
         .from("users")
         .insert([{ id: userId, email, role: 1 }]); // 1 = student
@@ -97,7 +122,21 @@ export default function StudentSignUpForm() {
         throw userError;
       }
 
-      // 4) Insert student i students table and get ID
+      // Connecting image URL to the user
+      const { error: imageInsertError } = await supabase.from("images").insert([
+        {
+          user_id: userId,
+          url: imageUrl,
+        },
+      ]);
+
+      if (imageInsertError) {
+        throw new Error(
+          "Kunde inte spara bild i databasen: " + imageInsertError.message
+        );
+      }
+
+      // Insert student i students table and get ID
       const { data: studentData, error: studentError } = await supabase
         .from("students")
         .insert([
@@ -119,7 +158,7 @@ export default function StudentSignUpForm() {
 
       const newStudentId = studentData.id;
 
-      // 5) Add student programs
+      // Add student programs
       const { data: programData, error: programError } = await supabase
         .from("programs")
         .select("id")
@@ -140,7 +179,7 @@ export default function StudentSignUpForm() {
         throw studentProgramError;
       }
 
-      // 6) Gather the specializations the user selected
+      // Gather the specializations the user selected
       const selectedSpecializations = Object.entries(fieldOfInterest)
         .filter(([_, value]) => value)
         .map(([key]) => key);
@@ -151,7 +190,7 @@ export default function StudentSignUpForm() {
         return;
       }
 
-      // 7) Look up those specializations in the table to get their IDs
+      // Look up those specializations in the table to get their IDs
       const { data: specializationData, error: specializationError } =
         await supabase
           .from("specializations")
@@ -163,7 +202,7 @@ export default function StudentSignUpForm() {
         throw specializationError;
       }
 
-      // 8) Insert into the join table: student_specializations
+      // Insert into the join table: student_specializations
       const recordsToInsert = specializationData.map((spec) => ({
         student_id: newStudentId,
         specialization_id: spec.id,
@@ -187,6 +226,7 @@ export default function StudentSignUpForm() {
       setLinkedIn("");
       setPortfolio("");
       setAcceptedTerms(false);
+      setSelectedFile(null);
       setFieldOfInterest({
         ui: false,
         ux: false,
@@ -347,6 +387,12 @@ export default function StudentSignUpForm() {
         placeholder="Din portfolio"
         value={portfolio}
         onChange={(e) => setPortfolio(e.target.value)}
+      />
+      <InputField
+        label="Profile picture:"
+        type="file"
+        accept="image/*"
+        onChange={(e) => setSelectedFile(e.target.files[0])}
       />
       <div>
         <input

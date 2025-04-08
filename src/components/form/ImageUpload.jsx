@@ -1,3 +1,7 @@
+// NOT IN USE!
+// This is a component for uploading images to Supabase storage.
+// It is not currently used in the application, but it can be used as a reference for future image upload functionality.
+
 import { useState } from "react";
 import { supabase } from "../../../lib/supabase";
 
@@ -23,12 +27,12 @@ export default function ImageUpload() {
     setError(null);
 
     try {
-      // Generera ett unikt filnamn
+      // Generate a random file name
       const fileExt = selectedFile.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
 
-      // Ladda upp filen till Supabase
+      // Upload the file to Supabase storage
       const { error: uploadError } = await supabase.storage
         .from("user-images")
         .upload(filePath, selectedFile);
@@ -37,7 +41,7 @@ export default function ImageUpload() {
 
       setSuccess(true);
       setSelectedFile(null);
-      // Rensa file input
+      // Reset the file input
       document.getElementById("file-input").value = "";
     } catch (error) {
       setError(error.message);
