@@ -179,10 +179,9 @@ const FilteredStudents = () => {
   ];
 
   return (
-    <div>
-      <div>
-        <h2>Student Directory</h2>
-
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>Studenter</h1>
         {isLoading ? (
           <div>Loading data...</div>
         ) : error ? (
@@ -210,7 +209,7 @@ const FilteredStudents = () => {
       </div>
 
       {/* Display the filtered students */}
-      <div className={styles.cardRendering}>
+      <div className={styles.cardsContainer}>
         {!isLoading && filteredStudents.length > 0 ? (
           filteredStudents.map((student) => (
             <StudentCard
