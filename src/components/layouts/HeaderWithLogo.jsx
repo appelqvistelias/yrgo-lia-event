@@ -1,5 +1,3 @@
-import YrgoLogo from "@/icons/yrgologo.svg";
-
 export default function HeaderWithLogo({
   children,
   padding,
@@ -17,7 +15,6 @@ export default function HeaderWithLogo({
       }}
     >
       <h1>{children}</h1>
-      <YrgoLogo />
     </div>
   );
 }
