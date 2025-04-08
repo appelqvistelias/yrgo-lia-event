@@ -9,6 +9,7 @@ import HeaderWithLogo from "../layouts/HeaderWithLogo";
 import ChoiceButton from "../buttons/ChoiceButton";
 import SendButton from "../buttons/SendButton";
 import InputField from "../input-fields/InputField";
+import TextAreaField from "../input-fields/TextareaField";
 
 // Function to validate email format
 const validateEmail = (email) => {
@@ -336,9 +337,8 @@ export default function CompanySignUpForm() {
               />
             </fieldset>
 
-            <InputField
+            <TextAreaField
               label="HISSPITCH OM FÖRETAGET"
-              type="text"
               placeholder="Vi är ett..."
               value={companyInfo}
               onChange={(e) => setCompanyInfo(e.target.value)}
