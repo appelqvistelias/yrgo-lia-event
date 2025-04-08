@@ -6,18 +6,22 @@ export default function TextAreaField({
   value,
   onChange,
   rows = 5,
+  maxLength = 120,
 }) {
   return (
-    <div className={styles.div}>
+    <div className={styles.textareaContainer}>
       <label className={styles.label}>
         {label}
-        <textarea
-          className={styles.textarea}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          rows={rows}
-        />
+        <div className={styles.textareaFrame}>
+          <textarea
+            className={styles.textarea}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            rows={rows}
+            maxLength={maxLength}
+          />
+        </div>
       </label>
     </div>
   );

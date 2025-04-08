@@ -1,0 +1,34 @@
+.textareaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-self: stretch;
+}
+
+.textareaFrame {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--Stroke-stroke-black, #121212);
+  align-self: stretch;
+
+  background-color: hotpink;
+}
+
+.label {
+  color: var(--Typocolor, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--16, 1rem);
+  font-style: normal;
+  font-weight: 600;
+  line-height: var(--22, 1.375rem);
+}
+
+.textarea  {
+  color: var(--Greyscale-grey3, #828282);
+
+  /* text */
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--16, 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--22, 1.375rem);
+}
