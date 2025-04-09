@@ -1,0 +1,18 @@
+.headlineContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.headline {
+  width: 10.5rem;
+  height: 2.375rem;
+
+  color: var(--Background-bg-black, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--32, 2rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--42, 2.625rem);
+}

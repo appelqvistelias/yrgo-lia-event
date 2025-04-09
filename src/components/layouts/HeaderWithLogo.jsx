@@ -1,23 +1,11 @@
 import YrgoLogo from "../../icons/yrgologo.svg";
+import styles from "./HeaderWithLogo.module.css";
 
-export default function HeaderWithLogo({
-  children,
-  padding,
-  margin,
-  fontSize,
-}) {
+export default function HeaderWithLogo({ children }) {
   console.log(YrgoLogo);
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        padding,
-        margin,
-        fontSize,
-      }}
-    >
-      <h1>{children}</h1>
+    <div className={styles.headlineContainer}>
+      <h1 className={styles.headline}>{children}</h1>
       <YrgoLogo />
     </div>
   );
