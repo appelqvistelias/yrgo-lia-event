@@ -9,6 +9,7 @@
   padding: 0.5rem 1rem;
   border: 1px solid var(--Stroke-stroke-black, #121212);
   align-self: stretch;
+  margin-top: 0.5rem;
 
   background-color: hotpink;
 }
