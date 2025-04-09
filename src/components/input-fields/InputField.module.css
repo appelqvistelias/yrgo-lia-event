@@ -14,6 +14,15 @@
   line-height: var(--22, 1.375rem);
 }
 
+.paragraph {
+  color: var(--Typocolor, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--16, 1rem);
+  font-style: normal;
+  font-weight: 300;
+  line-height: var(--20, 1.25rem);
+}
+
 .input {
   display: flex;
   width: 14rem;

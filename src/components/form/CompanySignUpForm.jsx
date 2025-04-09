@@ -252,6 +252,8 @@ export default function CompanySignUpForm() {
 
             <InputField
               label="SÖKER NI LIA?"
+              display="block"
+              paragraphText="(Under perioden 24 nov, 2025 – 29 maj, 2026)"
               type="text"
               placeholder="Ja, vi söker 2 st..."
               value={lookingForInternship}
