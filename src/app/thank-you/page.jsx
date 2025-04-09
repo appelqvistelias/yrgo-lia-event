@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function StudentSignup() {
-  return <p>Tack för din anmälan!</p>;
+  return <div>Tack för din anmälan!</div>;
 }
