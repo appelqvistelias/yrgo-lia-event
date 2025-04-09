@@ -1,0 +1,30 @@
+.paragraphContainer {
+  display: flex;
+  padding: 1.5rem 0.25rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  align-self: stretch;
+}
+
+.paragraphText {
+  color: #121212;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1rem; /* 133.333% */
+  white-space: pre-wrap;
+}
+
+@media (min-width: 768px) {
+  .paragraphContainer {
+    padding: 3.625rem 0rem;
+    justify-content: flex-start;
+    border-bottom: 2px solid #121212;
+  }
+
+  .paragraphText {
+    font-size: 2rem;
+    line-height: 2.625rem;
+  }
+}

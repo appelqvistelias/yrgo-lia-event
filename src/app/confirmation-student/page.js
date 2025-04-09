@@ -8,7 +8,7 @@ export default function Confirmation() {
     <Wrapper padding="1.5rem" gap="1rem">
       <LayoutCard>
         <LayoutParagraph
-          paragraphText={`Vi ser fram emot att träffa dig ombord på LIA Expressen och ge dig möjlighet att upptäcka framtidens digitala talanger.\n\nTills dess, fundera på vad du letar efter hos en framtida medarbetare.\nHör av dig om du har frågor!`}
+          paragraphText={`Kul att du vill hoppa ombord på LIA Expressen! Det här är din chans att visa upp ditt arbete och nätverka med branschfolk.\n\nSe till att din portfolio är uppdaterad och förbered dig på att presentera ditt arbete. Hör av dig om du har frågor!`}
         />
       </LayoutCard>
     </Wrapper>
