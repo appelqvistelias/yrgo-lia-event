@@ -60,6 +60,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 2.5rem; /*Change this later? */
   }
 
   .cardBackground::before {
