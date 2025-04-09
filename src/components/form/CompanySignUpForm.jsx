@@ -259,83 +259,91 @@ export default function CompanySignUpForm() {
               value={lookingForInternship}
               onChange={(e) => setlookingForInternship(e.target.value)}
             />
+            <div>
+              <p className={styles["specialization-label"]}>
+                INOM VILKET OMRÅDE?
+              </p>
+              <p className={styles["specialization-note"]}>
+                (Du kan välja flera)
+              </p>
 
-            <fieldset className={styles.specializationChoices}>
-              <ChoiceButton
-                label="UI"
-                value={fieldOfInterest.ui}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({ ...prev, ui: !prev.ui }))
-                }
-              />
-              <ChoiceButton
-                label="UX"
-                value={fieldOfInterest.ux}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({ ...prev, ux: !prev.ux }))
-                }
-              />
-              <ChoiceButton
-                label="3D"
-                value={fieldOfInterest.three_d}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({
-                    ...prev,
-                    three_d: !prev.three_d,
-                  }))
-                }
-              />
-              <ChoiceButton
-                label="BRANDING"
-                value={fieldOfInterest.branding}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({
-                    ...prev,
-                    branding: !prev.branding,
-                  }))
-                }
-              />
-              <ChoiceButton
-                label="MOTION"
-                value={fieldOfInterest.motion}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({
-                    ...prev,
-                    motion: !prev.motion,
-                  }))
-                }
-              />
-              <ChoiceButton
-                label="FRONTEND"
-                value={fieldOfInterest.frontend}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({
-                    ...prev,
-                    frontend: !prev.frontend,
-                  }))
-                }
-              />
-              <ChoiceButton
-                label="BACKEND"
-                value={fieldOfInterest.backend}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({
-                    ...prev,
-                    backend: !prev.backend,
-                  }))
-                }
-              />
-              <ChoiceButton
-                label="FULLSTACK"
-                value={fieldOfInterest.fullstack}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({
-                    ...prev,
-                    fullstack: !prev.fullstack,
-                  }))
-                }
-              />
-            </fieldset>
+              <fieldset className={styles["specialization-choices"]}>
+                <ChoiceButton
+                  label="UI"
+                  value={fieldOfInterest.ui}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({ ...prev, ui: !prev.ui }))
+                  }
+                />
+                <ChoiceButton
+                  label="UX"
+                  value={fieldOfInterest.ux}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({ ...prev, ux: !prev.ux }))
+                  }
+                />
+                <ChoiceButton
+                  label="3D"
+                  value={fieldOfInterest.three_d}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      three_d: !prev.three_d,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="BRANDING"
+                  value={fieldOfInterest.branding}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      branding: !prev.branding,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="MOTION"
+                  value={fieldOfInterest.motion}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      motion: !prev.motion,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="FRONTEND"
+                  value={fieldOfInterest.frontend}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      frontend: !prev.frontend,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="BACKEND"
+                  value={fieldOfInterest.backend}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      backend: !prev.backend,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="FULLSTACK"
+                  value={fieldOfInterest.fullstack}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      fullstack: !prev.fullstack,
+                    }))
+                  }
+                />
+              </fieldset>
+            </div>
 
             <TextAreaField
               label="HISSPITCH OM FÖRETAGET"
