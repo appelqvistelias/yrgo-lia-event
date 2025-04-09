@@ -1,0 +1,45 @@
+.cardBackgroundContainer {
+  display: flex;
+  align-items: flex-start;
+}
+
+.cardBackground {
+  display: flex;
+  min-width: 17rem;
+  min-height: 32.5rem;
+  background-color: var(--yrgo-white);
+  border-radius: 0.625rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.cardBackground::before {
+  content: "";
+  position: absolute;
+  width: 1.875rem;
+  height: 1.875rem;
+  background-color: var(--yrgo-blue);
+  border-radius: 50%;
+  left: -2%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cardBackground::after {
+  content: "";
+  position: absolute;
+  width: 1.875rem;
+  height: 1.875rem;
+  background-color: var(--yrgo-blue);
+  border-radius: 50%;
+  left: 102%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cardFiller {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

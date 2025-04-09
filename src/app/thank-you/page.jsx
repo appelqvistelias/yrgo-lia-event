@@ -1,5 +1,6 @@
 import React from "react";
+import LayoutCard from "@/components/layouts/LayoutCard";
 
-export default function StudentSignup() {
-  return <div>Tack för din anmälan!</div>;
+export default function Confirmation() {
+  return <LayoutCard />;
 }
