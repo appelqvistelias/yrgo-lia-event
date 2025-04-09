@@ -4,9 +4,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabase";
 import styles from "./CompanySignUpForm.module.css";
+import Wrapper from "../layouts/Wrapper";
+import HeaderWithLogo from "../layouts/HeaderWithLogo";
 import ChoiceButton from "../buttons/ChoiceButton";
 import SendButton from "../buttons/SendButton";
 import InputField from "../input-fields/InputField";
+import TextAreaField from "../input-fields/TextareaField";
 
 // Function to validate email format
 const validateEmail = (email) => {
@@ -202,152 +205,174 @@ export default function CompanySignUpForm() {
   };
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit();
-      }}
-      action=""
-    >
-      <h1>Anmälan</h1>
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+    <Wrapper padding="1.5rem 1.5rem 3.75rem 1.5rem">
+      <div className={styles["inner-wrapper"]}>
+        <HeaderWithLogo>ANMÄLAN</HeaderWithLogo>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+          action=""
+        >
+          <div className={styles["input-fields"]}>
+            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 
-      <InputField
-        label="Företag:"
-        type="text"
-        placeholder="Vilket företag..."
-        value={companyName}
-        onChange={(e) => setCompanyName(e.target.value)}
-      />
+            <InputField
+              label="FÖRETAG"
+              type="text"
+              placeholder="Vilket företag..."
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
+            />
 
-      <InputField
-        label="Kontaktperson:"
-        type="text"
-        placeholder="Namn"
-        value={contactPerson}
-        onChange={(e) => setContactPerson(e.target.value)}
-      />
+            <InputField
+              label="KONTAKTPERSON"
+              type="text"
+              placeholder="Namn"
+              value={contactPerson}
+              onChange={(e) => setContactPerson(e.target.value)}
+            />
 
-      <InputField
-        label="Mail:"
-        type="email"
-        placeholder="dittföretag@mail.com"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+            <InputField
+              label="MAIL"
+              type="email"
+              placeholder="dittföretag@mail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
-      <InputField
-        label="Lösenord:"
-        type="password"
-        placeholder="Välj ett starkt lösenord"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+            <InputField
+              label="LÖSENORD"
+              type="password"
+              placeholder="Välj ett starkt lösenord"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-      <InputField
-        label="Söker ni LIA?:"
-        type="text"
-        placeholder="Ja, vi söker 2 st..."
-        value={lookingForInternship}
-        onChange={(e) => setlookingForInternship(e.target.value)}
-      />
+            <InputField
+              label="SÖKER NI LIA?"
+              display="block"
+              paragraphText="(Under perioden 24 nov, 2025 – 29 maj, 2026)"
+              type="text"
+              placeholder="Ja, vi söker 2 st..."
+              value={lookingForInternship}
+              onChange={(e) => setlookingForInternship(e.target.value)}
+            />
+            <div>
+              <p className={styles["specialization-label"]}>
+                INOM VILKET OMRÅDE?
+              </p>
+              <p className={styles["specialization-note"]}>
+                (Du kan välja flera)
+              </p>
 
-      <fieldset>
-        <legend>Intresseområden:</legend>
-        <p>(Du kan välja flera)</p>
-        <ChoiceButton
-          label="UI"
-          value={fieldOfInterest.ui}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({ ...prev, ui: !prev.ui }))
-          }
-        />
-        <ChoiceButton
-          label="UX"
-          value={fieldOfInterest.ux}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({ ...prev, ux: !prev.ux }))
-          }
-        />
-        <ChoiceButton
-          label="3D"
-          value={fieldOfInterest.three_d}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({ ...prev, three_d: !prev.three_d }))
-          }
-        />
-        <ChoiceButton
-          label="Branding"
-          value={fieldOfInterest.branding}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({
-              ...prev,
-              branding: !prev.branding,
-            }))
-          }
-        />
-        <ChoiceButton
-          label="Motion"
-          value={fieldOfInterest.motion}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({ ...prev, motion: !prev.motion }))
-          }
-        />
-        <ChoiceButton
-          label="Frontend"
-          value={fieldOfInterest.frontend}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({
-              ...prev,
-              frontend: !prev.frontend,
-            }))
-          }
-        />
-        <ChoiceButton
-          label="Backend"
-          value={fieldOfInterest.backend}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({ ...prev, backend: !prev.backend }))
-          }
-        />
-        <ChoiceButton
-          label="Fullstack"
-          value={fieldOfInterest.fullstack}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({
-              ...prev,
-              fullstack: !prev.fullstack,
-            }))
-          }
-        />
-      </fieldset>
+              <fieldset className={styles["specialization-choices"]}>
+                <ChoiceButton
+                  label="UI"
+                  value={fieldOfInterest.ui}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({ ...prev, ui: !prev.ui }))
+                  }
+                />
+                <ChoiceButton
+                  label="UX"
+                  value={fieldOfInterest.ux}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({ ...prev, ux: !prev.ux }))
+                  }
+                />
+                <ChoiceButton
+                  label="3D"
+                  value={fieldOfInterest.three_d}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      three_d: !prev.three_d,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="BRANDING"
+                  value={fieldOfInterest.branding}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      branding: !prev.branding,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="MOTION"
+                  value={fieldOfInterest.motion}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      motion: !prev.motion,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="FRONTEND"
+                  value={fieldOfInterest.frontend}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      frontend: !prev.frontend,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="BACKEND"
+                  value={fieldOfInterest.backend}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      backend: !prev.backend,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="FULLSTACK"
+                  value={fieldOfInterest.fullstack}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      fullstack: !prev.fullstack,
+                    }))
+                  }
+                />
+              </fieldset>
+            </div>
 
-      <InputField
-        label="Berätta kort om företaget?"
-        type="text"
-        placeholder="Vi är en..."
-        value={companyInfo}
-        onChange={(e) => setCompanyInfo(e.target.value)}
-      />
+            <TextAreaField
+              label="HISSPITCH OM FÖRETAGET"
+              placeholder="Vi är ett..."
+              value={companyInfo}
+              onChange={(e) => setCompanyInfo(e.target.value)}
+            />
 
-      {/* Add image upload here */}
+            {/* Add image upload here */}
 
-      <div>
-        <input
-          id="acceptedTerms"
-          type="checkbox"
-          checked={acceptedTerms}
-          onChange={(e) => setAcceptedTerms(e.target.checked)}
-        />
-        <label htmlFor="acceptedTerms">
-          Jag har tagit del av informationen om min personliga integritet.{" "}
-          <a href="/villkor" target="_blank" rel="noreferrer">
-            Läs vår integritetspolicy.
-          </a>
-        </label>
+            <div>
+              <input
+                id="acceptedTerms"
+                type="checkbox"
+                checked={acceptedTerms}
+                onChange={(e) => setAcceptedTerms(e.target.checked)}
+              />
+              <label htmlFor="acceptedTerms">
+                Jag har tagit del av informationen om min personliga integritet.{" "}
+                <a href="/villkor" target="_blank" rel="noreferrer">
+                  Läs vår integritetspolicy.
+                </a>
+              </label>
+            </div>
+
+            <SendButton disabled={loading}>Skicka</SendButton>
+          </div>
+        </form>
       </div>
-
-      <SendButton disabled={loading}>Skicka</SendButton>
-    </form>
+    </Wrapper>
   );
 }
