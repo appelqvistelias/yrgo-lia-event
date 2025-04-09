@@ -1,0 +1,18 @@
+.paragraphContainer {
+  display: flex;
+  padding: 1.5rem 0.25rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  align-self: stretch;
+}
+
+.paragraphText {
+  color: #121212;
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--12, 0.75rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--16, 1rem); /* 133.333% */
+  white-space: pre-wrap;
+}
