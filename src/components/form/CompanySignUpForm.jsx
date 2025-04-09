@@ -260,9 +260,7 @@ export default function CompanySignUpForm() {
               onChange={(e) => setlookingForInternship(e.target.value)}
             />
 
-            <fieldset>
-              <legend>INOM VILKET OMRÅDE</legend>
-              <p>(Du kan välja flera)</p>
+            <fieldset className={styles.specializationChoices}>
               <ChoiceButton
                 label="UI"
                 value={fieldOfInterest.ui}
