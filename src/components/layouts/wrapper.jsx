@@ -1,7 +1,21 @@
-export default function Wrapper({ children, padding, gap }) {
-    return (
-      <div className='wrapper' style={{ display: "flex", flexDirection: "column", padding, gap }}>
-        {children}
-      </div>
-    );
-  }
+export default function Wrapper({
+  children,
+  padding,
+  gap,
+  alignItems = "flex-start",
+}) {
+  return (
+    <div
+      className="wrapper"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        padding,
+        gap,
+        alignItems,
+      }}
+    >
+      {children}
+    </div>
+  );
+}

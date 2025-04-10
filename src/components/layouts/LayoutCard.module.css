@@ -6,6 +6,7 @@
 .cardBackground {
   display: flex;
   min-width: 17rem;
+  max-width: 18rem;
   min-height: 32.5rem;
   background-color: var(--yrgo-white);
   border-radius: 0.625rem;
@@ -22,7 +23,7 @@
   background-color: var(--yrgo-blue);
   border-radius: 50%;
   left: -2%;
-  top: 50%;
+  top: 55%;
   transform: translate(-50%, -50%);
 }
 
@@ -34,14 +35,14 @@
   background-color: var(--yrgo-blue);
   border-radius: 50%;
   left: 102%;
-  top: 50%;
+  top: 55%;
   transform: translate(-50%, -50%);
 }
 
 .cardFiller {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: space-around; */
   align-items: center;
 }
 
@@ -69,7 +70,7 @@
     background-color: var(--yrgo-blue);
     border-radius: 50%;
     left: -1%;
-    top: 55%;
+    top: 60%;
     transform: translate(-50%, -50%);
   }
 
@@ -79,7 +80,7 @@
     background-color: var(--yrgo-blue);
     border-radius: 50%;
     left: 101%;
-    top: 55%;
+    top: 60%;
     transform: translate(-50%, -50%);
   }
 
