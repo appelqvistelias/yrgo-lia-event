@@ -1,6 +1,4 @@
 import styles from "./ButtonsText.module.css";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import RedirectButton from "@/components/buttons/RedirectButton";
 
 export default function ButtonsText({
@@ -10,14 +8,6 @@ export default function ButtonsText({
   rightButtonText,
   rightButtonLink,
 }) {
-  const [isClicked, setIsClicked] = useState(false);
-  const router = useRouter();
-
-  const handleClick = (link) => {
-    setIsClicked(true);
-    router.push(link);
-  };
-
   return (
     <div className={styles.container}>
       <h4 className={styles.text}>{text}</h4>
