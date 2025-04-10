@@ -20,7 +20,7 @@ export default function ButtonsText({
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.text}>{text}</h2>
+      <h4 className={styles.text}>{text}</h4>
       <div className={styles.buttonsContainer}>
         <RedirectButton href={leftButtonLink}>{leftButtonText}</RedirectButton>
         <RedirectButton href={rightButtonLink}>

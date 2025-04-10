@@ -23,3 +23,22 @@
   gap: 1rem;
   align-self: stretch;
 }
+
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+    width: 100%;
+    padding: 3.625rem 0rem;
+    align-items: normal;
+    gap: 3.625rem;
+  }
+  .text {
+    font-size: 3.75rem;
+    line-height: 4rem;
+  }
+  .buttonsContainer {
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+  }
+}

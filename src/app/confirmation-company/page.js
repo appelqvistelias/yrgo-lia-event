@@ -9,7 +9,7 @@ import ButtonsText from "@/components/layouts/ButtonsText";
 
 export default function Confirmation() {
   return (
-    <Wrapper padding="1.5rem" gap="1rem">
+    <Wrapper padding="1.5rem" gap="1rem" alignItems="center">
       <LayoutCard>
         <HeaderWithLogoAndBorder>TACK FÖR DIN ANMÄLAN!</HeaderWithLogoAndBorder>
         <LayoutParagraph
