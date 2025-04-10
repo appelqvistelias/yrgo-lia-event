@@ -12,6 +12,7 @@
   overflow: hidden;
   position: relative;
   padding: 1rem;
+  border: 1px solid blue; /* Temporary for debugging */
 }
 
 .cardBackground::before {
@@ -41,7 +42,7 @@
 .cardFiller {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: space-around; */
   align-items: center;
 }
 
@@ -88,5 +89,6 @@
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+    border: 1px solid red; /* Temporary for debugging */
   }
 }
