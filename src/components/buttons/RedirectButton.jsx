@@ -3,8 +3,10 @@ import styles from "./RedirectButton.module.css";
 
 export default function RedirectButton({ href, children }) {
   return (
-    <Link href={href} className={styles.button}>
-      <a className={styles.button}>{children}</a>
+    <Link href={href}>
+      <a className={styles.button}>
+        <span className={styles.buttonText}>{children}</span>
+      </a>
     </Link>
   );
 }
