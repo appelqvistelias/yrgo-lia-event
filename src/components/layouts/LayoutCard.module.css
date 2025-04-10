@@ -6,13 +6,13 @@
 .cardBackground {
   display: flex;
   min-width: 17rem;
+  max-width: 18rem;
   min-height: 32.5rem;
   background-color: var(--yrgo-white);
   border-radius: 0.625rem;
   overflow: hidden;
   position: relative;
   padding: 1rem;
-  border: 1px solid blue; /* Temporary for debugging */
 }
 
 .cardBackground::before {
