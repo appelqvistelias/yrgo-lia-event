@@ -10,26 +10,11 @@ const SendButton = ({ children, onClick, disabled }) => {
   return (
     <button
       type="submit"
-      className={styles.Sendbutton}
+      className={styles.sendButton}
       onClick={onClick}
       disabled={disabled}
     >
-      {children || "Skicka"}
-
-
-{/* SendButton pre company form creation. isLoading, setIsLoading needed? */}
-
-{/* const SendButton = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(false);
-  return (
-    <button
-    type="submit"
-    className={styles.sendButton}
-    disabled={isLoading}
-    onClick={() => setIsLoading(true)}
-    >
-    {isLoading ? "Skickar..." : children || "Skicka"} */}
-
+      {disabled ? "Skickar..." : children || "Skicka"}
     </button>
   );
 };
