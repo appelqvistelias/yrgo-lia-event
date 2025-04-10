@@ -10,6 +10,7 @@ import ChoiceButton from "../buttons/ChoiceButton";
 import SendButton from "../buttons/SendButton";
 import InputField from "../input-fields/InputField";
 import TextAreaField from "../input-fields/TextareaField";
+import PolicyCheckbox from "./PolicyCheckbox";
 
 // Function to validate email format
 const validateEmail = (email) => {
@@ -356,20 +357,10 @@ export default function CompanySignUpForm() {
 
             {/* Add image upload here */}
 
-            <div>
-              <input
-                id="acceptedTerms"
-                type="checkbox"
-                checked={acceptedTerms}
-                onChange={(e) => setAcceptedTerms(e.target.checked)}
-              />
-              <label htmlFor="acceptedTerms">
-                Jag har tagit del av informationen om min personliga integritet.{" "}
-                <a href="/villkor" target="_blank" rel="noreferrer">
-                  Läs vår integritetspolicy.
-                </a>
-              </label>
-            </div>
+            <PolicyCheckbox
+              accept={acceptedTerms}
+              onChange={(e) => setAcceptedTerms(e.target.checked)}
+            />
 
             <SendButton disabled={loading}>Skicka</SendButton>
           </div>
