@@ -7,6 +7,8 @@ export default function TextAreaField({
   onChange,
   rows = 5,
   maxLength = 120,
+  display = "none",
+  paragraphText = "",
 }) {
   return (
     <div className={styles.textareaContainer}>
@@ -24,6 +26,9 @@ export default function TextAreaField({
           <p className={styles.paragraph}>Max {maxLength} tecken</p>
         </div>
       </label>
+      <p className={styles.optionalParagraph} style={{ display: display }}>
+        {paragraphText}
+      </p>
     </div>
   );
 }

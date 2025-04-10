@@ -349,6 +349,8 @@ export default function CompanySignUpForm() {
               label="HISSPITCH OM FÖRETAGET"
               placeholder="Vi är ett..."
               value={companyInfo}
+              display="block"
+              paragraphText="(Visas i studentprofil för studenter)"
               onChange={(e) => setCompanyInfo(e.target.value)}
             />
 

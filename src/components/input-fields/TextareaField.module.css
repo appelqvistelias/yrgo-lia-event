@@ -50,3 +50,12 @@
   font-weight: 400;
   line-height: var(--16, 1rem); /* 133.333% */
 }
+
+.optionalParagraph {
+  color: var(--Typocolor, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--14, 0.875rem);
+  font-style: normal;
+  font-weight: 300;
+  line-height: var(--20, 1.25rem); /* 142.857% */
+}
