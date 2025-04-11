@@ -11,6 +11,8 @@
 .headlineContainer {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .headline {
@@ -19,6 +21,7 @@
   font-style: normal;
   font-weight: 300;
   line-height: 2rem;
+  text-transform: uppercase;
 }
 
 @media (min-width: 768px) {
