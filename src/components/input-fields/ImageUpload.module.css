@@ -1,0 +1,27 @@
+.frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14rem;
+  height: 14rem;
+  border: 2px solid var(--Stroke-stroke-black, #121212);
+  background: var(--Yrgo-yrgo-grey, #e4e9eb);
+}
+
+.label {
+  color: var(--Typocolor, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--16, 1rem);
+  font-style: normal;
+  font-weight: 600;
+  line-height: var(--22, 1.375rem);
+}
+
+.input {
+  background-image: url("../../icons/uploadimg.svg");
+  background-position: center, center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+}

@@ -11,6 +11,7 @@ import Wrapper from "../layouts/Wrapper";
 import HeaderWithLogo from "../layouts/HeaderWithLogo";
 import PolicyCheckbox from "./PolicyCheckbox";
 import TextAreaField from "../input-fields/TextAreaField";
+import ImageUpload from "./ImageUpload";
 
 // Function to validate email format
 const validateEmail = (email) => {
@@ -418,6 +419,7 @@ export default function StudentSignUpForm() {
               accept="image/*"
               onChange={(e) => setSelectedFile(e.target.files[0])}
             />
+            <ImageUpload />
             <PolicyCheckbox
               accept={acceptedTerms}
               onChange={(e) => setAcceptedTerms(e.target.checked)}
