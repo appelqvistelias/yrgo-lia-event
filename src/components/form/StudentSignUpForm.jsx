@@ -419,7 +419,6 @@ export default function StudentSignUpForm() {
               accept="image/*"
               onChange={(e) => setSelectedFile(e.target.files[0])}
             />
-            <ImageUpload />
             <PolicyCheckbox
               accept={acceptedTerms}
               onChange={(e) => setAcceptedTerms(e.target.checked)}
