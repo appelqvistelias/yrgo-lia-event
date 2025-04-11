@@ -10,6 +10,7 @@ import InputField from "../input-fields/InputField";
 import Wrapper from "../layouts/Wrapper";
 import HeaderWithLogo from "../layouts/HeaderWithLogo";
 import PolicyCheckbox from "./PolicyCheckbox";
+import TextAreaField from "../input-fields/TextAreaField";
 
 // Function to validate email format
 const validateEmail = (email) => {
@@ -267,29 +268,32 @@ export default function StudentSignUpForm() {
             {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 
             <InputField
-              label="Fullständigt namn:"
+              label="FULLSTÄNDIGT NAMN"
               type="text"
               placeholder="Namn"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
 
-            <fieldset>
-              <ChoiceButton
-                label="DD"
-                value="digital_design"
-                onChange={() => setStudentSpecialization("digital_design")}
-              />
+            <div>
+              <p className={styles["separate-label"]}>PROGRAM</p>
+              <fieldset className={styles["fieldset-choices"]}>
+                <ChoiceButton
+                  label="DD"
+                  value="digital_design"
+                  onChange={() => setStudentSpecialization("digital_design")}
+                />
 
-              <ChoiceButton
-                label="WU"
-                value="webbutveckling"
-                onChange={() => setStudentSpecialization("webbutveckling")}
-              />
-            </fieldset>
+                <ChoiceButton
+                  label="WU"
+                  value="webbutveckling"
+                  onChange={() => setStudentSpecialization("webbutveckling")}
+                />
+              </fieldset>
+            </div>
 
             <InputField
-              label="Mail:"
+              label="MAIL"
               type="email"
               placeholder="dittnamn@mail.com"
               value={email}
@@ -297,115 +301,119 @@ export default function StudentSignUpForm() {
             />
 
             <InputField
-              label="Lösenord:"
+              label="LÖSENORD"
               type="password"
               placeholder="Välj ett starkt lösenord"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <fieldset>
-              <legend>Inom vilket område?</legend>
-              <p>(Du kan välja flera)</p>
-              <ChoiceButton
-                label="UI"
-                value={fieldOfInterest.ui}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({ ...prev, ui: !prev.ui }))
-                }
-              />
-              <ChoiceButton
-                label="UX"
-                value={fieldOfInterest.ux}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({ ...prev, ux: !prev.ux }))
-                }
-              />
-              <ChoiceButton
-                label="3D"
-                value={fieldOfInterest.three_d}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({
-                    ...prev,
-                    three_d: !prev.three_d,
-                  }))
-                }
-              />
-              <ChoiceButton
-                label="Branding"
-                value={fieldOfInterest.branding}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({
-                    ...prev,
-                    branding: !prev.branding,
-                  }))
-                }
-              />
-              <ChoiceButton
-                label="Motion"
-                value={fieldOfInterest.motion}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({
-                    ...prev,
-                    motion: !prev.motion,
-                  }))
-                }
-              />
-              <ChoiceButton
-                label="Frontend"
-                value={fieldOfInterest.frontend}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({
-                    ...prev,
-                    frontend: !prev.frontend,
-                  }))
-                }
-              />
-              <ChoiceButton
-                label="Backend"
-                value={fieldOfInterest.backend}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({
-                    ...prev,
-                    backend: !prev.backend,
-                  }))
-                }
-              />
-              <ChoiceButton
-                label="Fullstack"
-                value={fieldOfInterest.fullstack}
-                onChange={() =>
-                  setFieldOfInterest((prev) => ({
-                    ...prev,
-                    fullstack: !prev.fullstack,
-                  }))
-                }
-              />
-            </fieldset>
+            <div>
+              <p className={styles["separate-label"]}>INOM VILKET OMRÅDE?</p>
+              <p className={styles["specialization-note"]}>
+                (Du kan välja flera)
+              </p>
+              <fieldset className={styles["fieldset-choices"]}>
+                <ChoiceButton
+                  label="UI"
+                  value={fieldOfInterest.ui}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({ ...prev, ui: !prev.ui }))
+                  }
+                />
+                <ChoiceButton
+                  label="UX"
+                  value={fieldOfInterest.ux}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({ ...prev, ux: !prev.ux }))
+                  }
+                />
+                <ChoiceButton
+                  label="3D"
+                  value={fieldOfInterest.three_d}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      three_d: !prev.three_d,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="Branding"
+                  value={fieldOfInterest.branding}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      branding: !prev.branding,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="Motion"
+                  value={fieldOfInterest.motion}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      motion: !prev.motion,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="Frontend"
+                  value={fieldOfInterest.frontend}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      frontend: !prev.frontend,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="Backend"
+                  value={fieldOfInterest.backend}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      backend: !prev.backend,
+                    }))
+                  }
+                />
+                <ChoiceButton
+                  label="Fullstack"
+                  value={fieldOfInterest.fullstack}
+                  onChange={() =>
+                    setFieldOfInterest((prev) => ({
+                      ...prev,
+                      fullstack: !prev.fullstack,
+                    }))
+                  }
+                />
+              </fieldset>
+            </div>
 
-            <InputField
-              label="Hisspitch om dig:"
-              type="text"
-              placeholder="En kort presentation"
+            <TextAreaField
+              label="HISSPITCH OM DIG"
+              placeholder="Jag studerar..."
               value={studentBio}
+              display="block"
+              paragraphText="(Visas i studentprofil för företag)"
               onChange={(e) => setStudentBio(e.target.value)}
             />
+            <div>
+              <TextAreaField
+                label="PORTFOLIO/LINKEDIN"
+                placeholder="Länk till portfolio/Github"
+                value={portfolio}
+                onChange={(e) => setPortfolio(e.target.value)}
+              />
+              <TextAreaField
+                placeholder="Länk till LinkedIn"
+                value={linkedIn}
+                onChange={(e) => setLinkedIn(e.target.value)}
+              />
+            </div>
             <InputField
-              label="LinkedIn:"
-              type="text"
-              placeholder="Din LinkedIn-profil"
-              value={linkedIn}
-              onChange={(e) => setLinkedIn(e.target.value)}
-            />
-            <InputField
-              label="Portfolio:"
-              type="text"
-              placeholder="Din portfolio"
-              value={portfolio}
-              onChange={(e) => setPortfolio(e.target.value)}
-            />
-            <InputField
-              label="Profile picture:"
+              label="ADDERA BILD"
               type="file"
               accept="image/*"
               onChange={(e) => setSelectedFile(e.target.files[0])}
