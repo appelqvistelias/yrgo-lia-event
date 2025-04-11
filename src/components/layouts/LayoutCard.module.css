@@ -13,6 +13,7 @@
   overflow: hidden;
   position: relative;
   padding: 1rem;
+  justify-content: center;
 }
 
 .cardBackground::before {
@@ -56,12 +57,13 @@
   }
 
   .cardBackground {
-    min-width: 70rem;
+    min-width: 40rem;
     max-width: 95.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2.5rem; /*Change this later? */
+    min-height: 58rem;
   }
 
   .cardBackground::before {

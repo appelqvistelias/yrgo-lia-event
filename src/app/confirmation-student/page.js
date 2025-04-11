@@ -1,7 +1,7 @@
 import React from "react";
 import LayoutCard from "@/components/layouts/LayoutCard";
 import LayoutParagraph from "@/components/layouts/LayoutParagraph";
-import Wrapper from "@/components/layouts/wrapper";
+import Wrapper from "@/components/layouts/Wrapper";
 import HeaderWithLogoAndBorder from "@/components/layouts/HeaderWithLogoAndBorder";
 import ButtonsText from "@/components/layouts/ButtonsText";
 

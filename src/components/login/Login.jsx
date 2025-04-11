@@ -3,8 +3,12 @@
 import React, { useState } from "react";
 import { supabase } from "../../../lib/supabase";
 import { useRouter } from "next/navigation";
+import styles from "./Login.module.css";
 import InputField from "../input-fields/InputField";
 import SendButton from "../buttons/SendButton";
+import Wrapper from "../layouts/Wrapper";
+import LayoutCard from "../layouts/LayoutCard";
+import HeaderWithLogoAndBorder from "../layouts/HeaderWithLogoAndBorder";
 
 export default function Login() {
   const router = useRouter();
@@ -23,7 +27,8 @@ export default function Login() {
       });
 
     if (authError) {
-      setError(authError.message);
+      // Set a custom error message
+      setError("Fel e-postadress eller lösenord. Försök igen.");
       return;
     }
 
@@ -52,28 +57,33 @@ export default function Login() {
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <h2>Logga in</h2>
+    <Wrapper padding="1.5rem" gap="1rem" alignItems="center">
+      <LayoutCard>
+        <form onSubmit={handleLogin} className={styles.formContainer}>
+          <HeaderWithLogoAndBorder>Logga in!</HeaderWithLogoAndBorder>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+          <fieldset className={styles.inputContainer}>
+            <InputField
+              label="MAIL:"
+              type="email"
+              placeholder="Din e-post..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
-      <InputField
-        label="Mail"
-        type="email"
-        placeholder="Din e-post..."
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+            <InputField
+              label="LÖSENORD:"
+              type="password"
+              placeholder="Ditt lösenord..."
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {error && <p className={styles.errorMessage}>{error}</p>}
+          </fieldset>
 
-      <InputField
-        label="Lösenord"
-        type="password"
-        placeholder="Ditt lösenord..."
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-
-      <SendButton>Logga in</SendButton>
-    </form>
+          <SendButton>Logga in</SendButton>
+        </form>
+      </LayoutCard>
+    </Wrapper>
   );
 }
