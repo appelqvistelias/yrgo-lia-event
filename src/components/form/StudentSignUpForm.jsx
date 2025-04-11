@@ -7,6 +7,9 @@ import styles from "./StudentSignUpForm.module.css";
 import ChoiceButton from "../buttons/ChoiceButton";
 import SendButton from "../buttons/SendButton";
 import InputField from "../input-fields/InputField";
+import Wrapper from "../layouts/Wrapper";
+import HeaderWithLogo from "../layouts/HeaderWithLogo";
+import PolicyCheckbox from "./PolicyCheckbox";
 
 // Function to validate email format
 const validateEmail = (email) => {
@@ -249,167 +252,173 @@ export default function StudentSignUpForm() {
   };
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit();
-      }}
-      action=""
-    >
-      <h1>Anmälan</h1>
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+    <Wrapper padding="1.5rem 1.5rem 3.75rem 1.5rem">
+      <div className={styles["inner-wrapper"]}>
+        <HeaderWithLogo>ANMÄLAN</HeaderWithLogo>
 
-      <InputField
-        label="Fullständigt namn:"
-        type="text"
-        placeholder="Namn"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+          action=""
+        >
+          <div className={styles["input-fields"]}>
+            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 
-      <fieldset>
-        <ChoiceButton
-          label="DD"
-          value="digital_design"
-          onChange={() => setStudentSpecialization("digital_design")}
-        />
+            <InputField
+              label="Fullständigt namn:"
+              type="text"
+              placeholder="Namn"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
 
-        <ChoiceButton
-          label="WU"
-          value="webbutveckling"
-          onChange={() => setStudentSpecialization("webbutveckling")}
-        />
-      </fieldset>
+            <fieldset>
+              <ChoiceButton
+                label="DD"
+                value="digital_design"
+                onChange={() => setStudentSpecialization("digital_design")}
+              />
 
-      <InputField
-        label="Mail:"
-        type="email"
-        placeholder="dittnamn@mail.com"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+              <ChoiceButton
+                label="WU"
+                value="webbutveckling"
+                onChange={() => setStudentSpecialization("webbutveckling")}
+              />
+            </fieldset>
 
-      <InputField
-        label="Lösenord:"
-        type="password"
-        placeholder="Välj ett starkt lösenord"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+            <InputField
+              label="Mail:"
+              type="email"
+              placeholder="dittnamn@mail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
-      <fieldset>
-        <legend>Inom vilket område?</legend>
-        <p>(Du kan välja flera)</p>
-        <ChoiceButton
-          label="UI"
-          value={fieldOfInterest.ui}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({ ...prev, ui: !prev.ui }))
-          }
-        />
-        <ChoiceButton
-          label="UX"
-          value={fieldOfInterest.ux}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({ ...prev, ux: !prev.ux }))
-          }
-        />
-        <ChoiceButton
-          label="3D"
-          value={fieldOfInterest.three_d}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({ ...prev, three_d: !prev.three_d }))
-          }
-        />
-        <ChoiceButton
-          label="Branding"
-          value={fieldOfInterest.branding}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({
-              ...prev,
-              branding: !prev.branding,
-            }))
-          }
-        />
-        <ChoiceButton
-          label="Motion"
-          value={fieldOfInterest.motion}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({ ...prev, motion: !prev.motion }))
-          }
-        />
-        <ChoiceButton
-          label="Frontend"
-          value={fieldOfInterest.frontend}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({
-              ...prev,
-              frontend: !prev.frontend,
-            }))
-          }
-        />
-        <ChoiceButton
-          label="Backend"
-          value={fieldOfInterest.backend}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({ ...prev, backend: !prev.backend }))
-          }
-        />
-        <ChoiceButton
-          label="Fullstack"
-          value={fieldOfInterest.fullstack}
-          onChange={() =>
-            setFieldOfInterest((prev) => ({
-              ...prev,
-              fullstack: !prev.fullstack,
-            }))
-          }
-        />
-      </fieldset>
+            <InputField
+              label="Lösenord:"
+              type="password"
+              placeholder="Välj ett starkt lösenord"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-      <InputField
-        label="Hisspitch om dig:"
-        type="text"
-        placeholder="En kort presentation"
-        value={studentBio}
-        onChange={(e) => setStudentBio(e.target.value)}
-      />
-      <InputField
-        label="LinkedIn:"
-        type="text"
-        placeholder="Din LinkedIn-profil"
-        value={linkedIn}
-        onChange={(e) => setLinkedIn(e.target.value)}
-      />
-      <InputField
-        label="Portfolio:"
-        type="text"
-        placeholder="Din portfolio"
-        value={portfolio}
-        onChange={(e) => setPortfolio(e.target.value)}
-      />
-      <InputField
-        label="Profile picture:"
-        type="file"
-        accept="image/*"
-        onChange={(e) => setSelectedFile(e.target.files[0])}
-      />
-      <div>
-        <input
-          id="acceptedTerms"
-          type="checkbox"
-          checked={acceptedTerms}
-          onChange={(e) => setAcceptedTerms(e.target.checked)}
-        />
-        <label htmlFor="acceptedTerms">
-          Jag har tagit del av informationen om min personliga integritet.{" "}
-          <a href="/villkor" target="_blank" rel="noreferrer">
-            Läs vår integritetspolicy.
-          </a>
-        </label>
+            <fieldset>
+              <legend>Inom vilket område?</legend>
+              <p>(Du kan välja flera)</p>
+              <ChoiceButton
+                label="UI"
+                value={fieldOfInterest.ui}
+                onChange={() =>
+                  setFieldOfInterest((prev) => ({ ...prev, ui: !prev.ui }))
+                }
+              />
+              <ChoiceButton
+                label="UX"
+                value={fieldOfInterest.ux}
+                onChange={() =>
+                  setFieldOfInterest((prev) => ({ ...prev, ux: !prev.ux }))
+                }
+              />
+              <ChoiceButton
+                label="3D"
+                value={fieldOfInterest.three_d}
+                onChange={() =>
+                  setFieldOfInterest((prev) => ({
+                    ...prev,
+                    three_d: !prev.three_d,
+                  }))
+                }
+              />
+              <ChoiceButton
+                label="Branding"
+                value={fieldOfInterest.branding}
+                onChange={() =>
+                  setFieldOfInterest((prev) => ({
+                    ...prev,
+                    branding: !prev.branding,
+                  }))
+                }
+              />
+              <ChoiceButton
+                label="Motion"
+                value={fieldOfInterest.motion}
+                onChange={() =>
+                  setFieldOfInterest((prev) => ({
+                    ...prev,
+                    motion: !prev.motion,
+                  }))
+                }
+              />
+              <ChoiceButton
+                label="Frontend"
+                value={fieldOfInterest.frontend}
+                onChange={() =>
+                  setFieldOfInterest((prev) => ({
+                    ...prev,
+                    frontend: !prev.frontend,
+                  }))
+                }
+              />
+              <ChoiceButton
+                label="Backend"
+                value={fieldOfInterest.backend}
+                onChange={() =>
+                  setFieldOfInterest((prev) => ({
+                    ...prev,
+                    backend: !prev.backend,
+                  }))
+                }
+              />
+              <ChoiceButton
+                label="Fullstack"
+                value={fieldOfInterest.fullstack}
+                onChange={() =>
+                  setFieldOfInterest((prev) => ({
+                    ...prev,
+                    fullstack: !prev.fullstack,
+                  }))
+                }
+              />
+            </fieldset>
+
+            <InputField
+              label="Hisspitch om dig:"
+              type="text"
+              placeholder="En kort presentation"
+              value={studentBio}
+              onChange={(e) => setStudentBio(e.target.value)}
+            />
+            <InputField
+              label="LinkedIn:"
+              type="text"
+              placeholder="Din LinkedIn-profil"
+              value={linkedIn}
+              onChange={(e) => setLinkedIn(e.target.value)}
+            />
+            <InputField
+              label="Portfolio:"
+              type="text"
+              placeholder="Din portfolio"
+              value={portfolio}
+              onChange={(e) => setPortfolio(e.target.value)}
+            />
+            <InputField
+              label="Profile picture:"
+              type="file"
+              accept="image/*"
+              onChange={(e) => setSelectedFile(e.target.files[0])}
+            />
+            <PolicyCheckbox
+              accept={acceptedTerms}
+              onChange={(e) => setAcceptedTerms(e.target.checked)}
+            />
+
+            <SendButton disabled={loading}>Skicka</SendButton>
+          </div>
+        </form>
       </div>
-
-      <SendButton disabled={loading}>Skicka</SendButton>
-    </form>
+    </Wrapper>
   );
 }
