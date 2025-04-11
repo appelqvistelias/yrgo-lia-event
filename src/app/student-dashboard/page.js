@@ -93,11 +93,8 @@ export default function StudentDashboard() {
     return <p>Laddar...</p>;
   }
 
-  console.log("Student data:", student);
-
   return (
     <div>
-      <h1>Välkommen, {student?.full_name}!</h1>
       <button
         onClick={async () => {
           await supabase.auth.signOut();
