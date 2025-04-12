@@ -11,7 +11,7 @@ import Wrapper from "../layouts/Wrapper";
 import HeaderWithLogo from "../layouts/HeaderWithLogo";
 import PolicyCheckbox from "./PolicyCheckbox";
 import TextAreaField from "../input-fields/TextAreaField";
-import ImageUpload from "./ImageUpload";
+import ImageUpload from "../input-fields/ImageUpload";
 
 // Function to validate email format
 const validateEmail = (email) => {
@@ -413,10 +413,9 @@ export default function StudentSignUpForm() {
                 onChange={(e) => setLinkedIn(e.target.value)}
               />
             </div>
-            <InputField
+            <ImageUpload
               label="ADDERA BILD"
-              type="file"
-              accept="image/*"
+              paragraph="(Visas i studentprofil för företag)"
               onChange={(e) => setSelectedFile(e.target.files[0])}
             />
             <PolicyCheckbox

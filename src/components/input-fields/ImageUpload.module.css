@@ -1,11 +1,7 @@
 .frame {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 14rem;
-  height: 14rem;
-  border: 2px solid var(--Stroke-stroke-black, #121212);
-  background: var(--Yrgo-yrgo-grey, #e4e9eb);
+  flex-direction: column;
+  width: 100%;
 }
 
 .label {
@@ -14,14 +10,40 @@
   font-size: var(--16, 1rem);
   font-style: normal;
   font-weight: 600;
-  line-height: var(--22, 1.375rem);
+  line-height: var(--22, 1.375rem); /* 137.5% */
+  text-transform: uppercase;
+}
+
+.uploadBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14rem;
+  height: 14rem;
+  border: 2px solid var(--Stroke-stroke-black, #121212);
+  background: var(--Yrgo-yrgo-grey, #e4e9eb);
+  cursor: pointer;
+  background-image: url("../../icons/uploadimg.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0.5rem 0;
+}
+
+/* Style for when an image is selected */
+.uploadBox[style*="background-image"] {
+  background-size: cover;
+  background-position: center;
 }
 
 .input {
-  background-image: url("../../icons/uploadimg.svg");
-  background-position: center, center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  flex-shrink: 0;
-  aspect-ratio: 1/1;
+  display: none;
+}
+
+.paragraph {
+  color: var(--Typocolor, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--14, 0.875rem);
+  font-style: normal;
+  font-weight: 300;
+  line-height: var(--20, 1.25rem); /* 142.857% */
 }
