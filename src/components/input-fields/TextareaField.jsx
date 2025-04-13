@@ -23,7 +23,7 @@ export default function TextAreaField({
             rows={rows}
             maxLength={maxLength}
           />
-          <p className={styles.paragraph}>Max {maxLength} tecken</p>
+          <p className={styles.maxLengthParagraph}>Max {maxLength} tecken</p>
         </div>
       </label>
       <p className={styles.optionalParagraph} style={{ display: display }}>

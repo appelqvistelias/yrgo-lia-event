@@ -4,12 +4,6 @@
   gap: 0.5rem;
 }
 
-.textareaFrame {
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--Stroke-stroke-black, #121212);
-  margin-top: 0.5rem;
-}
-
 .label {
   color: var(--Typocolor, #121212);
   font-family: var(--font-family-Inter, Inter);
@@ -18,6 +12,12 @@
   font-weight: 600;
   line-height: var(--22, 1.375rem);
   text-transform: uppercase;
+}
+
+.textareaFrame {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--Stroke-stroke-black, #121212);
+  margin-top: 0.5rem;
 }
 
 .textarea {
@@ -40,7 +40,7 @@
   line-height: var(--22, 1.375rem);
 }
 
-.paragraph {
+.maxLengthParagraph {
   text-align: right;
   color: var(--Background-bg-red, #e51236);
 
@@ -59,4 +59,40 @@
   font-style: normal;
   font-weight: 300;
   line-height: var(--20, 1.25rem); /* 142.857% */
+}
+
+@media (min-width: 768px) {
+  .label {
+    font-size: var(--32, 2rem);
+    line-height: var(--32, 2rem); /* 100% */
+  }
+
+  .textareaFrame {
+    padding: 1.5rem;
+    border: 2px solid var(--Stroke-stroke-black, #121212);
+    margin-top: 1rem;
+  }
+
+  .textarea {
+    color: var(--Greyscale-grey3, #828282);
+
+    /* Title_4 */
+    font-size: var(--32, 2rem);
+    line-height: var(--42, 2.625rem); /* 131.25% */
+  }
+
+  .maxLengthParagraph {
+    font-size: var(--16, 1rem);
+    font-weight: 500;
+    line-height: var(--16, 1rem); /* 100% */
+  }
+
+  .optionalParagraph {
+    color: var(--Typocolor, #121212);
+
+    /* body_16 */
+    font-size: var(--16, 1rem);
+    font-weight: 400;
+    line-height: var(--22, 1.375rem); /* 137.5% */
+  }
 }
