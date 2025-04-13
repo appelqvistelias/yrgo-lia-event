@@ -1,12 +1,15 @@
 .cardBackgroundContainer {
   display: flex;
   align-items: flex-start;
+  min-width: 17rem;
+  max-width: 18rem;
 }
 
 .cardBackground {
   display: flex;
-  min-width: 17rem;
-  max-width: 18rem;
+  /* min-width: 17rem;
+  max-width: 18rem; */
+  width: 100%;
   min-height: 32.5rem;
   background-color: var(--yrgo-white);
   border-radius: 0.625rem;
@@ -46,6 +49,7 @@
   flex-direction: column;
   /* justify-content: space-around; */
   align-items: center;
+  height: 100%;
 }
 
 @media (min-width: 768px) {

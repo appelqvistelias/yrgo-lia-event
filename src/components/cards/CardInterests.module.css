@@ -23,6 +23,9 @@
 .iconContainer {
 }
 
+.responsiveCardInterest .cardInterests {
+}
+
 @media (min-width: 768px) {
   .cardInterestsContainer {
   }
