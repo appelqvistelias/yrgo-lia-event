@@ -51,6 +51,14 @@
   margin-top: 0.5rem;
 }
 
+.portfolio-mobile {
+  display: block;
+}
+
+.portfolio-desktop {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .signup-form-section {
     padding: 2.5rem 5rem 6.25rem 5rem;
@@ -81,5 +89,13 @@
 
   .fieldset-choices {
     margin-top: 1rem;
+  }
+
+  .portfolio-mobile {
+    display: none;
+  }
+
+  .portfolio-desktop {
+    display: block;
   }
 }
