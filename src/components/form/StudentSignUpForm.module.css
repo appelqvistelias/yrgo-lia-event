@@ -43,3 +43,32 @@
   gap: 0.5rem;
   margin-top: 0.5rem;
 }
+
+@media (min-width: 768px) {
+  .inner-wrapper {
+    padding: 3.75rem 12.5rem;
+    gap: 2.5rem;
+    border-radius: 0.625rem;
+    border: 3px solid #000;
+  }
+
+  .input-fields {
+    gap: 2.5rem;
+  }
+
+  .separate-label {
+    font-size: var(--32, 2rem);
+    line-height: var(--32, 2rem); /* 100% */
+  }
+
+  .specialization-note {
+    font-size: var(--20, 1.25rem);
+    font-weight: 400;
+    line-height: var(--22, 1.375rem); /* 110% */
+    margin-top: 0.75rem;
+  }
+
+  .fieldset-choices {
+    margin-top: 1rem;
+  }
+}
