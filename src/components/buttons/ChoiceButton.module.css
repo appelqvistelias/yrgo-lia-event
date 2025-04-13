@@ -17,8 +17,7 @@
 }
 
 .button:active,
-.button.selected,
-.button:hover {
+.button.selected {
   color: #ffffff;
   background: var(--Yrgo-yrgo-blue, #001a52);
 }
@@ -35,5 +34,10 @@
     /* Title_3 */
     font-size: var(--48, 3rem);
     line-height: var(--52, 3.25rem);
+  }
+
+  .button:hover {
+    color: #ffffff;
+    background: var(--Yrgo-yrgo-blue, #001a52);
   }
 }
