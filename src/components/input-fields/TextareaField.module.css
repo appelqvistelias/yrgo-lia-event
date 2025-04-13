@@ -1,0 +1,98 @@
+.textareaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  color: var(--Typocolor, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--16, 1rem);
+  font-style: normal;
+  font-weight: 600;
+  line-height: var(--22, 1.375rem);
+  text-transform: uppercase;
+}
+
+.textareaFrame {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--Stroke-stroke-black, #121212);
+  margin-top: 0.5rem;
+}
+
+.textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+
+  width: 100%;
+  color: var(--Greyscale-grey3, #828282);
+
+  /* text */
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--16, 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--22, 1.375rem);
+}
+
+.maxLengthParagraph {
+  text-align: right;
+  color: var(--Background-bg-red, #e51236);
+
+  /* caption */
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--12, 0.75rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--16, 1rem); /* 133.333% */
+}
+
+.optionalParagraph {
+  color: var(--Typocolor, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--14, 0.875rem);
+  font-style: normal;
+  font-weight: 300;
+  line-height: var(--20, 1.25rem); /* 142.857% */
+}
+
+@media (min-width: 768px) {
+  .label {
+    font-size: var(--32, 2rem);
+    line-height: var(--32, 2rem); /* 100% */
+  }
+
+  .textareaFrame {
+    padding: 1.5rem;
+    border: 2px solid var(--Stroke-stroke-black, #121212);
+    margin-top: 1rem;
+  }
+
+  .textarea {
+    color: var(--Greyscale-grey3, #828282);
+
+    /* Title_4 */
+    font-size: var(--32, 2rem);
+    line-height: var(--42, 2.625rem); /* 131.25% */
+  }
+
+  .maxLengthParagraph {
+    font-size: var(--16, 1rem);
+    font-weight: 500;
+    line-height: var(--16, 1rem); /* 100% */
+  }
+
+  .optionalParagraph {
+    color: var(--Typocolor, #121212);
+
+    /* body_16 */
+    font-size: var(--16, 1rem);
+    font-weight: 400;
+    line-height: var(--22, 1.375rem); /* 137.5% */
+  }
+}

@@ -1,0 +1,57 @@
+.container {
+  background-color: var(--yrgo-blue);
+  display: flex;
+  min-width: 20rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title {
+  color: var(--yrgo-white);
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5rem; /* 100% */
+  text-transform: uppercase;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 6rem;
+    font-weight: 400;
+    line-height: 6rem;
+  }
+  .cardsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20.25rem, 1fr));
+    justify-content: center;
+    padding-bottom: 3.75rem;
+    gap: 1.5rem;
+  }
+}

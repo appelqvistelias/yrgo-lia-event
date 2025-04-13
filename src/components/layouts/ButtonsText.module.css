@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  padding: 1.5rem 0rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  align-self: stretch;
+}
+
+.text {
+  align-self: stretch;
+  color: #121212;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 2rem;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  align-self: stretch;
+}
+
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+    width: 100%;
+    padding: 3.625rem 0rem;
+    align-items: normal;
+    gap: 3.625rem;
+  }
+  .text {
+    font-size: 3.75rem;
+    line-height: 4rem;
+  }
+  .buttonsContainer {
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+  }
+}

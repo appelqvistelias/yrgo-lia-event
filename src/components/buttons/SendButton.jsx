@@ -1,14 +1,22 @@
 import { useState } from "react";
-import styles from ".Sendbutton.module.css";
-//Need styling for the button
+import styles from "./SendButton.module.css";
 
-// The SendButton component is a button that is used to submit a form.
-// It has a default text of "Skicka" but can be overridden with a custom text.
-// It is styled with the styles.button class.
-const SendButton = ({ children }) => {
+// Used to submit forms
+// Must be placed inside a form
+// Has loading state to prevent user from clicking multiple times
+// Customizable label with "Skicka" as fallback
+
+const SendButton = ({ children, onClick, disabled }) => {
   return (
-    <button type="submit" className={styles.Sendbutton}>
-      {children || "Skicka"}
+    <button
+      type="submit"
+      className={styles.sendButton}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {disabled ? "Skickar..." : children || "Skicka"}
     </button>
   );
 };
+
+export default SendButton;

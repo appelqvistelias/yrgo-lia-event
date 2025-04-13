@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  padding-bottom: 2.375rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.875rem;
+}
+
+.userProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.edit {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.375rem;
+}
+
+.editText {
+  color: #fff;
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--16, 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--22, 1.375rem); /* 137.5% */
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  aspect-ratio: 1/1;
+}
+
+.companies {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.875rem;
+  width: 100%;
+}
+
+.companiesHeader {
+  color: var(--Yrgo-yrgo-white, #fff);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--24, 1.5rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--24, 1.5rem); /* 100% */
+  align-self: stretch;
+}
+
+@media (min-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(1rem, 1fr)
+      [content-start] min(95.5rem, calc(100% - 2rem))
+      [content-end] minmax(1rem, 1fr)
+      [full-end];
+    width: 100%;
+  }
+
+  .content {
+    grid-column: content-start / content-end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.875rem;
+    width: 100%;
+  }
+
+  .userProfile {
+    width: 100%;
+  }
+  .edit {
+    margin-right: 3rem;
+  }
+}

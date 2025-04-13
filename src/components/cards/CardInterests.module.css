@@ -1,0 +1,45 @@
+.cardInterestsContainer {
+  display: flex;
+  padding-left: 0.25rem;
+  justify-content: space-between;
+  align-items: flex-end;
+  align-self: stretch;
+}
+
+.cardInterests {
+  display: flex;
+  width: 7.9375rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+
+.cardInterestText {
+  text-transform: uppercase;
+  color: var(--bg-black);
+  list-style: none;
+}
+
+.iconContainer {
+}
+
+.responsiveCardInterest .cardInterests {
+}
+
+@media (min-width: 768px) {
+  .cardInterestsContainer {
+  }
+  .cardInterests {
+    display: flex;
+    width: 10.4375rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .cardInterestText {
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.625rem;
+  }
+}

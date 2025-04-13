@@ -1,0 +1,25 @@
+/* Colors */
+:root {
+  --bg-white: #ffffff;
+  --bg-blue: #001a52;
+  --bg-red: #e51236;
+  --bg-grey: #e4e9eb;
+  --bg-black: #121212;
+
+  --grey1: #121212;
+  --grey2: #4f4f4f;
+  --grey3: #828282;
+  --grey4: #bdbdbd;
+  --grey5: #e0e0e0;
+
+  --yrgo-grey: #e4e9eb;
+  --yrgo-white: #ffffff;
+  --yrgo-red: #e51236;
+  --yrgo-yellow: #fcfa58;
+  --yrgo-green: #c5ebd8;
+  --yrgo-blue: #001a52;
+  --yrgo-turkos: #35d4d1;
+
+  --blue2: #334875;
+  --blue3: #7f8ca8;
+}

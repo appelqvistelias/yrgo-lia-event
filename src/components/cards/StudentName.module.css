@@ -1,0 +1,31 @@
+.studentNameContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  align-self: stretch;
+  width: 100%;
+}
+
+.studentName {
+  color: var(--Background-bg-black, #121212);
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.75rem; /* 116.667% */
+  text-transform: uppercase;
+}
+
+.programName {
+  color: var(--yrgo-red);
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1.375rem; /* 110% */
+}
+
+@media (max-width: 768px) {
+  .studentNameContainer {
+    /* width: 18.75rem;  */
+    width: 100%;
+  }
+}

@@ -1,0 +1,104 @@
+.cardBackgroundContainer {
+  display: flex;
+  align-items: flex-start;
+  min-width: 17rem;
+  max-width: 18rem;
+}
+
+.cardBackground {
+  display: flex;
+  /* min-width: 17rem;
+  max-width: 18rem; */
+  width: 100%;
+  min-height: 32.5rem;
+  background-color: var(--yrgo-white);
+  border-radius: 0.625rem;
+  overflow: hidden;
+  position: relative;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.cardBackground::before {
+  content: "";
+  position: absolute;
+  width: 1.875rem;
+  height: 1.875rem;
+  background-color: var(--yrgo-blue);
+  border-radius: 50%;
+  left: -2%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+}
+
+.cardBackground::after {
+  content: "";
+  position: absolute;
+  width: 1.875rem;
+  height: 1.875rem;
+  background-color: var(--yrgo-blue);
+  border-radius: 50%;
+  left: 102%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+}
+
+.cardFiller {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  align-items: center;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .cardBackgroundContainer {
+    display: flex;
+    padding: 3.5625rem 3rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    min-width: 70rem;
+    max-width: 95.5rem;
+    width: 100%;
+  }
+
+  .cardBackground {
+    min-width: 40rem;
+    max-width: 95.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5rem; /*Change this later? */
+    min-height: 58rem;
+  }
+
+  .cardBackground::before {
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--yrgo-blue);
+    border-radius: 50%;
+    left: -1%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cardBackground::after {
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--yrgo-blue);
+    border-radius: 50%;
+    left: 101%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cardFiller {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
