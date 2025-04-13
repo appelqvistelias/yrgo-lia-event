@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  width: 100vw;
+  width: 100%;
 }
 
 .content {
@@ -62,8 +62,28 @@
 
 @media (min-width: 768px) {
   .container {
-    align-items: flex-start;
-    padding: 2.5rem;
-    gap: 0.625rem;
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(1rem, 1fr)
+      [content-start] min(95.5rem, calc(100% - 2rem))
+      [content-end] minmax(1rem, 1fr)
+      [full-end];
+    width: 100%;
+  }
+
+  .content {
+    grid-column: content-start / content-end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.875rem;
+    width: 100%;
+  }
+
+  .userProfile {
+    width: 100%;
+  }
+  .edit {
+    margin-right: 3rem;
   }
 }

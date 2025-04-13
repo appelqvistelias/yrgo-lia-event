@@ -59,6 +59,9 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.25rem;
+    min-width: 70rem;
+    max-width: 95.5rem;
+    width: 100%;
   }
 
   .cardBackground {

@@ -35,9 +35,9 @@ export default function StudentProfile({ student }) {
             <EditIcon className={styles.icon} />
           </Link>
         </section>
-        <section className={styles.companies}>
+        {/* <section className={styles.companies}>
           <h2 className={styles.companiesHeader}>Företag för dig</h2>
-        </section>
+        </section> */}
       </div>
     </div>
   );
