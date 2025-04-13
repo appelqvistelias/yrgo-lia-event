@@ -1,12 +1,15 @@
 .cardBackgroundContainer {
   display: flex;
   align-items: flex-start;
+  min-width: 17rem;
+  max-width: 18rem;
 }
 
 .cardBackground {
   display: flex;
-  min-width: 17rem;
-  max-width: 18rem;
+  /* min-width: 17rem;
+  max-width: 18rem; */
+  width: 100%;
   min-height: 32.5rem;
   background-color: var(--yrgo-white);
   border-radius: 0.625rem;
@@ -14,6 +17,8 @@
   position: relative;
   padding: 1rem;
   justify-content: center;
+  align-items: center;
+
 }
 
 .cardBackground::before {
@@ -45,6 +50,7 @@
   flex-direction: column;
   /* justify-content: space-around; */
   align-items: center;
+  height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -54,6 +60,9 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.25rem;
+    min-width: 70rem;
+    max-width: 95.5rem;
+    width: 100%;
   }
 
   .cardBackground {

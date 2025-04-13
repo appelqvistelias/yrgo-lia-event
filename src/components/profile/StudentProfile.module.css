@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  width: 100%;
 }
 
 .content {
@@ -57,4 +58,32 @@
   font-weight: 400;
   line-height: var(--24, 1.5rem); /* 100% */
   align-self: stretch;
+}
+
+@media (min-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(1rem, 1fr)
+      [content-start] min(95.5rem, calc(100% - 2rem))
+      [content-end] minmax(1rem, 1fr)
+      [full-end];
+    width: 100%;
+  }
+
+  .content {
+    grid-column: content-start / content-end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.875rem;
+    width: 100%;
+  }
+
+  .userProfile {
+    width: 100%;
+  }
+  .edit {
+    margin-right: 3rem;
+  }
 }
