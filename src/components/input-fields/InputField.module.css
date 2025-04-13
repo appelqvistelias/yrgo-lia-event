@@ -25,7 +25,6 @@
 
 .input {
   display: flex;
-  width: 14rem;
   padding: 0.5rem 1rem;
   align-items: center;
   gap: 0.25rem;
@@ -59,11 +58,15 @@
     line-height: var(--32, 2rem);
   }
 
+  .paragraph {
+    line-height: var(--22, 1.375rem); /* 110% */
+  }
+
   .input {
-    width: 70.5rem;
     padding: 1.5rem;
     gap: 0.625rem;
     border: 2px solid var(--Stroke-stroke-black, #121212);
+    margin-top: 1rem;
 
     /* Text */
     font-size: var(--32, 2rem);

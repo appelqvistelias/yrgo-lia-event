@@ -6,13 +6,35 @@
 }
 
 .headline {
-  width: 10.5rem;
-  height: 2.375rem;
-
   color: var(--Background-bg-black, #121212);
   font-family: var(--font-family-Inter, Inter);
   font-size: var(--32, 2rem);
   font-style: normal;
   font-weight: 400;
   line-height: var(--42, 2.625rem);
+}
+
+.smallLogo {
+  display: block;
+}
+
+.bigLogo {
+  display: none;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .headline {
+    font-size: var(--60, 3.75rem);
+    font-weight: 500;
+    line-height: var(--64, 4rem);
+  }
+
+  .smallLogo {
+    display: none;
+  }
+
+  .bigLogo {
+    display: block;
+  }
 }
