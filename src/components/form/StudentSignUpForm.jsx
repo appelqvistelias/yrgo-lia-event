@@ -391,47 +391,51 @@ export default function StudentSignUpForm() {
               </fieldset>
             </div>
 
-            <TextAreaField
-              label="HISSPITCH OM DIG"
-              placeholder="Jag studerar..."
-              value={studentBio}
-              display="block"
-              paragraphText="(Visas i studentprofil för företag)"
-              onChange={(e) => setStudentBio(e.target.value)}
-            />
-            <div className={styles["portfolio-mobile"]}>
-              <TextAreaField
-                label="PORTFOLIO/LINKEDIN"
-                placeholder="Länk till portfolio/Github"
-                value={portfolio}
-                onChange={(e) => setPortfolio(e.target.value)}
-              />
-              <TextAreaField
-                placeholder="Länk till LinkedIn"
-                value={linkedIn}
-                onChange={(e) => setLinkedIn(e.target.value)}
+            <div className={styles["pitch-portfolio-img"]}>
+              <div className={styles["pitch-portfolio"]}>
+                <TextAreaField
+                  label="HISSPITCH OM DIG"
+                  placeholder="Jag studerar..."
+                  value={studentBio}
+                  display="block"
+                  paragraphText="(Visas i studentprofil för företag)"
+                  onChange={(e) => setStudentBio(e.target.value)}
+                />
+                <div className={styles["portfolio-mobile"]}>
+                  <TextAreaField
+                    label="PORTFOLIO/LINKEDIN"
+                    placeholder="Länk till portfolio/Github"
+                    value={portfolio}
+                    onChange={(e) => setPortfolio(e.target.value)}
+                  />
+                  <TextAreaField
+                    placeholder="Länk till LinkedIn"
+                    value={linkedIn}
+                    onChange={(e) => setLinkedIn(e.target.value)}
+                  />
+                </div>
+                <div className={styles["portfolio-desktop"]}>
+                  <InputField
+                    label="PORTFOLIO/LINKEDIN"
+                    type="text"
+                    placeholder="Länk till portfolio/Github"
+                    value={portfolio}
+                    onChange={(e) => setPortfolio(e.target.value)}
+                  />
+                  <InputField
+                    type="text"
+                    placeholder="Länk till LinkedIn"
+                    value={linkedIn}
+                    onChange={(e) => setLinkedIn(e.target.value)}
+                  />
+                </div>
+              </div>
+              <ImageUpload
+                label="ADDERA BILD"
+                paragraph="(Visas i studentprofil för företag)"
+                onChange={(e) => setSelectedFile(e.target.files[0])}
               />
             </div>
-            <div className={styles["portfolio-desktop"]}>
-              <InputField
-                label="PORTFOLIO/LINKEDIN"
-                type="text"
-                placeholder="Länk till portfolio/Github"
-                value={portfolio}
-                onChange={(e) => setPortfolio(e.target.value)}
-              />
-              <InputField
-                type="text"
-                placeholder="Länk till LinkedIn"
-                value={linkedIn}
-                onChange={(e) => setLinkedIn(e.target.value)}
-              />
-            </div>
-            <ImageUpload
-              label="ADDERA BILD"
-              paragraph="(Visas i studentprofil för företag)"
-              onChange={(e) => setSelectedFile(e.target.files[0])}
-            />
             <PolicyCheckbox
               accept={acceptedTerms}
               onChange={(e) => setAcceptedTerms(e.target.checked)}

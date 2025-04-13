@@ -59,6 +59,13 @@
   display: none;
 }
 
+.pitch-portfolio-img,
+.pitch-portfolio {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 @media (min-width: 768px) {
   .signup-form-section {
     padding: 2.5rem 5rem 6.25rem 5rem;
@@ -97,5 +104,16 @@
 
   .portfolio-desktop {
     display: block;
+  }
+
+  .pitch-portfolio {
+    width: 100%;
+    gap: 2.5rem;
+  }
+
+  .pitch-portfolio-img {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2.5rem;
   }
 }
