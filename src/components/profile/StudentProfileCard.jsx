@@ -6,29 +6,38 @@ import CardInfo from "../cards/CardInfo";
 import CardInterests from "../cards/CardInterests";
 
 export default function StudentProfileCard({
-  studentName = "Clara S",
-  education = "Digital Designer",
-  infoText = "Kort text om mig bla bla. Jag gillar söker lia till november etc etc...",
-  image = "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2561&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  fieldOfInterest = ["UI", "Branding", "3D"],
+  studentName,
+  education,
+  infoText,
+  image,
+  fieldOfInterest,
 }) {
+  if (education === "webbutveckling") {
+    education = "Webbutvecklare";
+  }
+  if (education === "digital_design") {
+    education = "Digital Designer";
+  }
+
   return (
     <LayoutCard>
       <div className={styles.card}>
         <div className={styles.secondColumn}>
           <div className={styles.studentName}>
-            <h1>{studentName}</h1>
-            {/* Add program abbreviation here */}
+            <h1 className={styles.studentNameText}>{studentName}</h1>
           </div>
         </div>
         <div className={styles.firstColumn}>
           <CardImage imageUrl={image} altText={`${studentName}'s profile`} />
         </div>
         <div className={styles.secondColumn}>
-          <h2 className={styles.education}>{education}</h2>
-          <p className={styles.infoText}>{infoText}</p>
-          <ul></ul>
-          <CardInterests interests={fieldOfInterest} />
+          <div className={styles.fullInfo}>
+            <div className={styles.info}>
+              <h2 className={styles.education}>{education}</h2>
+              <p className={styles.infoText}>{infoText}</p>
+            </div>
+            <CardInterests interests={fieldOfInterest} />
+          </div>
         </div>
       </div>
     </LayoutCard>
