@@ -6,7 +6,7 @@ export default function HeaderWithLogoAndBorder({ children }) {
     <div className={styles.withBorder}>
       <div className={styles.headlineContainer}>
         <h1 className={styles.headline}>{children}</h1>
-        <YrgoLogo />
+        <YrgoLogo className={styles.logo} />
       </div>
     </div>
   );
