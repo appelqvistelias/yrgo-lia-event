@@ -5,15 +5,26 @@
   .card {
     display: grid;
     grid-template-columns: 41rem 45rem;
-    gap: 2rem;
-    min-height: 60rem;
+    height: 47.5rem;
+    /* padding: 2.5rem; */
+    height: 100%;
+    gap: 3.75rem;
+    align-content: center;
   }
 
   .firstColumn,
   .secondColumn {
-    height: 100%; /* Makes columns fill the card height */
+    max-height: 41.25rem; /* Makes columns fill the card height */
   }
   .firstColumn {
     grid-column: 1;
+    max-width: 41.25rem;
+  }
+  .secondColumn {
+    grid-column: 2;
+    max-width: 45rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4.75rem;
   }
 }

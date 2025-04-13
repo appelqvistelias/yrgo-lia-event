@@ -15,15 +15,20 @@ export default function StudentProfileCard({
   return (
     <LayoutCard>
       <div className={styles.card}>
+        <div className={styles.secondColumn}>
+          <div className={styles.studentName}>
+            <h1>{studentName}</h1>
+            {/* Add program abbreviation here */}
+          </div>
+        </div>
         <div className={styles.firstColumn}>
           <CardImage imageUrl={image} altText={`${studentName}'s profile`} />
         </div>
         <div className={styles.secondColumn}>
-          <StudentName name={studentName} program={education} />
-          <div className={styles.lowerHalfContent}>
-            <CardInfo heading={education} infoText={infoText} />
-            <CardInterests interests={fieldOfInterest} />
-          </div>
+          <h2 className={styles.education}>{education}</h2>
+          <p className={styles.infoText}>{infoText}</p>
+          <ul></ul>
+          <CardInterests interests={fieldOfInterest} />
         </div>
       </div>
     </LayoutCard>
