@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabase";
 import styles from "./CompanySignUpForm.module.css";
-import Wrapper from "../layouts/Wrapper";
 import HeaderWithLogo from "../layouts/HeaderWithLogo";
 import ChoiceButton from "../buttons/ChoiceButton";
 import SendButton from "../buttons/SendButton";
@@ -206,7 +205,7 @@ export default function CompanySignUpForm() {
   };
 
   return (
-    <Wrapper padding="1.5rem 1.5rem 3.75rem 1.5rem">
+    <section id="student-signup-form" className={styles["signup-form-section"]}>
       <div className={styles["inner-wrapper"]}>
         <HeaderWithLogo>ANMÄLAN</HeaderWithLogo>
         <form
@@ -366,6 +365,6 @@ export default function CompanySignUpForm() {
           </div>
         </form>
       </div>
-    </Wrapper>
+    </section>
   );
 }
