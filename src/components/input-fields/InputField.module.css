@@ -65,6 +65,7 @@
     padding: 1.5rem;
     gap: 0.625rem;
     border: 2px solid var(--Stroke-stroke-black, #121212);
+    margin-top: 1rem;
 
     /* Text */
     font-size: var(--32, 2rem);
