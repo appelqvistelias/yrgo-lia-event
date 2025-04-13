@@ -1,0 +1,19 @@
+.card {
+}
+
+@media (min-width: 768px) {
+  .card {
+    display: grid;
+    grid-template-columns: 41rem 45rem;
+    gap: 2rem;
+    min-height: 60rem;
+  }
+
+  .firstColumn,
+  .secondColumn {
+    height: 100%; /* Makes columns fill the card height */
+  }
+  .firstColumn {
+    grid-column: 1;
+  }
+}
