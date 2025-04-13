@@ -17,8 +17,8 @@
 }
 
 .button:active {
-  color: #FFFFFF;
-  background: var(--Yrgo-yrgo-blue, #001A52);
+  color: #ffffff;
+  background: var(--Yrgo-yrgo-blue, #001a52);
 }
 
 /* Responsive styles */
@@ -28,6 +28,7 @@
     padding: 1.5rem;
     gap: 0.625rem;
     flex-shrink: 0;
+    border: 2px solid var(--Stroke-stroke-black, #121212);
 
     /* Title_3 */
     font-size: var(--48, 3rem);
