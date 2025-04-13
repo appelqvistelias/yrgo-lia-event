@@ -22,15 +22,14 @@ export default function StudentProfileCard({
   return (
     <LayoutCard>
       <div className={styles.card}>
-        <div className={styles.secondColumn}>
-          <div className={styles.studentName}>
-            <h1 className={styles.studentNameText}>{studentName}</h1>
-          </div>
-        </div>
         <div className={styles.firstColumn}>
+          <h1 className={styles.studentNameTextDefault}>{studentName}</h1>
           <CardImage imageUrl={image} altText={`${studentName}'s profile`} />
         </div>
         <div className={styles.secondColumn}>
+          <div className={styles.studentNameDesktop}>
+            <h1 className={styles.studentNameTextDesktop}>{studentName}</h1>
+          </div>
           <div className={styles.fullInfo}>
             <div className={styles.info}>
               <h2 className={styles.education}>{education}</h2>

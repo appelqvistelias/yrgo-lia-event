@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  width: 100vw;
 }
 
 .content {
@@ -57,4 +58,12 @@
   font-weight: 400;
   line-height: var(--24, 1.5rem); /* 100% */
   align-self: stretch;
+}
+
+@media (min-width: 768px) {
+  .container {
+    align-items: flex-start;
+    padding: 2.5rem;
+    gap: 0.625rem;
+  }
 }

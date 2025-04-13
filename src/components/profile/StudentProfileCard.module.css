@@ -3,28 +3,34 @@
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 3rem;
   flex-shrink: 0;
 }
 
-.studentName {
+.studentNameDefault {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  text-transform: uppercase;
 }
 
-.studentNameText {
+.studentNameTextDesktop {
+  display: none;
+}
+.studentNameTextDefault {
   color: var(--bg-black);
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.375rem;
+  text-transform: uppercase;
 }
 
 .firstColumn {
-  height: 13.8125rem;
+  height: 14rem;
   align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .fullInfo {
@@ -62,27 +68,79 @@
 @media (min-width: 768px) {
   .card {
     display: grid;
-    grid-template-columns: 41rem 45rem;
-    height: 47.5rem;
-    /* padding: 2.5rem; */
-    height: 100%;
+    grid-template-columns: minmax(20rem, 41rem) minmax(20rem, 45rem);
+    min-height: 47.5rem;
     gap: 3.75rem;
     align-content: center;
+    align-items: stretch;
+  }
+  .studentNameTextDefault {
+    display: none;
+  }
+  .studentNameDesktop {
+    display: flex;
+    padding-bottom: 2.5rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+    border-bottom: 1px solid var(--Background-bg-black, #121212);
+  }
+  .studentNameTextDesktop {
+    display: block;
+    color: var(--Background-bg-black, #121212);
+    font-family: var(--font-family-Inter, Inter);
+    font-size: var(--60, 3.75rem);
+    font-style: normal;
+    font-weight: 300;
+    line-height: var(--64, 4rem); /* 106.667% */
+    text-transform: capitalize;
   }
 
-  .firstColumn,
-  .secondColumn {
-    max-height: 41.25rem; /* Makes columns fill the card height */
-  }
   .firstColumn {
     grid-column: 1;
-    max-width: 41.25rem;
+    width: 100%;
+    height: 41.25rem;
   }
+
   .secondColumn {
+    margin-top: -2rem;
     grid-column: 2;
-    max-width: 45rem;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 4.75rem;
+    justify-content: space-around;
+  }
+  .fullinfo {
+    gap: 4.75;
+    margin-bottom: -4rem;
+  }
+
+  .info {
+    display: flex;
+    padding-bottom: 2.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    align-self: stretch;
+  }
+  .education {
+    color: var(--Background-bg-black, #121212);
+    font-family: var(--font-family-Inter, Inter);
+    font-size: var(--32, 2rem);
+    font-style: normal;
+    font-weight: 700;
+    line-height: var(--32, 2rem); /* 100% */
+    align-self: stretch;
+  }
+  .infoText {
+    color: var(--Background-bg-black, #121212);
+    font-family: var(--font-family-Inter, Inter);
+    font-size: var(--24, 1.5rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--24, 1.5rem); /* 100% */
+    height: 10rem;
   }
 }
