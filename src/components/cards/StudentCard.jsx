@@ -17,7 +17,9 @@ export default function StudentCard({
     <CardBackground>
       <div className={styles.card}>
         <StudentName name={studentName} program={education} />
-        <CardImage imageUrl={image} altText={`${studentName}'s profile`} />
+        <div className={styles.imageContainer}>
+          <CardImage imageUrl={image} altText={`${studentName}'s profile`} />
+        </div>
         <div className={styles.lowerHalfContent}>
           <CardInfo heading={education} infoText={infoText} />
           <CardInterests interests={fieldOfInterest} />
