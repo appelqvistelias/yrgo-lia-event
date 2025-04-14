@@ -1,13 +1,13 @@
 import styles from "./PrivacyPolicy.module.css";
+import Dropdown from "./Dropdown";
+import ArrowLeft from "@/icons/arrow-left.svg";
 
 export default function PrivacyPolicy() {
   return (
-    <div className={styles.privacyPolicy}>
-      <details className={styles.details}>
-        <summary className={styles.summary}>
-          Insamling av personuppgifter
-        </summary>
-        <div className={styles.content}>
+    <div className={styles.privacyContainer}>
+      <div className={styles.privacyPolicy}>
+        <h1 className={styles.heading}>Integritetspolicy</h1>
+        <Dropdown title="Insamling av personuppgifter">
           <p>
             Vi kan samla in följande information när du besöker vår webbplats
             eller anmäler dig till vårt event:
@@ -21,13 +21,8 @@ export default function PrivacyPolicy() {
             <li>LinkedIn</li>
             <li>länk eller annan frivillig information du lämnar</li>
           </ul>
-        </div>
-      </details>
-      <details className={styles.details}>
-        <summary className={styles.summary}>
-          Användning av personuppgifter
-        </summary>
-        <div className={styles.content}>
+        </Dropdown>
+        <Dropdown title="Användning av personuppgifter">
           <p>Vi använder dina uppgifter för att:</p>
           <ul>
             <li>Hantera din anmälan till eventet</li>
@@ -35,33 +30,24 @@ export default function PrivacyPolicy() {
             <li>Kommunicera med dig vid frågor eller uppföljningar</li>
             <li>Förbättra vår webbplats och evenemangsupplevelse</li>
           </ul>
-        </div>
-      </details>
-      <details className={styles.details}>
-        <summary className={styles.summary}>Delning av personuppgifter</summary>
-        <div className={styles.content}>
+        </Dropdown>
+        <Dropdown title="Delning av personuppgifter">
           <p>
             Vi delar inte dina personuppgifter med tredje part, förutom när det
             är nödvändigt för att administrera eventet, exempelvis med
             eventlokalen eller tekniska tjänsteleverantörer. Vi säkerställer att
             alla parter följer GDPR och skyddar din data.
           </p>
-        </div>
-      </details>
-      <details className={styles.details}>
-        <summary className={styles.summary}>Lagring och skydd</summary>
-        <div className={styles.content}>
+        </Dropdown>
+        <Dropdown title="Lagring och skydd">
           <p>
             Dina uppgifter lagras endast så länge det är nödvändigt för eventets
             syfte och raderas efter en rimlig tidsperiod. Vi vidtar lämpliga
             tekniska och organisatoriska åtgärder för att skydda din data från
             obehörig åtkomst, förlust eller missbruk.
           </p>
-        </div>
-      </details>
-      <details className={styles.details}>
-        <summary className={styles.summary}>Dina rättigheter</summary>
-        <div className={styles.content}>
+        </Dropdown>
+        <Dropdown title="Dina rättigheter">
           <p>Du har rätt att:</p>
           <ul>
             <li>Begära tillgång till dina personuppgifter</li>
@@ -74,38 +60,32 @@ export default function PrivacyPolicy() {
             För att utöva dessa rättigheter, vänligen kontakta oss på
             [E-postadress].
           </p>
-        </div>
-      </details>
-      <details className={styles.details}>
-        <summary className={styles.summary}>
-          Cookies och spårningstekniker
-        </summary>
-        <div className={styles.content}>
+        </Dropdown>
+        <Dropdown title="Cookies och spårningstekniker">
           <p>
             Vår webbplats kan använda cookies för att förbättra
             användarupplevelsen. Du kan när som helst ändra dina
             cookie-inställningar via din webbläsare.
           </p>
-        </div>
-      </details>
-      <details className={styles.details}>
-        <summary className={styles.summary}>Ändringar i denna policy</summary>
-        <div className={styles.content}>
+        </Dropdown>
+        <Dropdown title="Ändringar i denna policy">
           <p>
             Vi kan uppdatera denna integritetspolicy vid behov. Den senaste
             versionen kommer alltid att finnas tillgänglig på vår webbplats.
           </p>
-        </div>
-      </details>
-      <details className={styles.details}>
-        <summary className={styles.summary}>Kontakt</summary>
-        <div className={styles.content}>
+        </Dropdown>
+        <Dropdown title="Kontakt">
           <p>
             Har du frågor om vår integritetspolicy? Kontakta oss på: [Eventets
             namn] [E-postadress] [Telefonnummer]
           </p>
+        </Dropdown>
+        <div className={styles.backLink}>
+          <a href="/">
+            <ArrowLeft /> <span className={styles.backText}>Tillbaka</span>
+          </a>
         </div>
-      </details>
+      </div>
     </div>
   );
 }

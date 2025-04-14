@@ -3,9 +3,9 @@ import styles from "./Dropdown.module.css";
 
 export default function Dropdown({ title, children }) {
   return (
-    <details className={styles.dropdown}>
-      <summary className={styles.dropdownSummary}>{title}</summary>
-      <div className={styles.dropdownContent}>{children}</div>
+    <details className={styles.details}>
+      <summary className={styles.summary}>{title}</summary>
+      <div className={styles.content}>{children}</div>
     </details>
   );
 }
