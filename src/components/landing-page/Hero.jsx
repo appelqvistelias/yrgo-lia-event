@@ -11,14 +11,14 @@ export default function Hero() {
       <section className={styles.hero}>
         <div className={styles.innerWrapper}>
           <VideoWindow />
-          <Divider margin="1rem 0" />
+          <Divider />
           <div className={styles.headingWrapper}>
             <h1 className={styles.heading}>lia expressen</h1>
             <div>
               <CTAButton>sign up!</CTAButton>
             </div>
           </div>
-          <Divider margin="1rem 0" />
+          <Divider />
           <div className={styles.whenAndWhereWrapper}>
             <div className={styles.whenAndWhere}>
               <p className={styles.textStrong}>datum</p>
@@ -33,7 +33,7 @@ export default function Hero() {
               <p>visual arena</p>
             </div>
           </div>
-          <Divider margin="1rem 0" />
+          <Divider />
           <LogoBarcode />
         </div>
       </section>
@@ -54,7 +54,7 @@ export default function Hero() {
             <p>slut</p>
           </div>
         </div>
-        <Divider margin="1.9rem 0" borderTop="1px solid #ffffff" />
+        <Divider borderColor="#ffffff" />
         <div className={styles.eventInfoText}>
           <p>
             Välkomna på mingelevent för att hitta framtida medarbetare i ert
@@ -66,7 +66,7 @@ export default function Hero() {
             Varmt välkomna önskar Webbutvecklare och Digital Designer!
           </p>
         </div>
-        <Divider margin="1.9rem 0" borderTop="1px solid #ffffff" />
+        <Divider borderColor="#ffffff" />
         <div className={styles.signUpHere}>
           <h2 className={styles.signUpHereHeader}>anmäl dig här</h2>
           <div className={styles.redirectButtons}>
