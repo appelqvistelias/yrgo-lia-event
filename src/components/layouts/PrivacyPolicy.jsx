@@ -1,8 +1,15 @@
+import { useRouter } from "next/navigation";
 import styles from "./PrivacyPolicy.module.css";
 import Dropdown from "./Dropdown";
 import ArrowLeft from "@/icons/arrow-left.svg";
 
 export default function PrivacyPolicy() {
+  const router = useRouter();
+
+  const handleBack = () => {
+    router.back();
+  };
+
   return (
     <div className={styles.privacyContainer}>
       <div className={styles.privacyPolicy}>
@@ -81,7 +88,7 @@ export default function PrivacyPolicy() {
           </p>
         </Dropdown>
         <div className={styles.backLink}>
-          <a href="/">
+          <a onClick={handleBack} style={{ cursor: "pointer" }}>
             <ArrowLeft className={styles.icon} />{" "}
             <span className={styles.backText}>Tillbaka</span>
           </a>
