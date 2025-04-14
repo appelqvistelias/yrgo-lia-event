@@ -5,17 +5,19 @@ export default function Wrapper({
   alignItems = "flex-start",
 }) {
   return (
-    <div
-      className="wrapper"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding,
-        gap,
-        alignItems,
-      }}
-    >
-      {children}
-    </div>
+    <>
+      <div
+        className="wrapper"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          padding,
+          gap,
+          alignItems,
+        }}
+      >
+        {children}
+      </div>
+    </>
   );
 }
