@@ -1,0 +1,12 @@
+.divider {
+  width: 100%;
+  border-top: 1px solid var(--Greyscale-grey1, #121212);
+  margin: 1rem 0;
+}
+
+@media (min-width: 768px) {
+  .divider {
+    border-top-width: 2px;
+    margin: 3rem 0;
+  }
+}

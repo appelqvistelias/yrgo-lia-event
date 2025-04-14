@@ -1,0 +1,12 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem 1.5rem 3.75rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .mainContainer {
+    padding: 2.5rem 5rem 6.25rem 5rem;
+  }
+}

@@ -1,0 +1,260 @@
+.hero {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 0.4375rem;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 1.875rem;
+  height: 1.875rem;
+  top: 85.3%;
+  transform: translateY(-50%);
+  background: var(--Yrgo-yrgo-blue, #001a52);
+}
+
+.hero::before {
+  right: -1.4rem;
+  border-radius: 50px 0 0 50px;
+}
+
+.hero::after {
+  left: -1.4rem;
+  border-radius: 0 50px 50px 0;
+}
+
+.innerWrapper {
+  padding: 1rem 0.62rem;
+}
+
+.heading {
+  color: var(--Greyscale-grey1, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--28, 1.75rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--24, 1.5rem); /* 85.714% */
+  text-transform: uppercase;
+}
+
+.headingWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.whenAndWhereWrapper,
+.eventDetailsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.whenAndWhere,
+.eventDetailsText {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--16, 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--20, 1.25rem); /* 125% */
+  text-transform: uppercase;
+}
+
+.whenAndWhere {
+  color: var(--Greyscale-grey1, #121212);
+}
+
+.eventDetailsText {
+  color: var(--Yrgo-yrgo-white, #fff);
+}
+
+.LogoBarcodeMobile,
+.LogoBarcodeDesktop {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.LogoBarcodeMobile {
+  padding-top: 1.5rem;
+}
+
+.LogoBarcodeDesktop {
+  padding-top: 4rem;
+  display: none;
+}
+
+.underHeading {
+  color: var(--Yrgo-yrgo-white, #fff);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--28, 1.75rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--24, 1.5rem); /* 85.714% */
+  padding-bottom: 1.9rem;
+  text-transform: uppercase;
+}
+
+.eventDetails {
+  margin-top: 1.9rem;
+}
+
+.textStrong {
+  font-weight: 600;
+}
+
+.eventInfoTextMobile {
+  display: block;
+}
+
+.eventInfoTextDesktop {
+  display: none;
+}
+
+.eventInfoText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  color: var(--Yrgo-yrgo-white, #fff);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--14, 0.875rem);
+  font-style: normal;
+  font-weight: 300;
+  line-height: var(--20, 1.25rem); /* 142.857% */
+}
+
+.eventWelcome {
+  color: var(--Yrgo-yrgo-white, #fff);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--14, 0.875rem);
+  font-style: normal;
+  font-weight: 600;
+  line-height: var(--20, 1.25rem); /* 142.857% */
+  text-transform: uppercase;
+}
+
+.signUpHere {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.9rem;
+}
+
+.signUpHereHeader {
+  color: var(--Yrgo-yrgo-white, #fff);
+  font-family: Inter;
+  font-size: var(--28, 1.75rem);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5rem; /* 85.714% */
+  text-transform: uppercase;
+}
+
+.redirectButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    border-radius: 0.625rem;
+  }
+  .hero::before,
+  .hero::after {
+    width: 5rem;
+    height: 5rem;
+    top: 82.6%;
+  }
+
+  .hero::before {
+    right: -3.5rem;
+  }
+
+  .hero::after {
+    left: -3.5rem;
+  }
+  .innerWrapper {
+    padding: 3rem;
+  }
+
+  .headingWrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .heading {
+    font-size: var(--60, 3.75rem);
+    font-weight: 300;
+    line-height: var(--64, 4rem); /* 106.667% */
+  }
+
+  .whenAndWhere,
+  .eventDetailsText {
+    font-size: var(--32, 2rem);
+    line-height: var(--42, 2.625rem); /* 131.25% */
+  }
+
+  .eventDetails {
+    margin-top: 3rem;
+  }
+
+  .LogoBarcodeMobile {
+    display: none;
+  }
+
+  .LogoBarcodeDesktop {
+    display: flex;
+  }
+
+  .underHeading {
+    font-size: var(--60, 3.75rem);
+    font-weight: 300;
+    line-height: var(--64, 4rem); /* 106.667% */
+  }
+
+  .eventInfoTextMobile {
+    display: none;
+  }
+
+  .eventInfoTextDesktop {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    padding-top: 1.6rem;
+  }
+
+  .eventInfoText {
+    gap: 3rem;
+    font-size: var(--32, 2rem);
+    font-weight: 400;
+    line-height: var(--42, 2.625rem); /* 131.25% */
+  }
+
+  .eventWelcome {
+    font-size: var(--32, 2rem);
+    line-height: var(--32, 2rem); /* 100% */
+  }
+
+  .signUpHereHeader {
+    font-size: var(--60, 3.75rem);
+    font-style: normal;
+    font-weight: 300;
+    line-height: var(--64, 4rem); /* 106.667% */
+  }
+
+  .signUpHere {
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  .redirectButtons {
+    flex-direction: row;
+    gap: 3rem;
+  }
+}

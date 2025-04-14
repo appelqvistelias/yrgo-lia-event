@@ -1,0 +1,128 @@
+.privacyContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2.25rem 3.75rem;
+}
+
+.privacyPolicy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 18rem;
+}
+
+.heading {
+  color: var(--Yrgo-yrgo-white, #fff);
+  font-family: Inter;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5rem; /* 100% */
+  padding: 2rem 0;
+  text-transform: uppercase;
+}
+
+.privacyPolicy ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.backLink {
+  align-self: flex-start;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6875rem;
+  text-decoration: none;
+  width: 20rem;
+}
+
+/* Add styles for the anchor tag inside backLink */
+.backLink a {
+  display: flex;
+  align-items: center;
+  gap: 0.6875rem;
+}
+
+.backLink,
+.backLink:hover,
+.backLink:visited,
+.backLink a,
+.backLink a:hover,
+.backLink a:visited {
+  text-decoration: none;
+  color: var(--yrgo-white);
+}
+
+.icon {
+  display: block;
+}
+
+.iconBig {
+  display: none;
+}
+
+.backText {
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem;
+  text-decoration: none;
+  color: var(--yrgo-white);
+}
+
+.backText,
+.backText:hover,
+.backText:visited,
+.backText a,
+.backText a:hover,
+.backText a:visited {
+  text-decoration: none;
+  color: var(--yrgo-white);
+}
+
+@media (min-width: 768px) {
+  .heading {
+    font-size: 6rem;
+    font-weight: 400;
+    line-height: 6rem;
+    padding: 4rem 0;
+    align-self: flex-start;
+  }
+
+  .backLink {
+    display: flex;
+    height: 2.875rem;
+    align-items: center;
+    gap: 0.6875rem;
+    flex-shrink: 0;
+    width: 22rem;
+    padding-top: 4rem;
+  }
+  .icon {
+    display: none;
+  }
+
+  .iconBig {
+    display: block;
+    width: 2.875rem;
+    height: 2.875rem;
+    flex-shrink: 0;
+  }
+
+  .backText {
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25rem;
+  }
+
+  .privacyPolicy {
+    width: 70.5rem;
+    max-width: 90%;
+  }
+}

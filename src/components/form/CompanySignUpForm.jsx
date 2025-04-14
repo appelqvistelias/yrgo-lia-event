@@ -195,7 +195,7 @@ export default function CompanySignUpForm() {
       });
 
       // Show success message
-      router.push("/thank-you"); // Redirect to a thank you page or show a success message
+      router.push("/confirmation/company"); // Redirect to a thank you page or show a success message
     } catch (error) {
       console.error("Registreringsfel: ", error);
       setErrorMessage("Ett oväntat fel uppstod. Vänligen försök igen senare.");
@@ -346,7 +346,7 @@ export default function CompanySignUpForm() {
             </div>
 
             <TextAreaField
-              label="HISSPITCH OM FÖRETAGET"
+              label="BERÄTTA KORT OM FÖRETAGET?"
               placeholder="Vi är ett..."
               value={companyInfo}
               display="block"

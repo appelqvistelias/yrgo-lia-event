@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../../lib/supabase";
 import styles from "./FilteredStudents.module.css";
-import FilterDropdown from "./FilterDropdown";
+import FilterDropDown from "./FilterDropDown";
 import StudentCard from "../cards/StudentCard";
 import { formatLabel } from "../../utils/formatLabel";
 
@@ -188,7 +188,7 @@ const FilteredStudents = () => {
           <div>Error loading data: {error}</div>
         ) : (
           <div>
-            <FilterDropdown
+            <FilterDropDown
               title="Filtrera"
               options={allFilterOptions}
               onFilterChange={(selected) => {

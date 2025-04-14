@@ -1,6 +1,6 @@
-import styles from "./TextAreaField.module.css";
+import styles from "./TextareaField.module.css";
 
-export default function TextAreaField({
+export default function TextareaField({
   label,
   placeholder,
   value,
