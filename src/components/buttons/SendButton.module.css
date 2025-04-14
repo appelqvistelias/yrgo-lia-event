@@ -18,12 +18,6 @@
   text-transform: uppercase;
 }
 
-.sendButton:hover {
-  color: var(--Yrgo-yrgo-red, #e51236);
-  background-color: var(--Yrgo-yrgo-white, #ffffff);
-  border: 1px solid var(--Yrgo-yrgo-white, #ffffff);
-}
-
 .sendButton:active {
   color: var(--Yrgo-yrgo-red, #e51236);
   background-color: var(--Yrgo-yrgo-white, #ffffff);
@@ -45,5 +39,11 @@
 
     font-size: var(--48, 3rem);
     line-height: var(--52, 3.25rem);
+  }
+
+  .sendButton:hover {
+    color: var(--Yrgo-yrgo-red, #e51236);
+    background-color: var(--Yrgo-yrgo-white, #ffffff);
+    border: 1px solid var(--Yrgo-yrgo-white, #ffffff);
   }
 }
