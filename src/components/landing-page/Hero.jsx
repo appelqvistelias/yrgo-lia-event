@@ -2,6 +2,7 @@ import styles from "./Hero.module.css";
 import VideoWindow from "@/components/landing-page/VideoWindow";
 import Divider from "@/components/layouts/Divider";
 import CTAButton from "@/components/buttons/CTAButton";
+import LogoBarcode from "@/icons/logo-barcode.svg";
 
 export default function Hero() {
   return (
@@ -31,6 +32,7 @@ export default function Hero() {
           </div>
         </div>
         <Divider margin="1rem 0" />
+        <LogoBarcode />
       </div>
     </section>
   );
