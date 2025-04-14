@@ -9,7 +9,7 @@ import SendButton from "../buttons/SendButton";
 import InputField from "../input-fields/InputField";
 import HeaderWithLogo from "../layouts/HeaderWithLogo";
 import PolicyCheckbox from "./PolicyCheckbox";
-import TextAreaField from "../input-fields/TextAreaField";
+import TextAreaField from "../input-fields/TextareaField";
 import ImageUpload from "../input-fields/ImageUpload";
 
 // Function to validate email format
