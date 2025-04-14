@@ -12,9 +12,10 @@ import { formatLabel } from "../../utils/formatLabel";
 // - options: Array of objects with id and label properties
 // - onFilterChange: Callback function that receives selected options
 export default function FilterDropDown({ title, options, onFilterChange }) {
-  // State for tracking if dropdown is open/closed
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  // Separate states for each category
+  const [selectedPrograms, setSelectedPrograms] = useState([]);
+  const [selectedSpecializations, setSelectedSpecializations] = useState([]);
   const dropdownRef = useRef(null); // Ref for detecting clicks outside the dropdown
 
   // Toggle dropdown open/closed state
@@ -22,21 +23,26 @@ export default function FilterDropDown({ title, options, onFilterChange }) {
     setIsOpen(!isOpen);
   };
 
-  // Handle checkbox selection/deselection
-  const handleCheckboxChange = (optionId) => {
-    let newSelectedOptions;
-
-    // Remove option if already selected, add if not
-    if (selectedOptions.includes(optionId)) {
-      newSelectedOptions = selectedOptions.filter((id) => id !== optionId);
-    } else {
-      newSelectedOptions = [...selectedOptions, optionId];
+  // Updated handleCheckboxChange
+  const handleCheckboxChange = (optionId, category) => {
+    if (category === "Program") {
+      const newSelected = selectedPrograms.includes(optionId)
+        ? selectedPrograms.filter((id) => id !== optionId)
+        : [...selectedPrograms, optionId];
+      setSelectedPrograms(newSelected);
+      onFilterChange(newSelected, category);
+    } else if (category === "Inriktning") {
+      const newSelected = selectedSpecializations.includes(optionId)
+        ? selectedSpecializations.filter((id) => id !== optionId)
+        : [...selectedSpecializations, optionId];
+      setSelectedSpecializations(newSelected);
+      onFilterChange(newSelected, category);
     }
-
-    // Update local state and notify parent component
-    setSelectedOptions(newSelectedOptions);
-    onFilterChange(newSelectedOptions);
   };
+
+  // Calculate total number of selected options
+  const totalSelected =
+    selectedPrograms.length + selectedSpecializations.length;
 
   // Effect for handling clicks outside the dropdown to close it
   useEffect(() => {
@@ -67,7 +73,7 @@ export default function FilterDropDown({ title, options, onFilterChange }) {
         onClick={toggleDropdown}
       >
         <span className={styles.buttonText}>
-          {title} {selectedOptions.length > 0 && `(${selectedOptions.length})`}
+          {title} {totalSelected > 0 && `(${totalSelected})`}
         </span>
         {isOpen ? (
           <XIcon className={styles.icon} />
@@ -89,8 +95,14 @@ export default function FilterDropDown({ title, options, onFilterChange }) {
                       id={`filter-${option.id}`}
                       type="checkbox"
                       className={styles.checkbox}
-                      checked={selectedOptions.includes(option.id)}
-                      onChange={() => handleCheckboxChange(option.id)}
+                      checked={
+                        category.category === "Program"
+                          ? selectedPrograms.includes(option.id)
+                          : selectedSpecializations.includes(option.id)
+                      }
+                      onChange={() =>
+                        handleCheckboxChange(option.id, category.category)
+                      }
                     />
                     <label
                       htmlFor={`filter-${option.id}`}

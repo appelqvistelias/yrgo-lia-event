@@ -206,17 +206,13 @@ const FilteredStudents = () => {
             <FilterDropDown
               title="Filtrera"
               options={allFilterOptions}
-              onFilterChange={(selected) => {
-                // Split selected options into programs and specializations
-                const selectedPrograms = selected.filter((id) =>
-                  programOptions.some((prog) => prog.id === id)
-                );
-                const selectedSpecializations = selected.filter((id) =>
-                  specializationOptions.some((spec) => spec.id === id)
-                );
-
-                handleProgramFilterChange(selectedPrograms);
-                handleSpecializationFilterChange(selectedSpecializations);
+              onFilterChange={(selected, category) => {
+                // Hantera filter baserat på kategori
+                if (category === "Program") {
+                  handleProgramFilterChange(selected);
+                } else if (category === "Inriktning") {
+                  handleSpecializationFilterChange(selected);
+                }
               }}
             />
           </div>
