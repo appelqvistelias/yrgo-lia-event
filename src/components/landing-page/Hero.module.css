@@ -10,7 +10,7 @@
   position: absolute;
   width: 1.875rem;
   height: 1.875rem;
-  top: 84.55%;
+  top: 85.3%;
   transform: translateY(-50%);
   background: var(--Yrgo-yrgo-blue, #001a52);
 }
@@ -52,16 +52,40 @@
   gap: 0.5rem;
 }
 
-.whenAndWhere {
+.whenAndWhere,
+.eventDetailsText {
   display: flex;
   justify-content: space-between;
-  color: var(--Greyscale-grey1, #121212);
   font-family: var(--font-family-Inter, Inter);
   font-size: var(--16, 1rem);
   font-style: normal;
   font-weight: 400;
   line-height: var(--20, 1.25rem); /* 125% */
   text-transform: uppercase;
+}
+
+.whenAndWhere {
+  color: var(--Greyscale-grey1, #121212);
+}
+
+.eventDetailsText {
+  color: var(--Yrgo-yrgo-white, #fff);
+}
+
+.LogoBarcodeMobile,
+.LogoBarcodeDesktop {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.LogoBarcodeMobile {
+  padding-top: 1.5rem;
+}
+
+.LogoBarcodeDesktop {
+  padding-top: 4rem;
+  display: none;
 }
 
 .underHeading {
@@ -81,18 +105,6 @@
 
 .textStrong {
   font-weight: 600;
-}
-
-.eventDetailsText {
-  display: flex;
-  justify-content: space-between;
-  color: var(--Yrgo-yrgo-white, #fff);
-  font-family: var(--font-family-Inter, Inter);
-  font-size: var(--16, 1rem);
-  font-style: normal;
-  font-weight: 400;
-  line-height: var(--20, 1.25rem); /* 125% */
-  text-transform: uppercase;
 }
 
 .eventInfoText {
@@ -141,4 +153,60 @@
 }
 
 @media (min-width: 768px) {
+  .hero {
+    border-radius: 0.625rem;
+  }
+  .hero::before,
+  .hero::after {
+    width: 5rem;
+    height: 5rem;
+    top: 82.6%;
+  }
+
+  .hero::before {
+    right: -3.5rem;
+  }
+
+  .hero::after {
+    left: -3.5rem;
+  }
+  .innerWrapper {
+    padding: 3rem;
+  }
+
+  .headingWrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .heading {
+    font-size: var(--60, 3.75rem);
+    font-weight: 300;
+    line-height: var(--64, 4rem); /* 106.667% */
+  }
+
+  .whenAndWhere,
+  .eventDetailsText {
+    font-size: var(--32, 2rem);
+    line-height: var(--42, 2.625rem); /* 131.25% */
+  }
+
+  .eventDetails {
+    margin-top: 3rem;
+  }
+
+  .LogoBarcodeMobile {
+    display: none;
+  }
+
+  .LogoBarcodeDesktop {
+    display: flex;
+  }
+
+  .underHeading {
+    font-size: var(--60, 3.75rem);
+    font-weight: 300;
+    line-height: var(--64, 4rem); /* 106.667% */
+  }
 }

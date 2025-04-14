@@ -2,7 +2,10 @@ import styles from "./Hero.module.css";
 import VideoWindow from "@/components/landing-page/VideoWindow";
 import Divider from "@/components/layouts/Divider";
 import CTAButton from "@/components/buttons/CTAButton";
-import LogoBarcode from "@/icons/logo-barcode.svg";
+import YrgoLogoMobile from "@/icons/hero-yrgo-mobile.svg";
+import BarcodeMobile from "@/icons/hero-barcode-mobile.svg";
+import YrgoLogoDesktop from "@/icons/hero-yrgo-desktop.svg";
+import BarcodeDesktop from "@/icons/hero-barcode-desktop.svg";
 import RedirectButton from "@/components/buttons/RedirectButton";
 
 export default function Hero() {
@@ -34,7 +37,14 @@ export default function Hero() {
             </div>
           </div>
           <Divider />
-          <LogoBarcode />
+          <div className={styles.LogoBarcodeMobile}>
+            <YrgoLogoMobile />
+            <BarcodeMobile />
+          </div>
+          <div className={styles.LogoBarcodeDesktop}>
+            <YrgoLogoDesktop />
+            <BarcodeDesktop />
+          </div>
         </div>
       </section>
 
@@ -54,7 +64,7 @@ export default function Hero() {
             <p>slut</p>
           </div>
         </div>
-        <Divider borderColor="#ffffff" />
+        <Divider margin="1.9rem 0" borderColor="#ffffff" />
         <div className={styles.eventInfoText}>
           <p>
             Välkomna på mingelevent för att hitta framtida medarbetare i ert
@@ -66,7 +76,7 @@ export default function Hero() {
             Varmt välkomna önskar Webbutvecklare och Digital Designer!
           </p>
         </div>
-        <Divider borderColor="#ffffff" />
+        <Divider margin="1.9rem 0" borderColor="#ffffff" />
         <div className={styles.signUpHere}>
           <h2 className={styles.signUpHereHeader}>anmäl dig här</h2>
           <div className={styles.redirectButtons}>
