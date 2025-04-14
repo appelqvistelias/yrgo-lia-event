@@ -1,6 +1,28 @@
 .section {
+  position: relative;
   background-color: #ffffff;
   border-radius: 0.4375rem;
+}
+
+.section::before,
+.section::after {
+  content: "";
+  position: absolute;
+  width: 1.875rem;
+  height: 1.875rem;
+  top: 93.5%;
+  transform: translateY(-50%);
+  background: var(--Yrgo-yrgo-blue, #001a52);
+}
+
+.section::before {
+  right: -1.4rem;
+  border-radius: 50px 0 0 50px;
+}
+
+.section::after {
+  left: -1.4rem;
+  border-radius: 0 50px 50px 0;
 }
 
 .innerWrapper {
