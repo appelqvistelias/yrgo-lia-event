@@ -1,11 +1,11 @@
-.section {
+.hero {
   position: relative;
   background-color: #ffffff;
   border-radius: 0.4375rem;
 }
 
-.section::before,
-.section::after {
+.hero::before,
+.hero::after {
   content: "";
   position: absolute;
   width: 1.875rem;
@@ -15,12 +15,12 @@
   background: var(--Yrgo-yrgo-blue, #001a52);
 }
 
-.section::before {
+.hero::before {
   right: -1.4rem;
   border-radius: 50px 0 0 50px;
 }
 
-.section::after {
+.hero::after {
   left: -1.4rem;
   border-radius: 0 50px 50px 0;
 }
@@ -39,19 +39,20 @@
   text-transform: uppercase;
 }
 
-.textWrapper {
+.headingWrapper {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.eventInfoWrapper {
+.whenAndWhereWrapper,
+.eventDetailsWrapper {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.eventInfo {
+.whenAndWhere {
   display: flex;
   justify-content: space-between;
   color: var(--Greyscale-grey1, #121212);
@@ -63,6 +64,78 @@
   text-transform: uppercase;
 }
 
-.eventTextStrong {
+.underHeading {
+  color: var(--Yrgo-yrgo-white, #fff);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--28, 1.75rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--24, 1.5rem); /* 85.714% */
+  padding-bottom: 1.9rem;
+  text-transform: uppercase;
+}
+
+.eventDetails {
+  margin-top: 1.9rem;
+}
+
+.textStrong {
   font-weight: 600;
+}
+
+.eventDetailsText {
+  display: flex;
+  justify-content: space-between;
+  color: var(--Yrgo-yrgo-white, #fff);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--16, 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--20, 1.25rem); /* 125% */
+  text-transform: uppercase;
+}
+
+.eventInfoText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  color: var(--Yrgo-yrgo-white, #fff);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--14, 0.875rem);
+  font-style: normal;
+  font-weight: 300;
+  line-height: var(--20, 1.25rem); /* 142.857% */
+}
+
+.eventWelcome {
+  color: var(--Yrgo-yrgo-white, #fff);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--14, 0.875rem);
+  font-style: normal;
+  font-weight: 600;
+  line-height: var(--20, 1.25rem); /* 142.857% */
+  text-transform: uppercase;
+}
+
+.signUpHere {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.9rem;
+}
+
+.signUpHereHeader {
+  color: var(--Yrgo-yrgo-white, #fff);
+  font-family: Inter;
+  font-size: var(--28, 1.75rem);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5rem; /* 85.714% */
+  text-transform: uppercase;
+}
+
+.redirectButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
