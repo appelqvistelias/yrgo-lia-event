@@ -15,15 +15,11 @@
   width: 100%;
 }
 
-/* .logo {
+.smallLogo {
+  display: block;
   width: 1.5625rem;
   height: 1.5rem;
   flex-shrink: 0;
-  display: block;
-} */
-
-.smallLogo {
-  display: block;
 }
 
 .bigLogo {
@@ -55,10 +51,7 @@
 
   .bigLogo {
     display: block;
-  }
-  /* .logo {
     width: 4.0625rem;
     height: 3.9375rem;
-    display: block;
-  } */
+  }
 }
