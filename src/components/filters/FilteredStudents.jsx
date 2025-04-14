@@ -198,7 +198,7 @@ const FilteredStudents = () => {
       <div className={styles.header}>
         <h1 className={styles.title}>Studenter</h1>
         {isLoading ? (
-          <div>Loading data...</div>
+          <div>Laddar...</div>
         ) : error ? (
           <div>Error loading data: {error}</div>
         ) : (
@@ -233,7 +233,9 @@ const FilteredStudents = () => {
             />
           ))
         ) : !isLoading && filteredStudents.length === 0 ? (
-          <p>No students match your selected filters.</p>
+          <p className={styles.notFound}>
+            Inga studenter hittades med de gjorda valen.
+          </p>
         ) : null}
       </div>
     </div>

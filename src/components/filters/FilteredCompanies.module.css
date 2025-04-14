@@ -24,6 +24,14 @@
   text-transform: uppercase;
 }
 
+.notFound {
+  color: var(--yrgo-white);
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5rem; /* 100% */
+}
+
 .cardsContainer {
   display: flex;
   flex-wrap: wrap;
