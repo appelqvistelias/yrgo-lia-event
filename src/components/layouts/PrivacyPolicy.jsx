@@ -82,7 +82,8 @@ export default function PrivacyPolicy() {
         </Dropdown>
         <div className={styles.backLink}>
           <a href="/">
-            <ArrowLeft /> <span className={styles.backText}>Tillbaka</span>
+            <ArrowLeft className={styles.icon} />{" "}
+            <span className={styles.backText}>Tillbaka</span>
           </a>
         </div>
       </div>
