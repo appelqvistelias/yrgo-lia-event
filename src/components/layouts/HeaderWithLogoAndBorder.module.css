@@ -15,11 +15,15 @@
   width: 100%;
 }
 
-.logo {
+.smallLogo {
+  display: block;
   width: 1.5625rem;
   height: 1.5rem;
   flex-shrink: 0;
-  display: block;
+}
+
+.bigLogo {
+  display: none;
 }
 
 .headline {
@@ -41,9 +45,13 @@
     font-style: normal;
     line-height: 4rem;
   }
-  .logo {
+  .smallLogo {
+    display: none;
+  }
+
+  .bigLogo {
+    display: block;
     width: 4.0625rem;
     height: 3.9375rem;
-    display: block;
   }
 }
