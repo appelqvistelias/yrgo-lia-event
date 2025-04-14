@@ -13,12 +13,7 @@ const PolicyCheckbox = ({ accept, onChange }) => {
       />
       <label className={styles.label} htmlFor="acceptedTerms">
         Jag har tagit del av informationen om min personliga integritet.{" "}
-        <a
-          href="/privacy-policy"
-          target="_blank"
-          rel="noreferrer"
-          className={styles.link}
-        >
+        <a href="/privacy-policy" className={styles.link}>
           Läs vår integritetspolicy.
         </a>
       </label>
