@@ -107,6 +107,14 @@
   font-weight: 600;
 }
 
+.eventInfoTextMobile {
+  display: block;
+}
+
+.eventInfoTextDesktop {
+  display: none;
+}
+
 .eventInfoText {
   display: flex;
   flex-direction: column;
@@ -208,5 +216,45 @@
     font-size: var(--60, 3.75rem);
     font-weight: 300;
     line-height: var(--64, 4rem); /* 106.667% */
+  }
+
+  .eventInfoTextMobile {
+    display: none;
+  }
+
+  .eventInfoTextDesktop {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    padding-top: 1.6rem;
+  }
+
+  .eventInfoText {
+    gap: 3rem;
+    font-size: var(--32, 2rem);
+    font-weight: 400;
+    line-height: var(--42, 2.625rem); /* 131.25% */
+  }
+
+  .eventWelcome {
+    font-size: var(--32, 2rem);
+    line-height: var(--32, 2rem); /* 100% */
+  }
+
+  .signUpHereHeader {
+    font-size: var(--60, 3.75rem);
+    font-style: normal;
+    font-weight: 300;
+    line-height: var(--64, 4rem); /* 106.667% */
+  }
+
+  .signUpHere {
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  .redirectButtons {
+    flex-direction: row;
+    gap: 3rem;
   }
 }

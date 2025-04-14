@@ -65,23 +65,48 @@ export default function Hero() {
           </div>
         </div>
         <Divider margin="1.9rem 0" borderColor="#ffffff" />
-        <div className={styles.eventInfoText}>
-          <p>
-            Välkomna på mingelevent för att hitta framtida medarbetare i ert
-            företag eller bara jobba tillsammans under LIA. Ni kommer att träffa
-            Webbutvecklare och Digital Designers från Yrgo som vill visa vad de
-            har jobbat med under året och vi hoppas att ni hittar en match
-          </p>
-          <p className={styles.eventWelcome}>
-            Varmt välkomna önskar Webbutvecklare och Digital Designer!
-          </p>
+        <div className={styles.eventInfoTextMobile}>
+          <div className={styles.eventInfoText}>
+            <p>
+              Välkomna på mingelevent för att hitta framtida medarbetare i ert
+              företag eller bara jobba tillsammans under LIA. Ni kommer att
+              träffa Webbutvecklare och Digital Designers från Yrgo som vill
+              visa vad de har jobbat med under året och vi hoppas att ni hittar
+              en match
+            </p>
+            <p className={styles.eventWelcome}>
+              Varmt välkomna önskar Webbutvecklare och Digital Designer!
+            </p>
+          </div>
+          <Divider margin="1.9rem 0" borderColor="#ffffff" />
+          <div className={styles.signUpHere}>
+            <h2 className={styles.signUpHereHeader}>anmäl dig här</h2>
+            <div className={styles.redirectButtons}>
+              <RedirectButton href="/company-signup">företag</RedirectButton>
+              <RedirectButton href="/student-signup">studenter</RedirectButton>
+            </div>
+          </div>
         </div>
-        <Divider margin="1.9rem 0" borderColor="#ffffff" />
-        <div className={styles.signUpHere}>
-          <h2 className={styles.signUpHereHeader}>anmäl dig här</h2>
-          <div className={styles.redirectButtons}>
-            <RedirectButton href="/company-signup">företag</RedirectButton>
-            <RedirectButton href="/student-signup">studenter</RedirectButton>
+
+        <div className={styles.eventInfoTextDesktop}>
+          <div className={styles.eventInfoText}>
+            <p>
+              Välkomna på mingelevent för att hitta framtida medarbetare i ert
+              företag eller bara jobba tillsammans under LIA. Ni kommer att
+              träffa Webbutvecklare och Digital Designers från Yrgo som vill
+              visa vad de har jobbat med under året och vi hoppas att ni hittar
+              en match
+            </p>
+            <p className={styles.eventWelcome}>
+              Varmt välkomna önskar Webbutvecklare och Digital Designer!
+            </p>
+          </div>
+          <div className={styles.signUpHere}>
+            <h2 className={styles.signUpHereHeader}>anmäl dig här</h2>
+            <div className={styles.redirectButtons}>
+              <RedirectButton href="/company-signup">företag</RedirectButton>
+              <RedirectButton href="/student-signup">studenter</RedirectButton>
+            </div>
           </div>
         </div>
       </section>
