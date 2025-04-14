@@ -1,0 +1,4 @@
+.divider {
+  border-top: 1px solid var(--Greyscale-grey1, #121212);
+  width: 100%;
+}
