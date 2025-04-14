@@ -346,7 +346,7 @@ export default function CompanySignUpForm() {
             </div>
 
             <TextAreaField
-              label="HISSPITCH OM FÖRETAGET"
+              label="BERÄTTA KORT OM FÖRETAGET?"
               placeholder="Vi är ett..."
               value={companyInfo}
               display="block"
