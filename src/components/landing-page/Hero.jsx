@@ -9,9 +9,27 @@ export default function Hero() {
       <div className={styles.innerWrapper}>
         <VideoWindow />
         <Divider margin="1rem 0" />
-        <h1 className={styles.heading}>lia expressen</h1>
-        <CTAButton>SIGN UP!</CTAButton>
+        <div className={styles.textWrapper}>
+          <h1 className={styles.heading}>lia expressen</h1>
+          <div>
+            <CTAButton>sign up!</CTAButton>
+          </div>
+        </div>
         <Divider margin="1rem 0" />
+        <div className={styles.eventInfoWrapper}>
+          <div className={styles.eventInfo}>
+            <p className={styles.eventTextStrong}>datum</p>
+            <p>23 april</p>
+          </div>
+          <div className={styles.eventInfo}>
+            <p className={styles.eventTextStrong}>tid</p>
+            <p>13:00 – 15:00</p>
+          </div>
+          <div className={styles.eventInfo}>
+            <p className={styles.eventTextStrong}>var?</p>
+            <p>visual arena</p>
+          </div>
+        </div>
         <Divider margin="1rem 0" />
       </div>
     </section>

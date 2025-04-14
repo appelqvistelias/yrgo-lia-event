@@ -16,3 +16,31 @@
   line-height: var(--24, 1.5rem); /* 85.714% */
   text-transform: uppercase;
 }
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.eventInfoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.eventInfo {
+  display: flex;
+  justify-content: space-between;
+  color: var(--Greyscale-grey1, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--16, 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--20, 1.25rem); /* 125% */
+  text-transform: uppercase;
+}
+
+.eventTextStrong {
+  font-weight: 600;
+}
