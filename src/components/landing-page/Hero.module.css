@@ -1,0 +1,17 @@
+.section {
+  background-color: #ffffff;
+}
+
+.innerWrapper {
+  padding: 1rem 0.62rem;
+}
+
+.heading {
+  color: var(--Greyscale-grey1, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--28, 1.75rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--24, 1.5rem); /* 85.714% */
+  text-transform: uppercase;
+}
