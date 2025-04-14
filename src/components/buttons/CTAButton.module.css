@@ -10,6 +10,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: var(--24, 1.5rem); /* 100% */
+  text-transform: uppercase;
 }
 
 .button:active {
