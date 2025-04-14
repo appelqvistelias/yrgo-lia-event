@@ -243,7 +243,7 @@ export default function StudentSignUpForm() {
       });
 
       // Show success message
-      router.push("/thank-you"); // Redirect to a thank you page or show a success message
+      router.push("/confirmation/student"); // Redirect to a thank you page or show a success message
     } catch (error) {
       console.error("Registreringsfel: ", error);
       setErrorMessage("Ett oväntat fel uppstod: " + error.message);
