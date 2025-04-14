@@ -14,4 +14,7 @@
 }
 
 @media (min-width: 768px) {
+  .videoContainer {
+    height: 41.1875rem;
+  }
 }
