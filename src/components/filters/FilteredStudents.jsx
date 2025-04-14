@@ -45,7 +45,6 @@ const FilteredStudents = () => {
         if (specializationsError) throw specializationsError;
 
         // Fetch students with their related data
-        // Note: Remember to add images as well!
         const { data: studentsData, error: studentsError } =
           await supabase.from("students").select(`
             id, 
@@ -53,6 +52,7 @@ const FilteredStudents = () => {
             bio,
             linkedin,
             portfolio,
+            user_id,
             student_programs!inner (
               program_id,
               programs (id, program_name)
@@ -64,6 +64,15 @@ const FilteredStudents = () => {
           `);
 
         if (studentsError) throw studentsError;
+
+        // Fetch images for all students
+        const { data: imagesData, error: imagesError } = await supabase
+          .from("images")
+          .select("id, url, user_id");
+
+        if (imagesError) {
+          console.error("Error fetching images:", imagesError);
+        }
 
         // Format the options for dropdowns
         const formattedPrograms = programsData.map((program) => ({
@@ -80,12 +89,17 @@ const FilteredStudents = () => {
 
         // Process student data to make it easier to work with
         const processedStudents = studentsData.map((student) => {
+          // Find matching image for student
+          const studentImage = imagesData?.find(
+            (img) => img.user_id === student.user_id
+          );
+
           // Extract program IDs and names
           const programIds = student.student_programs.map((sp) =>
             sp.program_id.toString()
           );
-          const programNames = student.student_programs.map(
-            (sp) => sp.programs.program_name
+          const programNames = student.student_programs.map((sp) =>
+            formatLabel(sp.programs.program_name)
           );
 
           // Extract and format specialization IDs and names
@@ -93,7 +107,7 @@ const FilteredStudents = () => {
             ss.specialization_id.toString()
           );
           const specializationNames = student.student_specializations.map(
-            (ss) => ss.specializations.specialization_name
+            (ss) => formatLabel(ss.specializations.specialization_name)
           );
 
           // Return a flattened student object
@@ -108,6 +122,7 @@ const FilteredStudents = () => {
             program_names: programNames,
             specialization_ids: specializationIds,
             specialization_names: specializationNames,
+            image_url: studentImage?.url || null, // Add image URL
           };
         });
 
@@ -183,7 +198,7 @@ const FilteredStudents = () => {
       <div className={styles.header}>
         <h1 className={styles.title}>Studenter</h1>
         {isLoading ? (
-          <div>Loading data...</div>
+          <div>Laddar...</div>
         ) : error ? (
           <div>Error loading data: {error}</div>
         ) : (
@@ -191,17 +206,13 @@ const FilteredStudents = () => {
             <FilterDropDown
               title="Filtrera"
               options={allFilterOptions}
-              onFilterChange={(selected) => {
-                // Split selected options into programs and specializations
-                const selectedPrograms = selected.filter((id) =>
-                  programOptions.some((prog) => prog.id === id)
-                );
-                const selectedSpecializations = selected.filter((id) =>
-                  specializationOptions.some((spec) => spec.id === id)
-                );
-
-                handleProgramFilterChange(selectedPrograms);
-                handleSpecializationFilterChange(selectedSpecializations);
+              onFilterChange={(selected, category) => {
+                // Hantera filter baserat på kategori
+                if (category === "Program") {
+                  handleProgramFilterChange(selected);
+                } else if (category === "Inriktning") {
+                  handleSpecializationFilterChange(selected);
+                }
               }}
             />
           </div>
@@ -217,12 +228,14 @@ const FilteredStudents = () => {
               studentName={student.first_name}
               education={student.program_names[0]} // Assuming first program
               infoText={student.bio}
-              // image prop will go here
+              image={student.image_url} // Add image prop
               fieldOfInterest={student.specialization_names}
             />
           ))
         ) : !isLoading && filteredStudents.length === 0 ? (
-          <p>No students match your selected filters.</p>
+          <p className={styles.notFound}>
+            Inga studenter hittades med de gjorda valen.
+          </p>
         ) : null}
       </div>
     </div>
