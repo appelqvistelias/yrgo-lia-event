@@ -37,8 +37,12 @@
     font-weight: 400;
     line-height: var(--52, 3.25rem); /* 108.333% */
   }
+  .button:active {
+    border: 2px solid var(--Yrgo-yrgo-white, #fff);
+  }
+
   .button:hover {
-    border: 1px solid var(--Yrgo-yrgo-white, #fff);
+    border: 2px solid var(--Yrgo-yrgo-white, #fff);
     background: #001a52;
     color: #ffffff;
   }
