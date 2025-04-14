@@ -4,7 +4,6 @@
   align-items: flex-start;
   background-color: var(--yrgo-white);
   border-bottom: 1px solid var(--yrgo-blue);
-  max-width: 25rem;
   width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -77,4 +76,27 @@
   padding: 1rem 0.375rem;
 }
 
+@media (min-width: 768px) {
+  .details {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .summary {
+    padding: 1.5rem 2.5rem;
+    font-size: 2rem;
+    line-height: 2.625rem;
+  }
+  .content {
+    display: flex;
+    width: 100%;
+    padding: 1.5rem 2.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
 
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
+}

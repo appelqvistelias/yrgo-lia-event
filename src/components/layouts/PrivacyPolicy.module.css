@@ -99,4 +99,9 @@
     font-weight: 400;
     line-height: 1.25rem;
   }
+
+  .privacyPolicy {
+    width: 70.5rem;
+    max-width: 90%;
+  }
 }
