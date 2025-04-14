@@ -76,6 +76,8 @@
     font-size: 6rem;
     font-weight: 400;
     line-height: 6rem;
+    padding: 4rem 0;
+    align-self: flex-start;
   }
 
   .backLink {
@@ -84,7 +86,8 @@
     align-items: center;
     gap: 0.6875rem;
     flex-shrink: 0;
-    width: 20rem;
+    width: 22rem;
+    padding-top: 4rem;
   }
 
   .icon {
