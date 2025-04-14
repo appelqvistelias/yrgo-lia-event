@@ -70,8 +70,8 @@ export default function Hero() {
         <div className={styles.signUpHere}>
           <h2 className={styles.signUpHereHeader}>anmäl dig här</h2>
           <div className={styles.redirectButtons}>
-            <RedirectButton href="">företag</RedirectButton>
-            <RedirectButton href="">studenter</RedirectButton>
+            <RedirectButton href="/company-signup">företag</RedirectButton>
+            <RedirectButton href="/student-signup">studenter</RedirectButton>
           </div>
         </div>
       </section>
