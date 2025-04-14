@@ -1,5 +1,6 @@
 .section {
   background-color: #ffffff;
+  border-radius: 0.4375rem;
 }
 
 .innerWrapper {

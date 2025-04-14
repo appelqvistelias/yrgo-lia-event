@@ -12,6 +12,7 @@ export default function Hero() {
         <h1 className={styles.heading}>lia expressen</h1>
         <CTAButton>SIGN UP!</CTAButton>
         <Divider margin="1rem 0" />
+        <Divider margin="1rem 0" />
       </div>
     </section>
   );
