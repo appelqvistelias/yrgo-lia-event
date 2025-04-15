@@ -15,7 +15,9 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       <div className={styles.container}>
         <div className={styles.logoMobile}>
-          <YrgoLogoMobile />
+          <a href="/">
+            <YrgoLogoMobile />
+          </a>
         </div>
 
         <button
