@@ -14,7 +14,7 @@ import HeaderWithLogo from "../layouts/HeaderWithLogo";
 import PolicyCheckbox from "./PolicyCheckbox";
 import TextAreaField from "../input-fields/TextareaField";
 import ImageUpload from "../input-fields/ImageUpload";
-import styles from "./StudentSignUpForm.module.css";
+import styles from "./StudentForm.module.css";
 
 export default function StudentForm({
   initialValues,
