@@ -26,6 +26,7 @@
   position: absolute;
   background: var(--Background-bg-white, #fff);
   padding: 1.5rem 1rem;
+  border-radius: 0 0 0.625rem 0.625rem;
   top: 100%;
   left: 0;
   right: 0;
