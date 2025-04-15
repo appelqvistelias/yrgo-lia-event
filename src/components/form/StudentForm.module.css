@@ -65,7 +65,7 @@
 .fieldset-choices {
   all: unset;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 1fr;
   justify-content: space-between;
   align-items: center;
   width: 100%;
