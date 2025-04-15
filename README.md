@@ -22,7 +22,7 @@ yarn install
 
 ### Database Setup
 
-Create the following tables in your Supabase database or Postgres instance. These tables store the essential data for companies, students, programs, and specializations.
+Create the following tables in your Supabase database. These tables store the essential data for companies, students, programs, and specializations.
 
 ```SQL
 -- programs
@@ -171,3 +171,14 @@ yarn dev
 ```
 
 This will start the Next.js development server, and you can access the app at `http://localhost:3000`.
+
+## Acknowledgments
+
+This project utilizes the following tools and libraries:
+
+- **Next.js** - A React framework that powers the frontend and handles server-side rendering.
+- **Supabase** - Provides authentication and database services for the application.
+- **ESLint** - Used for maintaining code quality and consistency throughout the project.
+- **SVGR** - Helps in importing SVGs as React components efficiently.
+
+We also appreciate the open-source community for making these tools available!
