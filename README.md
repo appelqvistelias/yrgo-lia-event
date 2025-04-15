@@ -8,7 +8,7 @@ This project utilizes **Next.js** alongside **Supabase** for its core structure.
 
 ### Install Dependencies
 
-First, install the project dependencies by running:
+This project uses **Next.js** without TypeScript, Tailwind CSS, or Turbopack. First, install the project dependencies by running:
 
 ```bash
 npm install
