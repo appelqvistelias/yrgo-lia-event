@@ -32,7 +32,7 @@
   height: 1.875rem;
   background-color: var(--yrgo-blue);
   border-radius: 50%;
-  top: 60%;
+  top: 57%;
 }
 
 /* Position cutouts */
@@ -56,5 +56,10 @@
 
   .cardFiller {
     width: 100%;
+  }
+  .cardBackground::before,
+  .cardBackground::after {
+    width: 2rem;
+    height: 2rem;
   }
 }
