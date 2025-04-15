@@ -252,7 +252,8 @@ export default function EditStudentProfile() {
   return (
     <StudentForm
       initialValues={initialValues}
-      headerTitle="Edit your profile"
+      headerTitle="REDIGERA PROFIL"
+      buttonText="Spara ändringar"
       onSubmit={handleUpdate}
       isEdit={true}
     />

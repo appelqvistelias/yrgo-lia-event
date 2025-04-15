@@ -199,8 +199,8 @@ export default function StudentForm({
               type="password"
               placeholder={
                 isEdit
-                  ? "Leave empty if you don't want to change"
-                  : "Choose a strong password"
+                  ? "Lämna tomt om du inte vill ändra lösenord"
+                  : "Välj ett säkert lösenord"
               }
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -298,18 +298,18 @@ export default function StudentForm({
                   placeholder="Jag studerar..."
                   value={studentBio}
                   display="block"
-                  paragraphText="(Displayed in student profile for companies)"
+                  paragraphText="(Visas i studentprofil för företag)"
                   onChange={(e) => setStudentBio(e.target.value)}
                 />
                 <div className={styles["portfolio-mobile"]}>
                   <TextAreaField
                     label="PORTFOLIO/LINKEDIN"
-                    placeholder="Link to portfolio/Github"
+                    placeholder="Länk till Portfolio/Github"
                     value={portfolio}
                     onChange={(e) => setPortfolio(e.target.value)}
                   />
                   <TextAreaField
-                    placeholder="Link to LinkedIn"
+                    placeholder="Länk till LinkedIn"
                     value={linkedIn}
                     onChange={(e) => setLinkedIn(e.target.value)}
                   />
@@ -318,13 +318,13 @@ export default function StudentForm({
                   <InputField
                     label="PORTFOLIO/LINKEDIN"
                     type="text"
-                    placeholder="Link to portfolio/Github"
+                    placeholder="Länk till Portfolio/Github"
                     value={portfolio}
                     onChange={(e) => setPortfolio(e.target.value)}
                   />
                   <InputField
                     type="text"
-                    placeholder="Link to LinkedIn"
+                    placeholder="Länk till LinkedIn"
                     value={linkedIn}
                     onChange={(e) => setLinkedIn(e.target.value)}
                   />
@@ -332,7 +332,7 @@ export default function StudentForm({
               </div>
               <ImageUpload
                 label="ADDERA BILD"
-                paragraph="(Displayed in student profile for companies)"
+                paragraph="(Visas i studentprofil för företag)"
                 onChange={(e) => setSelectedFile(e.target.files[0])}
               />
             </div>
