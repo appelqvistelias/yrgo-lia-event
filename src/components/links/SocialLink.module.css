@@ -1,0 +1,15 @@
+.icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link:hover .icon {
+  opacity: 0.7;
+}

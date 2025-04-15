@@ -12,6 +12,7 @@ export default function StudentCard({
   infoText = "Info-text saknas",
   image = YrgoLogo,
   fieldOfInterest = [],
+  links = [],
 }) {
   // Image handling
   const imageUrl = (() => {
@@ -30,7 +31,7 @@ export default function StudentCard({
         </div>
         <div className={styles.lowerHalfContent}>
           <CardInfo heading={education} infoText={infoText} />
-          <CardInterests interests={fieldOfInterest} />
+          <CardInterests interests={fieldOfInterest} links={links} />
         </div>
       </div>
     </CardBackground>

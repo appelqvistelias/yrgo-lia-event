@@ -32,6 +32,7 @@ export default function StudentProfile({ student }) {
             infoText={student.bio || "No information available"}
             image={imageUrl}
             fieldOfInterest={fieldOfInterest}
+            links={[student.linkedin, student.portfolio].filter(Boolean)} // Add links and filter out null/undefined values
           />
           <Link href="/edit/student" className={styles.edit}>
             <p className={styles.editText}>Edit</p>
