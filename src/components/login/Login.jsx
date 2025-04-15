@@ -46,14 +46,8 @@ export default function Login() {
       return;
     }
 
-    // Send to correct dashboard
-    if (userData.role === 1) {
-      router.push("/student-dashboard");
-    } else if (userData.role === 2) {
-      router.push("/company-dashboard");
-    } else {
-      setError("Okänd roll.");
-    }
+    // Redirect user back to landing page
+    router.push("/");
   };
 
   return (
