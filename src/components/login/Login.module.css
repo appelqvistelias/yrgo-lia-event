@@ -44,4 +44,8 @@
     gap: 4rem;
     height: 100%;
   }
+  .errorMessage {
+    font-size: 1.5rem;
+    line-height: 1.375rem;
+  }
 }
