@@ -32,6 +32,27 @@
   z-index: 1000;
 }
 
+.mobileMenu::before,
+.mobileMenu::after {
+  content: "";
+  position: absolute;
+  width: 1.7rem;
+  height: 1.7rem;
+  top: 76%;
+  transform: translateY(-50%);
+  background: var(--Yrgo-yrgo-blue, #001a52);
+}
+
+.mobileMenu::before {
+  right: -1.1rem;
+  border-radius: 50px 0 0 50px;
+}
+
+.mobileMenu::after {
+  left: -1.1rem;
+  border-radius: 0 50px 50px 0;
+}
+
 .menuGroup {
   display: flex;
   flex-direction: column;
