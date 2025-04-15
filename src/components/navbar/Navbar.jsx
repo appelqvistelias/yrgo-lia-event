@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "./Navbar.module.css";
 import YrgoLogoMobile from "@/icons/yrgo-navbar-logo-mobile.svg";
 import HamburgerIcon from "@/icons/nav-hamburger-mobile.svg";
+import HamburgerX from "@/icons/nav-cross-mobile.svg";
 import YrgoLogoDesktop from "@/icons/yrgo-navbar-logo-desktop.svg";
 import Divider from "@/components/layouts/Divider";
 
@@ -22,7 +23,7 @@ export default function Navbar() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <HamburgerIcon />
+          {menuOpen ? <HamburgerX /> : <HamburgerIcon />}
         </button>
       </div>
 
