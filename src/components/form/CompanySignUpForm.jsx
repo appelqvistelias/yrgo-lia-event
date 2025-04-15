@@ -19,12 +19,12 @@ const validateEmail = (email) => {
 
 export default function CompanySignUpForm() {
   const router = useRouter();
-  const [contactPerson, setContactPerson] = useState(""); //Uppdaterad
+  const [contactPerson, setContactPerson] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [lookingForInternship, setlookingForInternship] = useState(""); //Uppdaterad
-  const [companyInfo, setCompanyInfo] = useState(""); //Tillagd
+  const [lookingForInternship, setlookingForInternship] = useState("");
+  const [companyInfo, setCompanyInfo] = useState("");
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -224,6 +224,7 @@ export default function CompanySignUpForm() {
               placeholder="Vilket företag..."
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
+              required={true}
             />
 
             <InputField
@@ -232,6 +233,7 @@ export default function CompanySignUpForm() {
               placeholder="Namn"
               value={contactPerson}
               onChange={(e) => setContactPerson(e.target.value)}
+              required={true}
             />
 
             <InputField
@@ -240,6 +242,7 @@ export default function CompanySignUpForm() {
               placeholder="dittföretag@mail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required={true}
             />
 
             <InputField
@@ -248,6 +251,7 @@ export default function CompanySignUpForm() {
               placeholder="Välj ett starkt lösenord"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required={true}
             />
 
             <InputField

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabase";
 import StudentProfile from "@/components/profile/StudentProfile";
+import Navbar from "@/components/navbar/Navbar";
 
 export default function StudentDashboard() {
   const router = useRouter();
@@ -102,5 +103,10 @@ export default function StudentDashboard() {
         Logga ut
       </button> */
 
-  return <StudentProfile student={student} />;
+  return (
+    <>
+      <Navbar />
+      <StudentProfile student={student} />
+    </>
+  );
 }

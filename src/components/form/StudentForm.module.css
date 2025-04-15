@@ -17,6 +17,27 @@
   background: #fff;
 }
 
+.inner-wrapper::before,
+.inner-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 1.875rem;
+  height: 1.875rem;
+  top: 70%;
+  transform: translateY(-50%);
+  background: var(--Yrgo-yrgo-blue, #001a52);
+}
+
+.inner-wrapper::before {
+  right: -1rem;
+  border-radius: 50px 0 0 50px;
+}
+
+.inner-wrapper::after {
+  left: -1rem;
+  border-radius: 0 50px 50px 0;
+}
+
 .input-fields {
   display: flex;
   flex-direction: column;
@@ -44,7 +65,7 @@
 .fieldset-choices {
   all: unset;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 1fr;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -79,19 +100,33 @@
     border: 3px solid #000;
   }
 
+  .inner-wrapper::before,
+  .inner-wrapper::after {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .inner-wrapper::before {
+    right: -3rem;
+  }
+
+  .inner-wrapper::after {
+    left: -3rem;
+  }
+
   .input-fields {
     gap: 2.5rem;
   }
 
   .separate-label {
     font-size: var(--32, 2rem);
-    line-height: var(--32, 2rem);
+    line-height: var(--32, 2rem); /* 100% */
   }
 
   .specialization-note {
     font-size: var(--20, 1.25rem);
     font-weight: 400;
-    line-height: var(--22, 1.375rem);
+    line-height: var(--22, 1.375rem); /* 110% */
     margin-top: 0.75rem;
   }
 

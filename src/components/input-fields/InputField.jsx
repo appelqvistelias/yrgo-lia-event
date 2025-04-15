@@ -8,16 +8,19 @@ export default function InputField({
   onChange,
   display = "none",
   paragraphText = "",
+  required = false,
+  className = "",
 }) {
   return (
     <div className={styles.div}>
       <label className={styles.label}>
         {label}
+        {required && <span className={styles.asterisk}>*</span>}{" "}
         <p className={styles.paragraph} style={{ display: display }}>
           {paragraphText}
         </p>
         <input
-          className={styles.input}
+          className={`${styles.input} ${className}`}
           type={type}
           placeholder={placeholder}
           value={value}
@@ -27,5 +30,3 @@ export default function InputField({
     </div>
   );
 }
-
-// Add exclamation mark when invalid

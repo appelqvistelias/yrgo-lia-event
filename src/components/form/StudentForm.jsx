@@ -14,7 +14,7 @@ import HeaderWithLogo from "../layouts/HeaderWithLogo";
 import PolicyCheckbox from "./PolicyCheckbox";
 import TextAreaField from "../input-fields/TextareaField";
 import ImageUpload from "../input-fields/ImageUpload";
-import styles from "./StudentSignUpForm.module.css";
+import styles from "./StudentForm.module.css";
 
 export default function StudentForm({
   initialValues,
@@ -163,6 +163,7 @@ export default function StudentForm({
               placeholder="Namn"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required={true}
             />
 
             {/* Program Selection Section */}
@@ -193,6 +194,7 @@ export default function StudentForm({
               placeholder="dittnamn@mail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required={true}
             />
             <InputField
               label="LÖSENORD"
@@ -204,6 +206,7 @@ export default function StudentForm({
               }
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required={true}
             />
 
             {/* Areas of Interest Section */}

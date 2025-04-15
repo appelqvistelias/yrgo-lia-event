@@ -2,8 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabase";
-import StudentForm from "./StudentForm"; // Importera den nya komponenten
-
+import StudentForm from "./StudentForm";
 export default function StudentSignUpForm() {
   const router = useRouter();
 
@@ -21,7 +20,7 @@ export default function StudentSignUpForm() {
     } = formData;
 
     try {
-      // Registrera användare med Supabase Auth
+      // Register user with Supabase Auth
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
         password,
@@ -35,7 +34,7 @@ export default function StudentSignUpForm() {
 
       const userId = authData.user.id;
 
-      // Ladda upp profilbild om vald
+      // Upload profile picture if selected
       let imageUrl = null;
       if (selectedFile) {
         const fileExt = selectedFile.name.split(".").pop();
@@ -55,7 +54,7 @@ export default function StudentSignUpForm() {
         imageUrl = publicUrlData?.publicUrl;
       }
 
-      // Lägg in användaren i users-tabellen
+      // Insert user into users table
       const { error: userError } = await supabase
         .from("users")
         .insert([{ id: userId, email, role: 1 }]); // 1 = student
@@ -63,7 +62,7 @@ export default function StudentSignUpForm() {
         throw userError;
       }
 
-      // Spara bild i databasen om den laddades upp
+      // Save image in database if uploaded
       if (imageUrl) {
         const { error: imageInsertError } = await supabase
           .from("images")
@@ -80,7 +79,7 @@ export default function StudentSignUpForm() {
         }
       }
 
-      // Lägg in student i students-tabellen
+      // Insert student into students table
       const { data: studentData, error: studentError } = await supabase
         .from("students")
         .insert([
@@ -99,7 +98,7 @@ export default function StudentSignUpForm() {
       }
       const newStudentId = studentData.id;
 
-      // Koppla student till valt program
+      // Connect student to chosen program
       const { data: programData, error: programError } = await supabase
         .from("programs")
         .select("id")
@@ -115,7 +114,7 @@ export default function StudentSignUpForm() {
         throw studentProgramError;
       }
 
-      // Hantera valda specialiseringar
+      // Handle selected specializations
       const selectedSpecializations = Object.entries(fieldOfInterest)
         .filter(([_, value]) => value)
         .map(([key]) => key);

@@ -4,25 +4,34 @@ import CardInfo from "./CardInfo";
 import CardBackground from "./CardBackground";
 import CardImage from "./CardImage";
 import CardInterests from "./CardInterests";
-import PropTypes from "prop-types";
+import YrgoLogo from "@/icons/yrgologo-big.png";
 
 export default function StudentCard({
-  studentName = "Clara S",
-  education = "Digital Designer",
-  infoText = "Kort text om mig bla bla. Jag gillar söker lia till november etc etc...",
-  image = "@/icons/Yrgo-logo.png",
+  studentName = "Namn saknas",
+  education = "Ingen utbildning vald",
+  infoText = "Info-text saknas",
+  image = YrgoLogo,
   fieldOfInterest = [],
+  links = [],
 }) {
+  // Image handling
+  const imageUrl = (() => {
+    if (!image) return YrgoLogo.src; // Handle null/undefined
+    if (typeof image === "string") return image; // Handle URL strings
+    if (image.src) return image.src; // Handle Next.js image objects
+    return YrgoLogo.src; // Fallback
+  })();
+
   return (
     <CardBackground>
       <div className={styles.card}>
         <StudentName name={studentName} program={education} />
         <div className={styles.imageContainer}>
-          <CardImage imageUrl={image} altText={`${studentName}'s profile`} />
+          <CardImage imageUrl={imageUrl} altText={`${studentName}'s profile`} />
         </div>
         <div className={styles.lowerHalfContent}>
           <CardInfo heading={education} infoText={infoText} />
-          <CardInterests interests={fieldOfInterest} />
+          <CardInterests interests={fieldOfInterest} links={links} />
         </div>
       </div>
     </CardBackground>
