@@ -14,6 +14,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: var(--22, 1.375rem); /* 137.5% */
+  text-transform: uppercase;
 }
 
 .button:active,

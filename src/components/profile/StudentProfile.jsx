@@ -30,7 +30,7 @@ export default function StudentProfile({ student }) {
             image={student.images[0].url}
             fieldOfInterest={fieldOfInterest}
           />
-          <Link href="/profile/edit" className={styles.edit}>
+          <Link href="/edit/student" className={styles.edit}>
             <p className={styles.editText}>Edit</p>
             <EditIcon className={styles.icon} />
           </Link>
