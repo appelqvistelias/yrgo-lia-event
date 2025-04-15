@@ -240,7 +240,7 @@ export default function EditStudentProfile() {
 
       alert("Din profil har uppdaterats!");
       // Redirect to student dashboard
-      router.push("/student-dashboard");
+      router.push("/redirect");
     } catch (error) {
       console.error("Error updating profile:", error);
       alert("Something went wrong: " + error.message);
