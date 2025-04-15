@@ -8,6 +8,7 @@ import YrgoLogo from "@/icons/yrgologo-big.png";
 
 export default function CompanyCard({
   companyName = "Företag",
+  contactPerson = "Kontaktperson saknas",
   liaInfo = "Information saknas",
   infoText = "Information saknas",
   image = YrgoLogo,
@@ -25,13 +26,16 @@ export default function CompanyCard({
   // Create mailto link for email
   const emailLink = mail ? `mailto:${mail}` : "";
 
+  // Combine company info with contact person
+  const companyInfo = `Kontaktperson: ${contactPerson}\n\n${infoText}`;
+
   return (
     <CardBackground>
       <div className={styles.card}>
         <CompanyName name={companyName} />
         <CardImage imageUrl={imageUrl} altText={`${companyName}'s profile`} />
         <div className={styles.lowerHalfContent}>
-          <CardInfo heading={liaInfo} infoText={infoText} />
+          <CardInfo heading={liaInfo} infoText={companyInfo} />
           <CardInterests
             interests={specialization}
             links={[emailLink].filter(Boolean)}
