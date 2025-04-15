@@ -1,10 +1,8 @@
 import styles from "./StudentProfile.module.css";
-import StudentCard from "@/components/cards/StudentCard";
 import EditIcon from "../../icons/edit.svg";
-import Wrapper from "../layouts/Wrapper";
 import Link from "next/link";
 import StudentProfileCard from "./StudentProfileCard";
-import LayoutCard from "../layouts/LayoutCard";
+import YrgoLogo from "@/icons/yrgologo-big.png";
 
 export default function StudentProfile({ student }) {
   if (!student) {
@@ -17,6 +15,11 @@ export default function StudentProfile({ student }) {
       )
     : [];
 
+  // Add fallback for image URL and use .src property
+  const imageUrl =
+    student.images?.length > 0 ? student.images[0].url : YrgoLogo.src;
+
+  console.log("Image URL:", imageUrl);
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -27,7 +30,7 @@ export default function StudentProfile({ student }) {
               student.student_programs[0].programs.program_name || "Student"
             }
             infoText={student.bio || "No information available"}
-            image={student.images[0].url}
+            image={imageUrl}
             fieldOfInterest={fieldOfInterest}
           />
           <Link href="/edit/student" className={styles.edit}>
@@ -35,9 +38,6 @@ export default function StudentProfile({ student }) {
             <EditIcon className={styles.icon} />
           </Link>
         </section>
-        {/* <section className={styles.companies}>
-          <h2 className={styles.companiesHeader}>Företag för dig</h2>
-        </section> */}
       </div>
     </div>
   );
