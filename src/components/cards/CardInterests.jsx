@@ -1,19 +1,26 @@
 import styles from "./CardInterests.module.css";
-// CardInterests component
-// This component is used to display the interests of the student
-// It takes an array of interests, an icon and a link (to gitub/portfolio/mail) as props
+import SocialLink from "../links/SocialLink";
 
-export default function CardInterests({ interests, link, icon }) {
+export default function CardInterests({ interests = [], links = [], isProfile = false }) {
   return (
-    <div className={styles.cardInterestsContainer}>
+    <div className={`${styles.cardInterestsContainer} ${isProfile ? styles.profileView : ''}`}>
       <ul className={styles.cardInterests}>
         {interests.map((interest, index) => (
-          <li key={index} className={`${styles.cardInterestText} title_6`}>
+          <li 
+            key={index} 
+            className={`${styles.cardInterestText} ${isProfile ? styles.profileText : ''} title_6`}
+          >
             {interest}
           </li>
         ))}
       </ul>
-      <div className={styles.iconContainer}>X</div> {/* Add icon here */}
+      <div className={styles.iconContainer}>
+        {Array.isArray(links) ? (
+          links.map((link, index) => <SocialLink key={index} url={link} />)
+        ) : (
+          <SocialLink url={links} />
+        )}
+      </div>
     </div>
   );
 }

@@ -11,6 +11,7 @@ export default function StudentProfileCard({
   infoText,
   image,
   fieldOfInterest,
+  links = [],
 }) {
   if (education === "webbutveckling") {
     education = "Webbutvecklare";
@@ -35,7 +36,11 @@ export default function StudentProfileCard({
               <h2 className={styles.education}>{education}</h2>
               <p className={styles.infoText}>{infoText}</p>
             </div>
-            <CardInterests interests={fieldOfInterest} />
+            <CardInterests
+              interests={fieldOfInterest}
+              links={links}
+              isProfile={true}
+            />
           </div>
         </div>
       </div>

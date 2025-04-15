@@ -26,17 +26,17 @@
 .responsiveCardInterest .cardInterests {
 }
 
+/* Media query only applies to profile view */
 @media (min-width: 768px) {
-  .cardInterestsContainer {
-  }
-  .cardInterests {
+  .profileView .cardInterests {
     display: flex;
     width: 10.4375rem;
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
   }
-  .cardInterestText {
+
+  .profileText {
     font-size: 2rem;
     font-style: normal;
     font-weight: 400;

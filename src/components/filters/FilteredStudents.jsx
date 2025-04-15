@@ -228,8 +228,9 @@ const FilteredStudents = () => {
               studentName={student.first_name}
               education={student.program_names[0]} // Assuming first program
               infoText={student.bio}
-              image={student.image_url} // Add image prop
+              image={student.image_url}
               fieldOfInterest={student.specialization_names}
+              links={[student.linkedin, student.portfolio].filter(Boolean)} // Add links and filter out null/undefined values
             />
           ))
         ) : !isLoading && filteredStudents.length === 0 ? (

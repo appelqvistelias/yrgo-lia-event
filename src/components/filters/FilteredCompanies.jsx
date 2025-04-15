@@ -45,19 +45,25 @@ const FilteredCompanies = () => {
         if (specializationsError) throw specializationsError;
 
         //Fetch companies with their related data
-        const { data: companyData, error: companyError } = await supabase.from(
-          "companies"
-        ).select(`
+        const { data: companyData, error: companyError } = await supabase
+          .from("companies")
+          .select(
+            `
             id,
             contact_person,
             company_name,
             want_lia,
             company_info,
+            users (
+              email
+            ),
             company_specializations!inner (
               specializations_id,
               specializations (id, specialization_name)
             )
-          `);
+          `
+          )
+          .eq("users.role", 2); // Ensure we only get company users
 
         if (companyError) throw companyError;
 
@@ -91,7 +97,7 @@ const FilteredCompanies = () => {
             company_name: company.company_name,
             want_lia: company.want_lia,
             company_info: company.company_info,
-
+            email: company.users?.email, // Add email from users table
             specialization_ids: specializationIds,
             specialization_names: specializationNames,
           };
@@ -175,8 +181,12 @@ const FilteredCompanies = () => {
               key={company.id}
               companyName={company.company_name}
               contactPerson={company.contact_person}
-              companyInfo={company.company_info}
-              specializationNames={company.specialization_names}
+              liaInfo={
+                company.want_lia ? company.want_lia : "Information saknas"
+              }
+              infoText={company.company_info || "Information saknas"}
+              specialization={company.specialization_names}
+              mail={company.email} // Pass email to CompanyCard
             />
           ))
         ) : !isLoading && filteredCompanies.length === 0 ? (
