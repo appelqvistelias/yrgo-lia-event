@@ -81,15 +81,20 @@ export default function Navbar() {
           <Divider margin="1.5rem 0" />
 
           {user ? (
-            <button
-              className={`${styles.menuLink} ${styles.logoutButton}`}
-              onClick={async () => {
-                await supabase.auth.signOut();
-                router.push("/");
-              }}
-            >
-              <span className={styles.menuHeader}>Logga ut</span>
-            </button>
+            <div className={styles.loggedin}>
+              <a className={styles.menuLink} href="/student">
+                <span className={styles.menuHeader}>Din profil</span>
+              </a>
+              <button
+                className={`${styles.menuLink} ${styles.logoutButton}`}
+                onClick={async () => {
+                  await supabase.auth.signOut();
+                  router.push("/");
+                }}
+              >
+                <span className={styles.menuHeader}>Logga ut</span>
+              </button>
+            </div>
           ) : (
             <a className={styles.menuLink} href="/login">
               <span className={styles.menuHeader}>Logga in</span>
@@ -129,15 +134,20 @@ export default function Navbar() {
 
         <div className={styles.rightGroup}>
           {user ? (
-            <button
-              className={styles.menuLoginDesktop}
-              onClick={async () => {
-                await supabase.auth.signOut();
-                router.push("/");
-              }}
-            >
-              Logga ut
-            </button>
+            <div className={styles.loggedinDesktop}>
+              <a className={styles.menuLink} href="/student">
+                <span className={styles.menuLoginDesktop}>Min profil</span>
+              </a>
+              <button
+                className={styles.menuLoginDesktop}
+                onClick={async () => {
+                  await supabase.auth.signOut();
+                  router.push("/");
+                }}
+              >
+                Logga ut
+              </button>
+            </div>
           ) : (
             <a href="/login" className={styles.menuLoginDesktop}>
               Logga in
