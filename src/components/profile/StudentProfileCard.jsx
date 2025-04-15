@@ -11,7 +11,7 @@ export default function StudentProfileCard({
   infoText,
   image,
   fieldOfInterest,
-  links = [], // Add links prop with default empty array
+  links = [],
 }) {
   if (education === "webbutveckling") {
     education = "Webbutvecklare";
@@ -38,7 +38,8 @@ export default function StudentProfileCard({
             </div>
             <CardInterests
               interests={fieldOfInterest}
-              links={links} // Pass links to CardInterests
+              links={links}
+              isProfile={true}
             />
           </div>
         </div>
