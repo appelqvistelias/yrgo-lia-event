@@ -7,7 +7,7 @@ const ChoiceButton = ({ label, name, value, onChange }) => {
   const handleChange = () => {
     const newValue = !isChecked;
     setIsChecked(newValue);
-    onChange(newValue); // Sends the updated boolean to the parent component
+    onChange(newValue);
   };
 
   return (
