@@ -1,0 +1,208 @@
+.navbar {
+  position: relative;
+  background: var(--Background-bg-white, #fff);
+  padding: 0.7rem 1.3rem;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoLinksDesktop {
+  display: none;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background: var(--Background-bg-white, #fff);
+  padding: 1.5rem 1rem;
+  border-radius: 0 0 0.625rem 0.625rem;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.mobileMenu::before,
+.mobileMenu::after {
+  content: "";
+  position: absolute;
+  width: 1.7rem;
+  height: 1.7rem;
+  top: 75.5%;
+  transform: translateY(-50%);
+  background: var(--Yrgo-yrgo-blue, #001a52);
+}
+
+.mobileMenu::before {
+  right: -1.1rem;
+  border-radius: 50px 0 0 50px;
+}
+
+.mobileMenu::after {
+  left: -1.1rem;
+  border-radius: 0 50px 50px 0;
+}
+
+.menuGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.upperMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.menuHeader {
+  color: var(--Background-bg-black, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--16, 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--22, 1.375rem); /* 137.5% */
+}
+
+.menuLinks {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.5rem;
+  gap: 0.4rem;
+}
+
+.menuLink {
+  text-decoration: none;
+  color: var(--Background-bg-black, #121212);
+  font-family: var(--font-family-Inter, Inter);
+  font-size: var(--14, 0.875rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--22, 1.375rem); /* 157.143% */
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    padding: 1.25rem 16rem 1.3rem 19rem;
+  }
+
+  .logoMobile,
+  .hamburger {
+    display: none;
+  }
+
+  .logoLinksDesktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .leftGroup {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .dropdowns {
+    display: flex;
+    gap: 3.5rem;
+  }
+
+  .dropdown {
+    position: relative;
+    overflow: visible;
+  }
+
+  .dropdownButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .menuHeader {
+    color: var(--Typocolor, #121212);
+    font-family: var(--font-family-roboto, Roboto);
+    font-size: var(--Typography-font-size-S-14, 0.875rem);
+    font-style: normal;
+    font-weight: 500;
+    line-height: var(
+      --Typography-font-line-height-LH-20,
+      1.25rem
+    ); /* 142.857% */
+    letter-spacing: var(--Typography-font-character-C-0, 0rem);
+  }
+
+  .menuLoginDesktop {
+    color: var(--Typocolor, #121212);
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25rem; /* 125% */
+  }
+
+  .dropdownContent {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 1.5rem 1.4rem;
+    border-radius: 0 0 0.625rem 0.625rem;
+    gap: 0.6rem;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+
+    color: var(--Typocolor, #121212);
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25rem; /* 125% */
+  }
+
+  .dropdownContent::before,
+  .dropdownContent::after {
+    content: "";
+    position: absolute;
+    width: 1.7rem;
+    height: 1.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--Yrgo-yrgo-blue, #001a52);
+  }
+
+  .dropdownContent::before {
+    right: -1.1rem;
+    border-radius: 50px 0 0 50px;
+  }
+
+  .dropdownContent::after {
+    left: -1.1rem;
+    border-radius: 0 50px 50px 0;
+  }
+
+  .dropdown:hover .dropdownContent {
+    display: flex;
+  }
+
+  .rightGroup a,
+  .dropdownContent a {
+    text-decoration: none;
+    color: var(--Background-bg-black, #121212);
+  }
+}
