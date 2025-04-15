@@ -1,22 +1,3 @@
-.signup-form-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5rem 1.5rem 3.75rem 1.5rem;
-}
-
-.inner-wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 1.5rem 1.5rem 1.5rem;
-  align-items: center;
-  gap: 1rem;
-  border-radius: 0.4375rem;
-  border: 1px solid #000;
-  background: #fff;
-}
-
 .inner-wrapper::before,
 .inner-wrapper::after {
   content: "";
@@ -38,68 +19,7 @@
   border-radius: 0 50px 50px 0;
 }
 
-.input-fields {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.separate-label {
-  color: var(--Typocolor, #121212);
-  font-family: var(--font-family-Inter, Inter);
-  font-size: var(--16, 1rem);
-  font-style: normal;
-  font-weight: 600;
-  line-height: var(--22, 1.375rem);
-}
-
-.specialization-note {
-  color: var(--Typocolor, #121212);
-  font-family: var(--font-family-Inter, Inter);
-  font-size: var(--16, 1rem);
-  font-style: normal;
-  font-weight: 300;
-  line-height: var(--20, 1.25rem);
-}
-
-.fieldset-choices {
-  all: unset;
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.portfolio-mobile {
-  display: block;
-}
-
-.portfolio-desktop {
-  display: none;
-}
-
-.pitch-portfolio-img,
-.pitch-portfolio {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
 @media (min-width: 768px) {
-  .signup-form-section {
-    padding: 2.5rem 5rem 6.25rem 5rem;
-  }
-
-  .inner-wrapper {
-    padding: 3.75rem 12.5rem;
-    gap: 2.5rem;
-    border-radius: 0.625rem;
-    border: 3px solid #000;
-  }
-
   .inner-wrapper::before,
   .inner-wrapper::after {
     width: 5rem;
@@ -112,44 +32,5 @@
 
   .inner-wrapper::after {
     left: -3rem;
-  }
-
-  .input-fields {
-    gap: 2.5rem;
-  }
-
-  .separate-label {
-    font-size: var(--32, 2rem);
-    line-height: var(--32, 2rem); /* 100% */
-  }
-
-  .specialization-note {
-    font-size: var(--20, 1.25rem);
-    font-weight: 400;
-    line-height: var(--22, 1.375rem); /* 110% */
-    margin-top: 0.75rem;
-  }
-
-  .fieldset-choices {
-    margin-top: 1rem;
-  }
-
-  .portfolio-mobile {
-    display: none;
-  }
-
-  .portfolio-desktop {
-    display: block;
-  }
-
-  .pitch-portfolio {
-    width: 100%;
-    gap: 2.5rem;
-  }
-
-  .pitch-portfolio-img {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 2.5rem;
   }
 }
