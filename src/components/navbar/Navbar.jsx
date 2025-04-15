@@ -82,7 +82,7 @@ export default function Navbar() {
 
           {user ? (
             <div className={styles.loggedin}>
-              <a className={styles.menuLink} href="/student">
+              <a className={styles.menuLink} href="/redirect">
                 <span className={styles.menuHeader}>Din profil</span>
               </a>
               <button
@@ -135,7 +135,7 @@ export default function Navbar() {
         <div className={styles.rightGroup}>
           {user ? (
             <div className={styles.loggedinDesktop}>
-              <a className={styles.menuLink} href="/student">
+              <a className={styles.menuLink} href="/redirect">
                 <span className={styles.menuLoginDesktop}>Min profil</span>
               </a>
               <button
