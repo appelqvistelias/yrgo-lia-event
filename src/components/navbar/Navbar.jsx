@@ -66,12 +66,39 @@ export default function Navbar() {
       )}
 
       <div className={styles.logoLinksDesktop}>
-        <div className={styles.logoDesktop}>
-          <YrgoLogoDesktop />
+        <div className={styles.leftGroup}>
+          <a href="/" className={styles.logoDesktop}>
+            <YrgoLogoDesktop />
+          </a>
+
+          <div className={styles.dropdowns}>
+            <div className={styles.dropdown}>
+              <button className={styles.dropdownButton}>
+                <span className={styles.menuHeader}>Sign Up</span>
+              </button>
+              <div className={styles.dropdownContent}>
+                <a href="/company-signup">Företag</a>
+                <a href="/student-signup">Studenter</a>
+              </div>
+            </div>
+
+            <div className={styles.dropdown}>
+              <button className={styles.dropdownButton}>
+                <span className={styles.menuHeader}>Vilka du möter</span>
+              </button>
+              <div className={styles.dropdownContent}>
+                <a href="/companies">Företag</a>
+                <a href="/students">Studenter</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <a href="/">Sign Up</a>
-        <a href="/">Vilka du möter</a>
-        <a href="/login">Logga in</a>
+
+        <div className={styles.rightGroup}>
+          <a href="/login">
+            <span className={styles.menuLoginDesktop}>Logga in</span>
+          </a>
+        </div>
       </div>
     </nav>
   );
