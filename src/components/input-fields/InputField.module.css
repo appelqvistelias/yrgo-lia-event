@@ -48,6 +48,12 @@
   background: var(--Yrgo-Yrgo-error-fill, #fff4f4);
 }
 
+.asterisk {
+  color: var(--Stroke-stroke-red, #e51236);
+  font-weight: bold;
+  margin-left: 0.1rem;
+}
+
 @media (min-width: 768px) {
   .div {
     gap: 1rem;
