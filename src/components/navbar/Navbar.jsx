@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { supabase } from "../../../lib/supabase";
 import styles from "./Navbar.module.css";
 import YrgoLogoMobile from "@/icons/yrgo-navbar-logo-mobile.svg";
 import HamburgerIcon from "@/icons/nav-hamburger-mobile.svg";
@@ -10,6 +12,25 @@ import Divider from "@/components/layouts/Divider";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data } = await supabase.auth.getUser();
+      setUser(data?.user ?? null);
+    };
+
+    getUser();
+
+    const { data: listener } = supabase.auth.onAuthStateChange(() => {
+      getUser();
+    });
+
+    return () => {
+      listener.subscription.unsubscribe();
+    };
+  }, [supabase]);
 
   return (
     <nav className={styles.navbar}>
@@ -59,9 +80,21 @@ export default function Navbar() {
 
           <Divider margin="1.5rem 0" />
 
-          <a className={styles.menuLink} href="/login">
-            <span className={styles.menuHeader}>Logga in</span>
-          </a>
+          {user ? (
+            <button
+              className={`${styles.menuLink} ${styles.logoutButton}`}
+              onClick={async () => {
+                await supabase.auth.signOut();
+                router.push("/");
+              }}
+            >
+              <span className={styles.menuHeader}>Logga ut</span>
+            </button>
+          ) : (
+            <a className={styles.menuLink} href="/login">
+              <span className={styles.menuHeader}>Logga in</span>
+            </a>
+          )}
         </div>
       )}
 
@@ -95,9 +128,21 @@ export default function Navbar() {
         </div>
 
         <div className={styles.rightGroup}>
-          <a href="/login">
-            <span className={styles.menuLoginDesktop}>Logga in</span>
-          </a>
+          {user ? (
+            <button
+              className={styles.menuLoginDesktop}
+              onClick={async () => {
+                await supabase.auth.signOut();
+                router.push("/");
+              }}
+            >
+              Logga ut
+            </button>
+          ) : (
+            <a href="/login" className={styles.menuLoginDesktop}>
+              Logga in
+            </a>
+          )}
         </div>
       </div>
     </nav>
