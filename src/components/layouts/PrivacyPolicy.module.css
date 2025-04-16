@@ -85,6 +85,12 @@
   color: var(--yrgo-white);
 }
 
+.emailLink {
+  text-decoration: none;
+  color: var(--Stroke-stroke-red, #e51236);
+  padding-left: 0.5rem;
+}
+
 @media (min-width: 768px) {
   .heading {
     font-size: 6rem;

@@ -23,11 +23,10 @@ export default function PrivacyPolicy() {
           <ul>
             <li>Namn</li>
             <li>E-postadress </li>
-            <li>Telefonnummer </li>
             <li>Företagsnamn </li>
             <li>Portfoliolänk</li>
             <li>LinkedIn</li>
-            <li>länk eller annan frivillig information du lämnar</li>
+            <li>Länk eller annan frivillig information du lämnar</li>
           </ul>
         </Dropdown>
         <Dropdown title="Användning av personuppgifter">
@@ -65,8 +64,13 @@ export default function PrivacyPolicy() {
             <li>Återkalla samtycke där behandling grundas på samtycke</li>
           </ul>
           <p>
-            För att utöva dessa rättigheter, vänligen kontakta oss på
-            [E-postadress].
+            För att utöva dessa rättigheter, vänligen kontakta oss på:
+            <a
+              className={styles.emailLink}
+              href="mailto:liaexpressen@gmail.com"
+            >
+              liaexpressen@gmail.com
+            </a>
           </p>
         </Dropdown>
         <Dropdown title="Cookies och spårningstekniker">
@@ -84,8 +88,13 @@ export default function PrivacyPolicy() {
         </Dropdown>
         <Dropdown title="Kontakt">
           <p>
-            Har du frågor om vår integritetspolicy? Kontakta oss på: [Eventets
-            namn] [E-postadress] [Telefonnummer]
+            Har du frågor om vår integritetspolicy? Kontakta oss på:
+            <a
+              className={styles.emailLink}
+              href="mailto:liaexpressen@gmail.com"
+            >
+              liaexpressen@gmail.com
+            </a>
           </p>
         </Dropdown>
         <div className={styles.backLink}>
