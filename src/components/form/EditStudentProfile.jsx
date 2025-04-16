@@ -41,7 +41,7 @@ export default function EditStudentProfile() {
       }
       const userId = authData.user.id;
 
-      // Get student data from "students" table including specializations
+      // Get student data from "students" table including programs and specializations
       const { data: student, error } = await supabase
         .from("students")
         .select(
@@ -50,6 +50,9 @@ export default function EditStudentProfile() {
           bio,
           linkedin,
           portfolio,
+          student_programs (
+            programs ( program_name )
+          ),
           student_specializations (
             specializations ( specialization_name )
           )
@@ -99,10 +102,19 @@ export default function EditStudentProfile() {
         });
       }
 
+      // Get current program
+      const currentProgram =
+        student.student_programs?.[0]?.programs?.program_name || "";
+
       // Set initial values
       const newInitialValues = {
         name: student.full_name || "",
-        studentSpecialization: "",
+        studentSpecialization:
+          currentProgram === "Digital Design"
+            ? "digital_design"
+            : currentProgram === "Webbutveckling"
+            ? "webbutveckling"
+            : "",
         email: authData.user.email || "",
         password: "",
         selectedFile: null,
@@ -236,6 +248,26 @@ export default function EditStudentProfile() {
         if (insertSpecsError) {
           throw insertSpecsError;
         }
+      }
+
+      // Update program if changed
+      if (formData.studentSpecialization) {
+        // Get the program ID
+        const { data: programData, error: programError } = await supabase
+          .from("programs")
+          .select("id")
+          .eq("program_name", formData.studentSpecialization)
+          .single();
+
+        if (programError) throw programError;
+
+        // Update student_programs
+        const { error: programUpdateError } = await supabase
+          .from("student_programs")
+          .update({ program_id: programData.id })
+          .eq("student_id", studentId);
+
+        if (programUpdateError) throw programUpdateError;
       }
 
       alert("Din profil har uppdaterats!");

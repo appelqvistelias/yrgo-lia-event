@@ -87,7 +87,7 @@ const FilteredCompanies = () => {
             ss.specializations_id.toString()
           );
           const specializationNames = company.company_specializations.map(
-            (ss) => ss.specializations.specialization_name
+            (ss) => formatLabel(ss.specializations.specialization_name)
           );
 
           // Return a flattened company object
