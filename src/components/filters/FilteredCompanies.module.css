@@ -30,6 +30,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 1.5rem; /* 100% */
+  text-transform: uppercase;
 }
 
 .cardsContainer {

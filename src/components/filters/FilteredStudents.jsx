@@ -234,9 +234,7 @@ const FilteredStudents = () => {
             />
           ))
         ) : !isLoading && filteredStudents.length === 0 ? (
-          <p className={styles.notFound}>
-            Inga studenter hittades med de gjorda valen.
-          </p>
+          <p className={styles.notFound}>Inga studenter hittades.</p>
         ) : null}
       </div>
     </div>

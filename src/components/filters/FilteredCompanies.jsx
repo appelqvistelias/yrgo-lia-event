@@ -191,7 +191,7 @@ const FilteredCompanies = () => {
           ))
         ) : !isLoading && filteredCompanies.length === 0 ? (
           <p className={styles.notFound}>
-            Inga företag hittades med de gjorda valen.
+            Inga företag hittades.
           </p>
         ) : null}
       </div>
